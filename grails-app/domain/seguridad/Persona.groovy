@@ -5,7 +5,6 @@ import geografia.Canton
 
 class Persona implements Auditable{
 
-    Canton canton
     String cedula
     String nombre
     String apellido
@@ -37,7 +36,6 @@ class Persona implements Auditable{
 
         columns {
             id column: 'prsn__id'
-            canton column: 'cntn__id'
             cedula column: 'prsncdla'
             nombre column: 'prsnnmbr'
             apellido column: 'prsnapll'
@@ -58,7 +56,6 @@ class Persona implements Auditable{
     }
     static constraints = {
         cedula(blank: true, nullable: true)
-        canton(blank: true, nullable: true)
         nombre(size: 3..31, blank: false)
         apellido(size: 0..31, blank: true, nullable: true)
         fechaInicio(blank: true, nullable: true, attributes: [title: 'Fecha de inicio'])
