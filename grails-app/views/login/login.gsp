@@ -11,16 +11,16 @@
 
 <div style="text-align: center; margin-top: 22px; height: ${(flash.message) ? '640' : '570'}px;" class="well">
 
-    <h1 class="titl" style="font-size: 24px; color: #06a">Sistema de Ventas</h1>
+    <h1 class="titl" style="font-size: 24px; color: #06a">INSTITUTO DE FORMACIÓN DE LIDERES</h1>
 
     <elm:flashMessage tipo="${flash.tipo}" icon="${flash.icon}" clase="${flash.clase}">${flash.message}</elm:flashMessage>
 
     <div class="dialog ui-corner-all" style="height: 295px;padding: 10px;width: 910px;margin: auto;margin-top: 5px">
-%{--        <a href= "${createLink(controller:'principal', action: 'index', id:1)}" style="text-decoration: none">--}%
-%{--            <div>--}%
-%{--                <asset:image src="apli/portada.png" style="padding: 10px;"/>--}%
-%{--            </div>--}%
-%{--        </a>--}%
+        <a href= "${createLink(controller:'principal', action: 'index', id:1)}" style="text-decoration: none">
+            <div>
+                <asset:image src="apli/portada.png" style="padding: 10px;"/>
+            </div>
+        </a>
 
         <div>
             <a href="#" id="ingresar" class="btn btn-primary btn-sm" style="width: 160px;" title="Ingresar al sistema">
