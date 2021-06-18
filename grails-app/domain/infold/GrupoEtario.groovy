@@ -1,4 +1,4 @@
-package aplicativo
+package infold
 
 class GrupoEtario {
 

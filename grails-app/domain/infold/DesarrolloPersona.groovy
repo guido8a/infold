@@ -1,24 +1,24 @@
-package aplicativo
+package infold
 
-class EnfoqueParticipante {
+class DesarrolloPersona {
 
     Participante participante
-    Enfoque enfoque
+    DesarrolloCapacidades desarrolloCapacidades
 
     static mapping = {
-        table 'efpr'
+        table 'dcpr'
         cache usage: 'read-write', include: 'non-lazy'
-        id column: 'efpr__id'
+        id column: 'dcpr__id'
         id generator: 'identity'
         version false
         columns {
-            id column: 'efpr__id'
+            id column: 'dcpr__id'
             participante column: 'prtc__id'
-            enfoque column: 'enfq__id'
+            desarrolloCapacidades column: 'dscp__id'
         }
     }
     static constraints = {
         participante(blank: false, nullable: false, attributes: [title: 'participante'])
-        enfoque(blank: false, nullable: false, attributes: [title: 'enfoque'])
+        desarrolloCapacidades(blank: false, nullable: false, attributes: [title: 'desarrollo'])
     }
 }

@@ -1,22 +1,23 @@
-package aplicativo
+package infold
 
-class NivelEducacion {
+class TipoDesarrollo {
 
     String descripcion
+    int orden
 
     static mapping = {
-        table 'nved'
+        table 'tpds'
         cache usage: 'read-write', include: 'non-lazy'
-        id column: 'nved__id'
+        id column: 'tpds__id'
         id generator: 'identity'
         version false
         columns {
-            id column: 'nved__id'
-            descripcion column: 'nveddscr'
+            id column: 'tpds__id'
+            descripcion column: 'tpdsdscr'
         }
     }
     static constraints = {
         descripcion(size: 1..63, blank: false, nullable: false, attributes: [title: 'descripcion'])
+        orden(blank: true, nullable: true, attributes: [title: 'orden'])
     }
-
 }

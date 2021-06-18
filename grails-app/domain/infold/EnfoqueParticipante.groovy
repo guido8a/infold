@@ -1,24 +1,24 @@
-package aplicativo
+package infold
 
-class FortalezaParticipante {
+class EnfoqueParticipante {
 
     Participante participante
-    Fortaleza fortaleza
+    Enfoque enfoque
 
     static mapping = {
-        table 'frpr'
+        table 'efpr'
         cache usage: 'read-write', include: 'non-lazy'
-        id column: 'frpr__id'
+        id column: 'efpr__id'
         id generator: 'identity'
         version false
         columns {
-            id column: 'frpr__id'
+            id column: 'efpr__id'
             participante column: 'prtc__id'
-            fortaleza column: 'frtl__id'
+            enfoque column: 'enfq__id'
         }
     }
     static constraints = {
         participante(blank: false, nullable: false, attributes: [title: 'participante'])
-        fortaleza(blank: false, nullable: false, attributes: [title: 'fortaleza'])
+        enfoque(blank: false, nullable: false, attributes: [title: 'enfoque'])
     }
 }
