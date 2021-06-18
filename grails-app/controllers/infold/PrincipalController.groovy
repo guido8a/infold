@@ -142,27 +142,6 @@ class PrincipalController {
 
     }
 
-    def categorias() {
-//        println "cargar categorias $params"
-        def tx_id = params.id?:'ct_1'
-        def ct_id = tx_id.split("_")[1].toInteger()
-        def sbct_id = params.sbct? params.sbct.split('_')[1] : 0
-        def sbct = sbct_id? Subcategoria.get(sbct_id).id : 0
-/*
-        if(sbct_id) {
-            sbct = Subcategoria.get(sbct_id).id
-        } else {
-            sbct = Subcategoria.findAllByCategoria(Categoria.get(ct_id), [sort: 'orden'])
-//            sbct = sbct? sbct.first().id : 0
-            sbct = 0
-        }
-*/
-        println "categorias activo: ${ct_id}, sbct_actv: ${sbct}"
-//        redirect(action: 'index', params: params)
-        [activo: ct_id, sbct_actv: sbct]
-//        [activo: ct_id, sbct_actv: 0]
-    }
-
     def buscar() {
         println "buscar: $params"
         redirect(action: 'index', params: params)

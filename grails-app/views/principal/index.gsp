@@ -96,7 +96,7 @@
                 </ul>
 
                 <div style="margin-bottom: 40px">
-                    <a href="http://200.93.248.62:8008/moodle" class="btn btn-info" style="padding: 10px">
+                    <a href="http://200.93.248.62:8008/moodle" class="btn btn-light" style="padding: 10px">
                         <i class="fas fa-3x fa-user-graduate"></i>&nbsp; Instituto Virtual
                     </a>
                 </div>
