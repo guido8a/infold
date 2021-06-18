@@ -5,6 +5,7 @@ class WardInterceptor {
     WardInterceptor () {
         matchAll().excludes(controller:'login')
                 .excludes(controller:'shield')
+                .excludes(controller:'principal')
     }
 
     boolean before() {

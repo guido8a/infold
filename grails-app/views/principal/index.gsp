@@ -2,6 +2,7 @@
 <html lang="en" class="no-js">
 
 <head>
+%{--
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121607475-1"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQJWN3ZDKR"></script>
@@ -11,29 +12,33 @@
         gtag('js', new Date());
         gtag('config', 'G-HQJWN3ZDKR');
     </script>
+--}%
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
-    <title>Ventas</title>
+    <asset:link rel="icon" href="favicon.png" type="image/x-ico"/>
+    <title>InfoLíderes</title>
 
     %{--    <g:layoutHead/>--}%
 
     <!-- Bootstrap core CSS -->
+%{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />--}%
+    <asset:stylesheet src="/merc/all.min.css"/>
     <asset:stylesheet src="/merc/bootstrap.min.css"/>
-    <asset:stylesheet src="/apli/shop-homepage.css"/>
+    <asset:stylesheet src="/slick/slick.css"/>
+    <asset:stylesheet src="/slick/slick-theme.css"/>
+    <asset:stylesheet src="/merc/magnific-popup.css"/>
+    <asset:stylesheet src="/merc/templatemo-dream-pulse.css"/>
 
     <asset:javascript src="/merc/jquery.min.js"/>
-    <asset:javascript src="/merc/bootstrap.bundle.js"/>
-    <asset:javascript src="/apli/bootbox.js"/>
-    <asset:javascript src="/jquery-validation-1.11.1/js/jquery.validate.min.js"/>
-    <asset:javascript src="/jquery-validation-1.11.1/js/jquery.validate.js"/>
-    <asset:javascript src="/jquery-validation-1.11.1/localization/messages_es.js"/>
-    <asset:javascript src="/apli/functions.js"/>
-    <asset:javascript src="/apli/loader.js"/>
-    <asset:javascript src="/apli/fontawesome.all.min.js"/>
+    <asset:javascript src="/merc/jquery.singlePageNav.min.js"/>
+    <asset:javascript src="/merc/parallax.min.js"/>
+    <asset:javascript src="/slick/slick.min.js"/>
+    <asset:javascript src="/merc/jquery.magnific-popup.min.js"/>
+    <asset:javascript src="/merc/templatemo-scripts.js"/>
+
 
     <style type="text/css">
     body {
@@ -296,262 +301,355 @@
 
 <body>
 
-<mn:menuNuevo search="${params.bscr?:''}"/>
-%{--<mn:menuHg activo="${activo}"/>--}%
-
-
-
-%{--
-<div class="container" style="margin-top: 30px">
+<div class="container-fluid">
     <div class="row">
-        <div class="input-group col-md-6">
-            <div class="input-group-text text-info">Texto</div>
-            <input type="text" class="form-control estilo" id="inlineFormInputGroupUsername"
-                   placeholder="texto a buscar...">
-        </div>
-
-        <div class="input-group col-md-4">
-            <div class="input-group-text text-info">Categoría</div>
-            <g:select name="categoriaBuscar" from="${ventas.Categoria.list().sort { it.descripcion }}"
-                      class="form-control" optionValue="descripcion" optionKey="id" noSelection="[0: 'Todas']"/>
-        </div>
-
-        <div class="col-md-2">
-            <a href="#" class="btn btn-info"><i class="fa fa-search"></i> Buscar</a>
-        </div>
-    </div>
-</div>
---}%
-
-<!-- Page Content -->
-<div class="container" style="background-color: #efefef">
-
-    <div class="row" style="margin-top: 20px;">
-
-        <div class="col-lg-3">
-            <div id="categorias"></div>
-            %{--
-                        <h2 class="titulo">Categorías</h2>
-                        <div class="list-group">
-                            <g:each in="${ventas.Categoria.findAll([sort: 'orden'])}" var="ct">
-                                <a href="#" class="item_cat categoria" id="ct_${ct?.id}">${ct.descripcion}</a>
-                                <g:if test="${ct?.id == activo}">
-                                    <g:each in="${ventas.Subcategoria.findAllByCategoria(ct, [sort: 'orden'])}" var="sbct">
-                                        <a href="#" class="categoria subcat ${sbct.orden==1?'activo': ''}" id="ct_${sbct?.id}">${sbct.descripcion}</a>
-                                    </g:each>
-                                </g:if>
-                            </g:each>
+        <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="tm-sidebar-sticky">
+                <div class="tm-brand-box">
+                    <div class="tm-double-border-1">
+                        <div class="tm-double-border-2">
+                            <h1 class="tm-brand text-uppercase">INFOLIDERES</h1>
                         </div>
-            --}%
-            %{--            <div style="height: 20px"></div>--}%
+                    </div>
+                </div>
 
-            <h2 class="my-4 titulo0">Consultas</h2>
+                <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
+                    <li class="nav-item">
+                        <a href="#intro" class="nav-link active">
+                            <span class="d-inline-block mr-3">Intro</span>
+                            <span class="d-inline-block tm-white-rect"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">
+                            <span class="d-inline-block mr-3">About</span>
+                            <span class="d-inline-block tm-white-rect"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#work" class="nav-link">
+                            <span class="d-inline-block mr-3">Work</span>
+                            <span class="d-inline-block tm-white-rect"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#clients" class="nav-link">
+                            <span class="d-inline-block mr-3">Clients</span>
+                            <span class="d-inline-block tm-white-rect"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#talk" class="nav-link">
+                            <span class="d-inline-block mr-3">Let's Talk</span>
+                            <span class="d-inline-block tm-white-rect"></span>
+                        </a>
+                    </li>
+                </ul>
 
-            <div class="list-group">
-                <g:each in="${consultas}" var="cs">
-                %{--                    <a href="${cs?.link}" class="lista-item consulta" title="${cs.texto}">--}%
-                    <a href="#" class="lista-item consulta" title="${cs.texto}" onclick="guardarConsulta('${cs?.id}','${cs?.link}')">
-                        <img src="${request.contextPath}/principal/getImgnCnsl?ruta=${cs.logo}"
-                             style='float:left; height:20px'>
-                        <span style="margin-left: 10px">${cs.titulo}</span></a>
-                </g:each>
+                <div style="margin-bottom: 40px">
+                    <a href="http://200.93.248.62:8008/moodle" class="btn btn-light">
+                        <i class="fa fa-user"></i> Ingresar
+                    </a>
+                </div>
+
+                <ul class="nav flex-row tm-social-links">
+                    <li class="nav-item">
+                        <a href="https://facebook.com" class="nav-link tm-social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://twitter.com" class="nav-link tm-social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://dribbble.com" class="nav-link tm-social-link">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://linkedin.com" class="nav-link tm-social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+                <footer class="text-center text-white small">
+                    <p class="mb--0 mb-2">Copyright 2020 Dream Pulse</p>
+                    <p class="mb-0">Design:
+                        <a rel="nofollow" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+                    </p>
+                </footer>
             </div>
+        </nav>
 
-        </div>
-        <!-- /.col-lg-3 -->
-
-        <div class="col-lg-9">
-
-            <div style="margin-top: 10px">
-                <elm:flashMessage tipo="${flash.tipo}" icon="${flash.icon}"
-                                  clase="${flash.clase}">${flash.message}</elm:flashMessage>
-            </div>
-
-            <div id="carouselExampleIndicators" class="carousel slide my-4 cs900" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                    %{--                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>--}%
-                    %{--                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>--}%
-                </ol>
-
-                <div class="carousel-inner cs900" role="listbox">
-
-                    <g:each in="${carrusel}" var="carr" status="i">
-                        <div class="carousel-item ${i == 0 ? 'active' : ''}">
-                            <img class="img-fluid imag-item" alt="First slide"
-                                 src="${request.contextPath}/principal/getImgnProd?ruta=${carr.ruta}&tp=${carr.tp}&id=${carr.prod}"/>
-                            %{--                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/oiKj0Z_Xnjc" allowfullscreen></iframe>--}%
+        <main role="main" class="ml-sm-auto col-12">
+            <div
+                    class="parallax-window"
+                    data-parallax="scroll"
+                    data-image-src="img/dream-pulse-header.jpg">
+                <div class="tm-section-wrap">
+                    <section id="intro" class="tm-section">
+                        <div class="tm-bg-white-transparent tm-intro">
+                            <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Introducing Dream Pulse</h2>
+                            <p class="tm-color-gray">
+                                This box alpha 30 percent. Left sidebar is a sticky element.
+                                Right side Contents are scrolling up and down. This background has a
+                                parallax effect.
+                            </p>
+                            <p class="mb-0 tm-color-gray">
+                                Dream Pulse is a Bootstrap 4.3.1 template designed for your websites. You can modify this layout as you like.
+                            </p>
                         </div>
-                    </g:each>
+                    </section>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
 
-            <g:if test="${busqueda}">
-                <div class="activo blink_text" style="height: 60px; background-color:#ffab19;
-                text-align: center; border-radius: 10px; margin: 10px">
-                    <g:applyCodec encodeAs="none">
-                        ${busqueda}
-                    </g:applyCodec>
-                    <p>Pruebe buscar en otra categoría</p>
-                </div>
-            </g:if>
+            <div class="tm-section-wrap bg-white">
+                <section id="about" class="row tm-section">
+                    <div class="col-xl-6">
+                        <div class="tm-section-half">
+                            <div><i class="fas fa-6x fa-balance-scale mb-5 tm-section-icon"></i></div>
+                            <h2 class="tm-section-title tm-color-primary mb-5">About Us</h2>
+                            <p class="mb-5">
+                                When first section is scrolled up, BG image will be
+                                disappeared with a parallax effect. Donec ac tempor tellus, a
+                                eleifend ligula. Fusce vitae sem sed purus euismod
+                                condimentum.
+                            </p>
+                            <p>
+                                Sed at orci non metus tristique suscipit vitae in nibh. Sed
+                                rutrum odio ac est hendrerit, at vestibulum felis condimentum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="tm-section-half">
+                            <div><i class="far fa-6x fa-building mb-5 tm-section-icon"></i></div>
+                            <h2 class="tm-section-title tm-color-primary mb-5">Company Profile</h2>
+                            <p class="mb-5">
+                                You can use this template for your commercial websites or for your clients.
+                                You are NOT allowed to re-post this template as a downloadable ZIP file
+                                on your template collection sites. It is illegal.
+                            </p>
+                            <p>
+                                Suspendisse fermentum orci eget lorem euismod suscipit. Morbi
+                                condimentum odio metus, at finibus dolor sollicitudin quis.
+                                Curabitur eu congue erat.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
-        %{--        Destacados--}%
-            <g:if test="${destacados?.size() > 0}">
-                <div class="titulo1">Destacados</div>
-
-                <div class="row">
-                    <g:each in="${destacados}" var="prod" status="i">
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100 marcoDestacados">
-                                <a href="${createLink(controller: 'ver', action: 'carrusel',  params: [anun: prod.id, tipo: 3])}">
-                                    <img width="253px" height="auto" style="padding: 1px"
-                                         src="${request.contextPath}/principal/getImgnProd?ruta=${prod.rt}&tp=${prod.tp}&id=${prod.p}"/>
-                                </a>
-
-                                <div class="card-body">
-                                    <h4 class="titulo2">
-                                        <a href="${createLink(controller: 'ver', action: 'carrusel',
-                                                params: [anun: prod.id, tipo: 3])}">${prod.tt}</a>
-                                    </h4>
-                                    <h5 class="titulo3">${prod.sb ?: 'Sin descripción'}</h5>
-                                    <div class="normal">${prod.gf}</div>
+            <div class="tm-section-wrap bg-white">
+                <section id="work" class="row tm-section">
+                    <div class="col-12">
+                        <div class="w-100 tm-double-border-1 tm-border-gray">
+                            <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                                <div class="tm-gallery-wrap">
+                                    <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Our Work</h2>
+                                    <div class="tm-gallery">
+                                        <div class="tm-gallery-item">
+                                            <figure class="effect-bubba">
+                                                <img src="img/gallery/01.jpg" alt="Our Work Image" class="img-fluid">
+                                                <figcaption>
+                                                    <h2>Fresh <span>Bubba</span></h2>
+                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <a href="img/gallery/large/01.jpg">View more</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="tm-gallery-item">
+                                            <figure class="effect-bubba">
+                                                <img src="img/gallery/02.jpg" alt="Our Work Image" class="img-fluid">
+                                                <figcaption>
+                                                    <h2>Fresh <span>Bubba</span></h2>
+                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <a href="img/gallery/large/02.jpg">View more</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="tm-gallery-item">
+                                            <figure class="effect-bubba">
+                                                <img src="img/gallery/03.jpg" alt="Our Work Image" class="img-fluid">
+                                                <figcaption>
+                                                    <h2>Fresh <span>Bubba</span></h2>
+                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <a href="img/gallery/large/03.jpg">View more</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="tm-gallery-item">
+                                            <figure class="effect-bubba">
+                                                <img src="img/gallery/04.jpg" alt="Our Work Image" class="img-fluid">
+                                                <figcaption>
+                                                    <h2>Fresh <span>Bubba</span></h2>
+                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <a href="img/gallery/large/04.jpg">View more</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="tm-gallery-item">
+                                            <figure class="effect-bubba">
+                                                <img src="img/gallery/05.jpg" alt="Our Work Image" class="img-fluid">
+                                                <figcaption>
+                                                    <h2>Fresh <span>Bubba</span></h2>
+                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <a href="img/gallery/large/05.jpg">View more</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="tm-gallery-item">
+                                            <figure class="effect-bubba">
+                                                <img src="img/gallery/06.jpg" alt="Our Work Image" class="img-fluid">
+                                                <figcaption>
+                                                    <h2>Fresh <span>Bubba</span></h2>
+                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <a href="img/gallery/large/06.jpg">View more</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="tm-gallery-item">
+                                            <figure class="effect-bubba">
+                                                <img src="img/gallery/07.jpg" alt="Our Work Image" class="img-fluid">
+                                                <figcaption>
+                                                    <h2>Fresh <span>Bubba</span></h2>
+                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <a href="img/gallery/large/07.jpg">View more</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="tm-gallery-item">
+                                            <figure class="effect-bubba">
+                                                <img src="img/gallery/08.jpg" alt="Our Work Image" class="img-fluid">
+                                                <figcaption>
+                                                    <h2>Fresh <span>Bubba</span></h2>
+                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <a href="img/gallery/large/08.jpg">View more</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </g:each>
-                </div>
-            </g:if>
+                    </div>
+                </section>
+            </div>
 
-        %{--  Normales--}%
-            <div class="row">
-                <g:if test="${normales?.size() > 0}">
-                    <g:each in="${normales}" var="prod" status="i">
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100 marcoNormal">
-                                <a href="${createLink(controller: 'ver', action: 'carrusel',  params: [id: prod.id, tipo: 3])}">
-                                    <img width="253px" height="auto" style="padding: 1px"
-                                         src="${request.contextPath}/principal/getImgnProd?ruta=${prod.rt}&tp=${prod.tp}&id=${prod.p}"/>
-                                </a>
+            <div class="tm-section-wrap bg-white">
+                <section id="clients" class="row tm-section">
+                    <div class="col-12 tm-section-pad">
+                        <div class="tm-flex-item-left">
+                            <div class="tm-w-80">
+                                <h2 class="tm-color-primary tm-section-title mb-4">Our Clients</h2>
+                                <p class="mb-5">
+                                    Aenean est augue, iaculis ut arcu a, cursus tempus eros.
+                                    Maecenas ut efficitur lectus, vel commodo nibh. Vivamus
+                                    consequat massa non euismod facilisis. Morbi assumsan non libero
+                                    a vehicula. Donec blandit suscipit magna sit amet elementum.
+                                </p>
+                            </div>
 
-                                <div class="card-body">
-                                    <h4 class="titulo2n">
-                                        <a href="${createLink(controller: 'ver', action: 'carrusel',
-                                                params: [id: prod.id, tipo: 3])}">${prod.tt}</a>
-                                    </h4>
-                                    <h5 class="titulo4">${prod.sb ?: 'Sin descripción'}</h5>
-                                    <div class="normal">${prod.gf}</div>
+                            <div class="row tm-clients-images">
+                                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
+                                    <a href="https://google.com">
+                                        <img src="img/client-1.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
+                                    <a href="https://facebook.com">
+                                        <img src="img/client-2.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
+                                    <a href="https://twitter.com">
+                                        <img src="img/client-3.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
+                                    <a href="https://instagram.com">
+                                        <img src="img/client-4.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
+                                    <a href="https://google.com">
+                                        <img src="img/client-5.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
+                                    <a href="https://facebook.com">
+                                        <img src="img/client-6.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
+                                    <a href="https://twitter.com">
+                                        <img src="img/client-7.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
+                                    <a href="https://instagram.com">
+                                        <img src="img/client-8.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </g:each>
-                </g:if>
-            %{--
-                            <g:else>
-                                <div class="col-lg-4 col-md-6 mb-4">
-                                    <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-
-                                        <div class="card-body">
-                                            <h4 class="card-title">
-                                                <a href="#">Aquí su anuncio</a>
-                                            </h4>
-                                            <h5>$124.99</h5>
-
-                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                                        </div>
-
-                                        <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 mb-4">
-                                    <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-
-                                        <div class="card-body">
-                                            <h4 class="card-title">
-                                                <a href="#">Aquí su anuncio</a>
-                                            </h4>
-                                            <h5>$1.99</h5>
-
-                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                                        </div>
-
-                                        <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 mb-4">
-                                    <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-
-                                        <div class="card-body">
-                                            <h4 class="card-title">
-                                                <a href="#">Aquí su anuncio</a>
-                                            </h4>
-                                            <h5>$99.99</h5>
-
-                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                                        </div>
-
-                                        <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </g:else>
-            --}%
-
+                    </div>
+                </section>
             </div>
-            <!-- /.col-lg-9 -->
 
-        </div>
+            <div class="tm-section-wrap bg-white">
+                <section id="talk" class="row tm-section">
+                    <div class="col-xl-6 mb-5">
+                        <div class="tm-double-border-1 tm-border-gray">
+                            <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                                <h2 class="tm-color-primary tm-section-title mb-4">Talk to Us</h2>
+                                <p class="mb-4">
+                                    Sed aliquet, nibh ac hendrerit faucibus, tellus metus viverra
+                                    tellus, vel volutpat purus orci ac ex.
+                                </p>
+                                <p class="mb-3">
+                                    120-240 Orci varius natoque penatibus, <br>
+                                    parturient montes, 10660 <br>
+                                    nasvetur ridiculus mus
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 mb-5">
+                        <div class="tm-contact-form-wrap">
+                            <form action="" method="POST" class="tm-contact-form">
+                                <div class="form-group">
+                                    <input type="text" id="contact_name" name="contact_name" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Name" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="contact_email" name="contact_email" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Email" required="" />
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea rows="4" id="contact_message" name="contact_message" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Message..." required=""></textarea>
+                                </div>
+
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                                        SEND
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
     </div>
-    <!-- /.row -->
-
 </div>
-<!-- /.container -->
+<!--    </main>-->
 
-<!-- Footer -->
-%{--<footer class="py-3 bg-dark">--}%
-<div class="navbar-dark bg-dark" style="width: 100%; margin-top: 1%">
-    %{--    <div class="container">--}%
-    %{--    <a href="${createLink(controller: 'principal', action: 'manual')}" class="btn btn-sm buscar"--}%
-    %{--       style="text-decoration: none; margin-left: 10%">Manual de Usuario</a>--}%
-    <a href="${createLink(controller: 'principal', action: 'manual')}" class="badge badge-pill badge-warning buscar"
-       style="text-decoration: none; margin-left: 10%"><i class="fa fa-book"></i> Manual de Usuario
-    </a>
-    <a href="${createLink(controller: 'principal', action: 'terminos')}" class="badge badge-pill badge-warning buscar"
-       style="text-decoration: none;"><i class="fa fa-book"></i> Política del Sitio
-    </a>
-    <span style="float: right; font-size: small; margin-right: 10%; margin-top: 3px">
-        <span class="text-white">Copyright &copy; Tedein S.A. 2021 &nbsp;  Versión: ${message(code: 'version', default: '1.1.0x')}
-        </span>
-    </span>
-    %{--    </div>--}%
-    <!-- /.container -->
-</div>
-
-<!-- Bootstrap core JavaScript -->
-%{--<script src="vendor/jquery/jquery.min.js"></script>--}%
-%{--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--}%
+</body>
 
 <script type="text/javascript">
 
