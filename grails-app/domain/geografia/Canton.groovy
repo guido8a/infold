@@ -12,6 +12,7 @@ class Canton   {
     Integer numero
     String nombre
 
+
     /**
      * Posición geográfica del cantón (longitud para ubicar en un mapa)
      */
@@ -50,6 +51,8 @@ class Canton   {
         provincia(blank: true, nullable: true, attributes: [mensaje: 'Provincia a la que pertenece el cantón'])
         numero(blank: true, nullable: true, attributes: [mensaje: 'Número del cantón'])
         nombre(size: 1..63, blank: true, nullable: true, attributes: [mensaje: 'Nombre del cantón'])
+        latitud(blank:true, nullable:true)
+        longitud(blank:true, nullable:true)
     }
 
     /**
