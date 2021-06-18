@@ -31,6 +31,7 @@
     <asset:stylesheet src="/slick/slick-theme.css"/>
     <asset:stylesheet src="/merc/magnific-popup.css"/>
     <asset:stylesheet src="/merc/templatemo-dream-pulse.css"/>
+    <asset:javascript src="/apli/fontawesome.all.min.js"/>
 
     <asset:javascript src="/merc/jquery.min.js"/>
     <asset:javascript src="/merc/jquery.singlePageNav.min.js"/>
@@ -41,261 +42,6 @@
 
 
     <style type="text/css">
-    body {
-        /*background: #B4BAC0;*/
-        line-height: 1.0;
-    }
-    .lista-item {
-        position: relative;
-        display: block;
-        padding: .5rem 1.0rem;
-        background-color: #fff;
-        border: 1px solid rgba(0, 0, 0, .125);
-        border-top-width: 1px;
-    }
-
-    .consulta {
-        color: var(--naranja00);
-        font-size: small;
-        background-color: #fdfdfd;
-    }
-
-    .cs900 {
-        width: 800px;
-        height: 350px;
-        align-content: center;
-        /*background-color: #B4BAC0;*/
-        background-color: var(--gris);
-    }
-
-    .carousel-inner {
-        text-align: center;
-    }
-
-    .carousel .item > img {
-        display: inline-block;
-    }
-
-    .imag-item {
-        height: 350px;
-        width: auto;
-        max-height: 350px;
-        margin: 0;
-    }
-
-
-    .marcoDestacados {
-        border-color: var(--naranja0);
-    }
-    .marcoNormal {
-        border-color: var(--gris);
-    }
-
-    .buscar {
-        /*color: #444 !important;*/
-        border-radius: 4px;
-        background-image: linear-gradient(var(--naranja3),var(--naranja),var(--naranja3));
-        text-align-all: center;
-        margin: 2px;
-    }
-    .buscar:hover{
-        background-image: linear-gradient(var(--naranja),var(--naranja3),var(--naranja));
-    }
-
-    .btn-gris {
-        border-radius: 4px;
-        background-image: linear-gradient(#D4DAE0, #A4AAB0, #D4DAE0);
-        text-align-all: center;
-        margin: 2px;
-    }
-    .btn-gris a {
-        color: #000;
-    }
-    .btn-gris:hover{
-        color: #000;
-        background-image: linear-gradient(#D4DAE0, #D4DAE0, #D4DAE0);
-    }
-
-    a.nav-link:hover {
-        border-radius: 4px;
-        background-image: linear-gradient(#D4DAE0, #D4DAE0, #D4DAE0);
-    }
-
-    .navbar-nav .nav-link{
-        border-radius: 4px;
-        height: 30px;
-        text-decoration: none;
-    }
-    .navbar-dark .navbar-nav .nav-link {
-        border-radius: 4px;
-        background-image: linear-gradient(#D4DAE0, #A4AAB0, #D4DAE0);
-    }
-
-    :root {
-        --naranja: #FFAB2A;
-        --naranja1: #DF8B0A;
-        --naranja3: #FFCB4A;
-        --naranja2: #EFEBEA;
-        --naranja0: #AF5B00;
-        --naranja00: #4F1B00;
-        --gris: #343A40;
-    }
-
-    .redondeado {
-        width: 400px;
-        border-style:solid;
-        border-width: 2px;
-        border-color: var(--naranja);
-        /*border-color: #e67a00;*/
-        border-radius: 4px;
-        background-color:var(--naranja);
-        text-align: center;
-    }
-
-    .estilo {
-        border-radius: 50px;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #000000;
-    }
-
-    .categoria {
-        position: relative;
-        display: block;
-        padding: .5rem 1.0rem;
-        background-color: #fff;
-        /*border: 1px solid rgba(0, 0, 0, .25);*/
-        border: 1px solid #0a193b;
-        border-top-width: 1px;
-        border-top-width: 1px;
-        color: #42577d;
-        border-radius: 5px;
-        margin-right: 0px;
-    }
-
-    .subcat {
-        margin-left: 20px;
-        padding-left: 20px;
-        border-radius: 7px;
-    }
-
-    a.categoria:hover{
-        text-decoration: none;
-        color: #0a193b;
-        background-color: var(--naranja2);
-    }
-    a.subcat:hover{
-        text-decoration: none;
-        color: #0a193b;
-        /*background-color: #efeff8;*/
-        background-color: var(--naranja);
-    ;
-    }
-
-    .act_ct {
-        color: #222;
-        background-color: var(--naranja2);
-        border-width: 2px;
-        /*border-color: #bF6B00;*/
-        border-color: var(--naranja0);
-    }
-
-    .activo {
-        color: #222;
-        /*background-color: #fdf8f0;*/
-        background-color: var(--naranja);
-        border-width: 2px;
-        /*border-left: 20px solid #343a40;*/
-        border-color: var(--naranja0);
-    }
-
-    .titulo0 {
-        color:var(--naranja00);
-        /*color: #444;*/
-        font-size: 1.5rem;
-    }
-
-    .titulo1 {
-        color:var(--naranja0);
-        font-size: 1.5rem;
-    }
-
-    .titulo2 {
-        color:var(--naranja0);
-        font-size: 1.2rem;
-    }
-    .titulo2n {
-        color:var(--gris);
-        font-size: 1.0rem;
-    }
-    .titulo3 {
-        color:#000;
-        font-size: 0.9rem;
-    }
-    .titulo4 {
-        color:#000;
-        font-size: 0.8rem;
-        font-weight: normal;
-    }
-    .normal {
-        text-align: center;
-        color:#000;
-        font-size: 10pt;
-        font-weight: normal;
-    }
-
-    a.consulta {
-        color:var(--naranja00);
-        /*font-size: 1.2rem;*/
-        /*text-decoration: none;*/
-    }
-    .titulo2 a {
-        color:var(--naranja0);
-        font-size: 1.2rem;
-    }
-    .titulo2n a {
-        color:var(--naranja0);
-        font-size: 1rem;
-    }
-
-    .blink_text {
-        animation:1s blinker linear infinite;
-        -webkit-animation:1s blinker linear infinite;
-        -moz-animation:1s blinker linear infinite;
-        color: black;
-    }
-
-    @-moz-keyframes blinker {
-        0% { opacity: 1.0; }
-        50% { opacity: 0.2; }
-        100% { opacity: 1.0; }
-    }
-
-    @-webkit-keyframes blinker {
-        0% { opacity: 1.0; }
-        50% { opacity: 0.2; }
-        100% { opacity: 1.0; }
-    }
-
-    @keyframes blinker {
-        0% { opacity: 1.0; }
-        50% { opacity: 0.2; }
-        100% { opacity: 1.0; }
-    }
-
-    .btn-rojo {
-        border-radius: 4px;
-        background-image: linear-gradient(var(--naranja3),var(--naranja),var(--naranja3));
-        text-align-all: center;
-        margin: 2px;
-    }
-
-    .btn-gris {
-        border-radius: 4px;
-        background-image: linear-gradient(#D4DAE0, #A4AAB0, #D4DAE0);
-        text-align-all: center;
-        margin: 2px;
-    }
     </style>
 </head>
 
@@ -309,23 +55,23 @@
             </button>
             <div class="tm-sidebar-sticky">
                 <div class="tm-brand-box">
-                    <div class="tm-double-border-1">
-                        <div class="tm-double-border-2">
-                            <h1 class="tm-brand text-uppercase">INFOLIDERES</h1>
-                        </div>
+                <a href= "${createLink(controller:'principal', action: 'index', id:1)}" style="text-decoration: none">
+                    <div>
+                        <asset:image src="apli/portada.png" style="padding: 10px; height: 200px; width: auto"/>
                     </div>
+                </a>
                 </div>
 
                 <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                     <li class="nav-item">
                         <a href="#intro" class="nav-link active">
-                            <span class="d-inline-block mr-3">Intro</span>
+                            <span class="d-inline-block mr-3">Nuestro Objetivo</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#about" class="nav-link">
-                            <span class="d-inline-block mr-3">About</span>
+                            <span class="d-inline-block mr-3">El Instituto</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>
@@ -350,8 +96,8 @@
                 </ul>
 
                 <div style="margin-bottom: 40px">
-                    <a href="http://200.93.248.62:8008/moodle" class="btn btn-light">
-                        <i class="fa fa-user"></i> Ingresar
+                    <a href="http://200.93.248.62:8008/moodle" class="btn btn-info" style="padding: 10px">
+                        <i class="fas fa-3x fa-user-graduate"></i>&nbsp; Instituto Virtual
                     </a>
                 </div>
 
@@ -394,14 +140,20 @@
                 <div class="tm-section-wrap">
                     <section id="intro" class="tm-section">
                         <div class="tm-bg-white-transparent tm-intro">
-                            <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Introducing Dream Pulse</h2>
+                            <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Objetivos</h2>
                             <p class="tm-color-gray">
-                                This box alpha 30 percent. Left sidebar is a sticky element.
-                                Right side Contents are scrolling up and down. This background has a
-                                parallax effect.
+                                Ejecutar un programa de desarrollo de las capacidades de liderazgo de los dirigentes
+                                y activistas de los movimientos sociales, colectivos y territorios, comprometidos
+                                con la transformación democrática del país, en todos los niveles de gobierno.
                             </p>
-                            <p class="mb-0 tm-color-gray">
-                                Dream Pulse is a Bootstrap 4.3.1 template designed for your websites. You can modify this layout as you like.
+                            <p class="tm-color-gray">
+                                Estructurar el programa de desarrollo de capacidades como una red nacional de
+                                cooperación y alianzas de liderazgos múltiples para incidir en políticas claves de
+                                los distintos niveles de gobierno.
+                            </p>
+                            <p class="tm-color-gray">
+                                Contribuir a la formación de un movimiento de las izquierdas, de nuevo tipo, amplia
+                                implantación y diversidad, y sin capillas excluyentes o propietarios.
                             </p>
                         </div>
                     </section>
@@ -410,10 +162,10 @@
 
             <div class="tm-section-wrap bg-white">
                 <section id="about" class="row tm-section">
-                    <div class="col-xl-6">
+                    <div class="col-xl-5">
                         <div class="tm-section-half">
                             <div><i class="fas fa-6x fa-balance-scale mb-5 tm-section-icon"></i></div>
-                            <h2 class="tm-section-title tm-color-primary mb-5">About Us</h2>
+                            <h2 class="tm-section-title tm-color-primary mb-5">Quienes Somos</h2>
                             <p class="mb-5">
                                 When first section is scrolled up, BG image will be
                                 disappeared with a parallax effect. Donec ac tempor tellus, a
@@ -426,20 +178,55 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-7">
                         <div class="tm-section-half">
-                            <div><i class="far fa-6x fa-building mb-5 tm-section-icon"></i></div>
-                            <h2 class="tm-section-title tm-color-primary mb-5">Company Profile</h2>
-                            <p class="mb-5">
-                                You can use this template for your commercial websites or for your clients.
-                                You are NOT allowed to re-post this template as a downloadable ZIP file
-                                on your template collection sites. It is illegal.
-                            </p>
-                            <p>
-                                Suspendisse fermentum orci eget lorem euismod suscipit. Morbi
-                                condimentum odio metus, at finibus dolor sollicitudin quis.
-                                Curabitur eu congue erat.
-                            </p>
+                            <div><i class="far fa-6x fa-building mb-5 tm-section-icon" style="width: 100%"></i></div>
+                            <h2 class="tm-section-title tm-color-primary mb-3" style="text-align: center">Ejes de Formación</h2>
+                            Desafíos y visiones globales
+                            <ul>
+                            <li>
+                                Grandes tendencias económicas, sociales y ambientales
+                            </li>
+                            <li>
+                                Lecciones de las revoluciones políticas, y científico-tecnológicas
+                            </li>
+                            <li>
+                                Grandes propuestas mundiales
+                            </li>
+                            <li>
+                                Opciones de cambio y transformación
+                            </li>
+                            </ul>
+                            Transformar el Ecuador
+                            <ul>
+                            <li>
+                                Ecuador del Pasado-presente y del Presente-futuro
+                            </li>
+                            <li>
+                                Liderazgos territoriales: Gobiernos descentralizados y gobierno central
+                            </li>
+                            <li>
+                                Liderazgo por Causas y Derechos
+                            </li>
+                            <li>
+                                Estrategias para la transformación
+                            </li>
+                            </ul>
+                            Aprendiendo a cooperar y a vivir para construir cambios y visiones de cambio
+                            <ul>
+                            <li>
+                                Desarrollar la escucha y la conversación.
+                            </li>
+                            <li>
+                                Desarrollar habilidades de lectura y comunicación
+                            </li>
+                            <li>
+                                Desarrollar capacidades para construir sinergias
+                            </li>
+                            <li>
+                                Vocerías
+                            </li>
+                            </ul>
                         </div>
                     </div>
                 </section>
