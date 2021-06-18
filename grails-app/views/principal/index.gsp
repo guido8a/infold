@@ -96,7 +96,7 @@
                 </ul>
 
                 <div style="margin-bottom: 40px">
-                    <a href="http://200.93.248.62:8008/moodle" class="btn btn-light" style="padding: 10px">
+                    <a href="http://200.93.248.62:8008/moodle" class="btn btn-light nav-link" style="padding: 10px">
                         <i class="fas fa-3x fa-user-graduate"></i>&nbsp; Instituto Virtual
                     </a>
                 </div>
@@ -123,24 +123,25 @@
                         </a>
                     </li>
                 </ul>
+%{--
                 <footer class="text-center text-white small">
                     <p class="mb--0 mb-2">Copyright 2020 Dream Pulse</p>
                     <p class="mb-0">Design:
                         <a rel="nofollow" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
                     </p>
                 </footer>
+--}%
             </div>
         </nav>
 
         <main role="main" class="ml-sm-auto col-12">
-            <div
-                    class="parallax-window"
+            <div    class="parallax-window"
                     data-parallax="scroll"
-                    data-image-src="img/dream-pulse-header.jpg">
+                    data-image-src="${assetPath(src: '/apli/fondo.jpg')}">
                 <div class="tm-section-wrap">
                     <section id="intro" class="tm-section">
                         <div class="tm-bg-white-transparent tm-intro">
-                            <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Objetivos</h2>
+                            <h2 class="tm-section-title mb-4 text-uppercase tm-color-primary">Objetivos</h2>
                             <p class="tm-color-gray">
                                 Ejecutar un programa de desarrollo de las capacidades de liderazgo de los dirigentes
                                 y activistas de los movimientos sociales, colectivos y territorios, comprometidos
@@ -164,7 +165,8 @@
                 <section id="about" class="row tm-section">
                     <div class="col-xl-5">
                         <div class="tm-section-half">
-                            <div><i class="fas fa-6x fa-balance-scale mb-5 tm-section-icon"></i></div>
+%{--                            <div><i class="far fa-6x fa-handshake mb-5 tm-section-icon" style="width: 100%"></i></div>--}%
+                            <div><i class="fas fa-graduation-cap fa-6x mb-5 tm-section-icon" style="width: 100%"></i></div>
                             <h2 class="tm-section-title tm-color-primary mb-5">Quienes Somos</h2>
                             <p class="mb-5">
                                 When first section is scrolled up, BG image will be
