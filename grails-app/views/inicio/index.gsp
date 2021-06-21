@@ -157,7 +157,7 @@
 
     <div style="text-align: center;margin-bottom: 20px"><h2 class="titl">
         %{--            <p class="text-warning">${inst.institucion}</p>--}%
-        <p class="text-warning">Sistema de Ventas</p>
+        <p class="text-warning">INSTITUTO DE FORMACIÓN DE LIDERES</p>
     </h2>
     </div>
 
@@ -170,8 +170,8 @@
                     <asset:image src="apli/proyecto.png" title="Categorías"  width="80%" height="80%"/>
                 </div>
                 <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Revisar Anuncios</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">Categorías de ventas</p>
+                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Registro de Participantes</span></h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Registro de Participantes e Instructores</p>
                 </div>
             </div>
         </div>

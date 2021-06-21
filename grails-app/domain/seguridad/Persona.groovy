@@ -2,9 +2,11 @@ package seguridad
 
 import audita.Auditable
 import geografia.Canton
+import infold.Institucion
 
 class Persona implements Auditable{
 
+    Institucion institucion
     String cedula
     String nombre
     String apellido
@@ -36,6 +38,7 @@ class Persona implements Auditable{
 
         columns {
             id column: 'prsn__id'
+            institucion column: 'inst__id'
             cedula column: 'prsncdla'
             nombre column: 'prsnnmbr'
             apellido column: 'prsnapll'
@@ -55,6 +58,7 @@ class Persona implements Auditable{
         }
     }
     static constraints = {
+        institucion(blank: true, nullable: true)
         cedula(blank: true, nullable: true)
         nombre(size: 3..31, blank: false)
         apellido(size: 0..31, blank: true, nullable: true)

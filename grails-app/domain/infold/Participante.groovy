@@ -16,13 +16,14 @@ class Participante {
     String apellido
     Date fechaInicio
     Date fechaFin
+    Date fecha
+    Date fechaModificacion
     String mail
     String login
     String password
     int activo
     String telefono
     String genero
-    String estado
     String organizacionSocial
     String movimientoPolitico
     String hojaVida
@@ -32,6 +33,8 @@ class Participante {
     String fortaleza1
     String fortaleza2
     String fortaleza3
+    String estudia
+    String carreraEstudia
 
     static mapping = {
         table 'prtc'
@@ -48,18 +51,21 @@ class Participante {
             grupoEtario column: 'gret__id'
             partido column: 'part__id'
             tipo column: 'prtctipo'
-            nombre column: 'prtcnmbr'
             cedula column: 'prtccdla'
+            nombre column: 'prtcnmbr'
             apellido column: 'prtcapll'
             fechaInicio column: 'prtcfcin'
             fechaFin column: 'prtcfcfn'
+            fecha column: 'prtcfcha'
+            fechaModificacion column: 'prtcfcmd'
             mail column: 'prtcmail'
             login column: 'prtclogn'
             password column: 'prtcpass'
             activo column: 'prtcactv'
             telefono column: 'prtctelf'
             genero column: 'prtcsexo'
-            estado column: 'prtcestd'
+            estudia column: 'prtcestd'
+            carreraEstudia column: 'prtcescr'
             organizacionSocial column: 'prtcorsc'
             movimientoPolitico column: 'prtcmvpl'
             hojaVida column: 'prtchjvd'
@@ -76,6 +82,8 @@ class Participante {
         nombre(size: 1..31, blank: false, nullable: false, attributes: [title: 'nombre'])
         cedula(size: 1..13, blank: false, nullable: false, attributes: [title: 'cedula'])
         apellido(size: 1..31, blank: false, nullable: false, attributes: [title: 'apellido'])
+        fecha(blank: true, nullable: true, attributes: [title: 'fecha'])
+        fechaModificacion(blank: true, nullable: true, attributes: [title: 'modificacion'])
         fechaInicio(blank: true, nullable: true, attributes: [title: 'fechaInicio'])
         fechaFin(blank: true, nullable: true, attributes: [title: 'fechaFin'])
         mail(size: 0..63, blank: true, nullable: true, attributes: [title: 'mail'])
@@ -83,8 +91,9 @@ class Participante {
         password(size: 0..63,blank: true, nullable: true, attributes: [title: 'password'])
         activo(blank: true, nullable: true, attributes: [title: 'activo'])
         telefono(size: 0..31,blank: true, nullable: true, attributes: [title: 'telefono'])
-        sexo(blank: true, nullable: true, attributes: [title: 'sexo'])
-        estado(blank: true, nullable: true, attributes: [title: 'estado'])
+        genero(blank: true, nullable: true, attributes: [title: 'sexo'])
+        estudia(blank: false, nullable: false)
+        carreraEstudia(size: 0..255,blank: true, nullable: true)
         organizacionSocial(size: 0..255,blank: true, nullable: true, attributes: [title: 'organizacionSocial'])
         movimientoPolitico(size: 0..255,blank: true, nullable: true, attributes: [title: 'movimientoPolitico'])
         hojaVida(size: 0..127,blank: true, nullable: true, attributes: [title: 'hojaVida'])
