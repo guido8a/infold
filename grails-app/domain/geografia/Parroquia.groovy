@@ -17,6 +17,7 @@ class Parroquia {
         version false
         columns {
             id column: 'parr__id'
+            canton column: 'cntn__id'
             numero column: 'parrnmro'
             nombre column: 'parrnmbr'
             longitud column: 'parrlong'

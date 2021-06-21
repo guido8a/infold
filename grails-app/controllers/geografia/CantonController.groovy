@@ -403,14 +403,28 @@ class CantonController {
                         ico = ", \"icon\":\"fa fa-copyright text-info\""
                         hijos.each { h ->
 //                        println "procesa $h"
-//                            clase = Parroquia.findByCanton(h)? "jstree-closed hasChildren" : ""
-                            clase = "jstree-closed hasChildren"
+                            clase = Parroquia.findByCanton(h)? "jstree-closed hasChildren" : ""
+//                            clase = "jstree-closed hasChildren"
                             tree += "<li id='" + liId + h.id + "' class='" + clase + "' data-jstree='{\"type\":\"${"canton"}\" ${ico}}'>"
                             tree += "<a href='#' class='label_arbol'>" + h.nombre + "</a>"
                             tree += "</li>"
                         }
                         break
                     case "cntn":
+                        hijos = Parroquia.findAllByCanton(Canton.get(id), [sort: params.sort])
+                        liId = "parr_"
+//                    println "tipo: $tipo, ${hijos.size()}"
+                        ico = ", \"icon\":\"fa fa-registered text-danger\""
+                        hijos.each { h ->
+//                        println "procesa $h"
+//                        clase = Comunidad.findByParroquia(h)? "jstree-closed hasChildren" : ""
+                            clase = ""
+                            tree += "<li id='" + liId + h.id + "' class='" + clase + "' data-jstree='{\"type\":\"${"parroquia"}\" ${ico}}'>"
+                            tree += "<a href='#' class='label_arbol'>" + h.nombre + "</a>"
+                            tree += "</li>"
+                        }
+                        break
+                    case "parr":
                         break
                 }
             }
