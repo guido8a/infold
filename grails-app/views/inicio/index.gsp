@@ -163,7 +163,7 @@
 
     <div class="row mbr-justify-content-center">
 
-    <a href= "${createLink(controller:'admin', action: 'index')}" style="text-decoration: none">
+    <a href= "#"  style="text-decoration: none" id="btnRegistroParticipantes">
         <div class="col-lg-6 mbr-col-md-10">
             <div class="wrap">
                 <div style="width: 200px; height: 120px">
@@ -251,6 +251,24 @@
 
 </div>
 <script type="text/javascript">
+
+
+    $("#btnRegistroParticipantes").click(function (){
+        $.ajax({
+            type    : "POST",
+            url     : "${createLink(controller: 'participante', action:'seleccion_ajax')}",
+            data    : {
+            },
+            success : function (msg) {
+                var b = bootbox.dialog({
+                    id      : "dlgSeleccion",
+                    title   : "Seleccione el tipo",
+                    message : msg
+                }); //dialog
+            } //success
+        }); //ajax
+    });
+
     $(".fuera").hover(function () {
         var d = $(this).find(".imagen,.imagen2")
         d.width(d.width() + 10)
