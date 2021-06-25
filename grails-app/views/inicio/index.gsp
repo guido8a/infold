@@ -104,7 +104,7 @@
     }
 
     .wrap:hover {
-        background: linear-gradient(135deg, #ffbb70 0%, #763500 100%);
+        background: linear-gradient(135deg, #ffbb70 0%, #662500 100%);
         color: white;
     }
 
