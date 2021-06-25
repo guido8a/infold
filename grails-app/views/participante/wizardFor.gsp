@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="card" style="width: 100%; height: 400px">
+    <div class="card" style="width: 100%; height: ${participante?.tipo == '1' ? '400px' : '350px'}">
         <div class="card-body">
 
             <div style="margin-top: 10px">
