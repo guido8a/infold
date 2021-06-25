@@ -20,7 +20,7 @@
                     ${participante?.hojaVida}
                 </td>
                 <td style="text-align: center">
-                    <a href class="btn btn-sm btn-danger btnBorrarHoja" title="Borrar archivo">
+                    <a href="#" class="btn btn-sm btn-danger btnBorrarHoja" title="Borrar archivo">
                         <i class="fa fa-trash"></i>
                     </a>
                     <a href="${createLink(controller: 'participante', action: 'descargar', params: [id: participante?.id])}" class="btn btn-sm btn-info" title="Descargar archivo">
