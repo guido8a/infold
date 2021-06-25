@@ -1,5 +1,7 @@
 package geografia
 
+import infold.Participante
+
 class ParroquiaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -158,10 +160,6 @@ class ParroquiaController {
         return[tipo: params.tipo]
     }
 
-    def buscarComunidad_ajax() {
-    }
-
-
     def tablaBuscarParroquia_ajax(){
 //        println("params busqueda parro " + params)
         def sql = ''
@@ -190,36 +188,13 @@ class ParroquiaController {
         return [parroquias: res, tipo: params.tipo]
     }
 
-    def tablaBuscarComunidad_ajax(){
-        println("params busqueda cmnd " + params)
-        def sql = ''
-        def operador = ''
 
-        switch (params.operador) {
-            case "0":
-                operador = "provnmbr"
-                break;
-            case '1':
-                operador = "cntnnmbr"
-                break;
-            case "2":
-                operador = "parrnmbr"
-                break;
-            case "3":
-                operador = "cmndnmbr"
-                break;
-        }
 
-        def cn = dbConnectionService.getConnection()
-        sql = "select cmnd__id, cmnd.parr__id, cmndnmbr, parrnmbr, cntnnmbr, provnmbr from parr, prov, cntn, cmnd " +
-                "where prov.prov__id = cntn.prov__id and " +
-                "cntn.cntn__id = parr.cntn__id and ${operador} ilike '%${params.texto}%' and " +
-                "parr.parr__id = cmnd.parr__id order by provnmbr asc limit 20"
-        def res = cn.rows(sql.toString())
-
-        println("sql " + sql)
-
-        return [parroquias: res]
+    def parroquia_ajax(){
+        def canton = Canton.get(params.id)
+        def parroquias = Parroquia.findAllByCanton(canton)
+        def participante = Participante.get(params.participante)
+        return[parroquias: parroquias, participante: participante]
     }
 
 } //fin controller

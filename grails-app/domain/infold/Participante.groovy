@@ -44,7 +44,7 @@ class Participante {
         version false
         columns {
             id column: 'prtc__id'
-            parroquia column: 'parr_id'
+            parroquia column: 'parr__id'
             areaTrabajo column: 'artb__id'
             sectorEconomico column: 'scec__id'
             nivelEducacion column: 'nved__id'
@@ -78,6 +78,12 @@ class Participante {
         }
     }
     static constraints = {
+        parroquia(blank: true, nullable: true)
+        areaTrabajo(blank: true, nullable: true)
+        sectorEconomico(blank: true, nullable: true)
+        nivelEducacion(blank: true, nullable: true)
+        grupoEtario(blank: true, nullable: true)
+        partido(blank: true, nullable: true)
         tipo(blank: false, nullable: false, attributes: [title: 'tipo'])
         nombre(size: 1..31, blank: false, nullable: false, attributes: [title: 'nombre'])
         cedula(size: 1..13, blank: false, nullable: false, attributes: [title: 'cedula'])
@@ -92,7 +98,7 @@ class Participante {
         activo(blank: true, nullable: true, attributes: [title: 'activo'])
         telefono(size: 0..31,blank: true, nullable: true, attributes: [title: 'telefono'])
         genero(blank: true, nullable: true, attributes: [title: 'sexo'])
-        estudia(blank: false, nullable: false)
+        estudia(blank: true, nullable: true)
         carreraEstudia(size: 0..255,blank: true, nullable: true)
         organizacionSocial(size: 0..255,blank: true, nullable: true, attributes: [title: 'organizacionSocial'])
         movimientoPolitico(size: 0..255,blank: true, nullable: true, attributes: [title: 'movimientoPolitico'])
@@ -100,7 +106,7 @@ class Participante {
         resumenTrabajo(blank: true, nullable: true, attributes: [title: 'resumenTrabajo'])
         completado(blank: true, nullable: true, attributes: [title: 'completado'])
         area(size: 0..127,blank: true, nullable: true, attributes: [title: 'area'])
-        fortaleza1(size: 0..255,blank: false, nullable: false)
+        fortaleza1(size: 0..255,blank: true, nullable: true)
         fortaleza2(size: 0..255,blank: true, nullable: true)
         fortaleza3(size: 0..255,blank: true, nullable: true)
     }

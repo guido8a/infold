@@ -1,6 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: fabricio
+  Date: 23/06/21
+  Time: 11:11
+--%>
+
+<%--
+  Created by IntelliJ IDEA.
+  User: fabricio
   Date: 10/03/21
   Time: 12:44
 --%>
@@ -9,7 +16,7 @@
 <html>
 <head>
     <meta name="layout" content="main">
-    <title>${tipo == '1' ? 'Instructor' : 'Participante'} - Datos</title>
+    <title>${tipo == '1' ? 'Instructor' : 'Participante'} - Afiliación Política</title>
 
     <asset:stylesheet src="/bar/main.css"/>
     <asset:javascript src="/bar/progress-bar.js"/>
@@ -53,15 +60,17 @@
 
 <body>
 
-<g:form class="form-horizontal" name="frmDatos" role="form" action="saveDatos" method="POST">
+<g:form class="form-horizontal" name="frmPoli" role="form" action="savePoli" method="POST">
     <g:hiddenField name="id" value="${participante?.id}" />
     <g:hiddenField name="tipo" value="${tipo}" />
+    <g:hiddenField name="completado" value="${3}" />
 
     <div class="progress-bar-wrapper"></div>
 
     <div class="col-md-12" style="background-color: #d0d0d0; padding: 5px">
         <div class="col-md-10 btn-group" style="float: left;">
-            <a href="#" class="btn btn-gris btnRetornar" ><i class="fa fa-arrow-left"></i> Salir</a>
+            <a href="#" class="btn btn-rojo btnRetornar" ><i class="fa fa-arrow-left"></i> Anterior</a>
+            <a href="#" class="btn btn-gris btnSalir" ><i class="fa fa-door-open"></i> Salir</a>
         </div>
         <div class="col-md-2 btn-group">
             <a href="#" class="btn btn-rojo btnSiguiente flush-right" >Siguiente <i class="fa fa-arrow-right"></i></a>
@@ -80,97 +89,51 @@
         <div class="card-body">
 
             <div style="margin-top: 10px">
-                <p class="numeroPaso">1</p>
-                <h1 class="textoPaso">Datos</h1>
-                <div class="col-md-10">
-                    <h3> Datos personales  - ${participante?.tipo == '1' ? 'Instructor' : 'Participante'}</h3>
+                <p class="numeroPaso">3</p>
+                <h1 class="textoPaso">Afiliación</h1>
+                <div class="col-md-8">
+                    <h3> Afiliación  - ${participante?.tipo == '1' ? 'Instructor' : 'Participante'}</h3>
 
                     <div class="col-md-12" style="margin-bottom: 10px">
-                        <div class="form-group ${hasErrors(bean: 'participante', field: 'cedula', 'error')}">
+                        <div class="form-group">
                             <span class="grupo">
                                 <label class="col-md-3 control-label text-info">
-                                    Cédula
-                                </label>
-                                <div class="col-md-3">
-                                    <g:textField name="cedula" class="form-control" readonly="" title="Cédula"
-                                                 value="${participante?.cedula ?: cedula}" style="font-size: 16px"/>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12" style="margin-bottom: 10px">
-                        <div class="form-group ${hasErrors(bean: 'participante', field: 'nombre', 'error')}">
-                            <span class="grupo">
-                                <label class="col-md-3 control-label text-info">
-                                    Nombres
+                                    Partido Político
                                 </label>
                                 <div class="col-md-6">
-                                    <g:textField name="nombre" maxlength="31" class="form-control required" title="Nombres"
-                                                 value="${participante?.nombre ?: ''}" style="background-color: #ffffef"/>
+                                    <g:select name="partido" from="${infold.Partido.list().sort{it.descripcion}}" class="form-control" optionKey="id" optionValue="descripcion" value="${participante?.partido?.id}"/>
                                 </div>
                             </span>
                         </div>
                     </div>
 
                     <div class="col-md-12" style="margin-bottom: 10px">
-                        <div class="form-group ${hasErrors(bean: 'participante', field: 'apellido', 'error')}">
+                        <div class="form-group ${hasErrors(bean: 'participante', field: 'organizacionSocial', 'error')}">
                             <span class="grupo">
                                 <label class="col-md-3 control-label text-info">
-                                    Apellidos
+                                    Organización Social
                                 </label>
                                 <div class="col-md-6">
-                                    <g:textField name="apellido" maxlength="31" class="form-control required" title="Apellido"
-                                                 value="${participante?.apellido ?: ''}" style="background-color: #ffffef"/>
+                                    <g:textArea name="organizacionSocial" maxlength="255" style='resize: none; height: 80px' class="form-control" title="Organización Social"
+                                                 value="${participante?.organizacionSocial ?: ''}"/>
                                 </div>
                             </span>
                         </div>
                     </div>
 
                     <div class="col-md-12" style="margin-bottom: 10px">
-                        <div class="form-group ${hasErrors(bean: 'participante', field: 'mail', 'error')}">
+                        <div class="form-group ${hasErrors(bean: 'participante', field: 'movimientoPolitico', 'error')}">
                             <span class="grupo">
                                 <label class="col-md-3 control-label text-info">
-                                    Mail
+                                    Movimiento Político
                                 </label>
                                 <div class="col-md-6">
-                                    <g:textField name="mail" maxlength="63" class="email mail form-control" title="Email"
-                                                 value="${participante?.mail ?: ''}"/>
+                                    <g:textArea name="movimientoPolitico" maxlength="255" style='resize: none; height: 80px' class="form-control" title="Movimiento Político"
+                                                value="${participante?.movimientoPolitico ?: ''}"/>
                                 </div>
                             </span>
                         </div>
                     </div>
-
-                    <div class="col-md-12" style="margin-bottom: 10px">
-                        <div class="form-group ${hasErrors(bean: 'participante', field: 'telefono', 'error')}">
-                            <span class="grupo">
-                                <label class="col-md-3 control-label text-info">
-                                    Teléfono
-                                </label>
-                                <div class="col-md-3">
-                                    <g:textField name="telefono" maxlength="31" class="digits form-control" title="Teléfono"
-                                                 value="${participante?.telefono ?: ''}"/>
-                                </div>
-                            </span>
-                            <span class="grupo">
-                                <label for="genero" class="col-md-1 control-label text-info">
-                                    Género
-                                </label>
-                                <div class="col-md-3">
-                                    <g:select name="genero" from="${['M' : 'Masculino', 'F' : 'Femenino', 'I' : 'Indeterminado']}" class="form-control"
-                                              optionKey="key" optionValue="value"
-                                              value="${participante?.genero}"/>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-
-%{--                    <div class="col-md-12" style="margin-bottom: 10px">--}%
-%{--                        <div class="form-group ${hasErrors(bean: 'participante', field: 'genero', 'error')}">--}%
-
-%{--                        </div>--}%
-%{--                    </div>--}%
-
                 </div>
 
                 <div class="col-md-12" style="margin-bottom: 10px">
@@ -187,7 +150,7 @@
 
 <script type="text/javascript">
 
-    $(".btnRetornar").click(function () {
+    $(".btnSalir").click(function () {
         bootbox.dialog({
             title   : "Alerta",
             message : "<i class='fa fa-exclamation-triangle fa-3x pull-left text-warning text-shadow'></i>" +
@@ -211,15 +174,19 @@
         });
     });
 
-    ProgressBar.init(['Datos', 'Ubicación', 'Afiliación',  'Estudios', 'Trabajo'],
-        'Datos', 'progress-bar-wrapper');
-
-    $(".btnSiguiente").click(function () {
-        submitFormDatos();
+    $(".btnRetornar").click(function () {
+        submitFormPoli(0);
     });
 
-    function submitFormDatos() {
-        var $form = $("#frmDatos");
+    ProgressBar.init(['Datos', 'Ubicación', 'Afiliación',  'Estudios', 'Trabajo'],
+        'Afiliación', 'progress-bar-wrapper');
+
+    $(".btnSiguiente").click(function () {
+        submitFormPoli(1);
+    });
+
+    function submitFormPoli(band) {
+        var $form = $("#frmPoli");
         // var $btn = $("#dlgCreateEdit").find("#btnSave");
         if ($form.valid()) {
             // $btn.replaceWith(spinner);
@@ -227,18 +194,27 @@
             var data = $form.serialize();
             $.ajax({
                 type    : "POST",
-                url     : '${createLink(action:'saveDatos')}',
-                data: data,
+                url     : '${createLink(action:'savePoli')}',
+                // data: data,
+                data: {
+                    id: $("#id").val(),
+                    tipo: $("#tipo").val(),
+                    completado: $("#completado").val(),
+                    partido: $("#partido option:selected").val(),
+                    organizacionSocial: $("#organizacionSocial").val(),
+                    movimientoPolitico: $("#movimientoPolitico").val()
+                },
                 success : function (msg) {
                     l.modal("hide");
                     var parts = msg.split("_");
                     if (parts[0] == "ok") {
+                        if(band == 1){
+                            location.href="${createLink(controller: 'participante', action: 'wizardEdu')}?id=" + parts[1];
+                        }else{
                             location.href="${createLink(controller: 'participante', action: 'wizardGeo')}?id=" + parts[1];
-                        %{--setTimeout(function () {--}%
-                        %{--    location.href="${createLink(controller: 'producto', action: 'wizardInfo')}?id=" + parts[1] + "&persona=" + '${persona?.id}' + "&tipo=" + '${tipo}';--}%
-                        %{--}, 500);--}%
+                        }
                     } else {
-                        log("Error al guardar los datos personales","error");
+                        log("Error al guardar los datos","error");
                     }
                 }
             });

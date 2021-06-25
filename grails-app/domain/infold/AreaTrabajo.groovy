@@ -16,6 +16,6 @@ class AreaTrabajo {
         }
     }
     static constraints = {
-        descripcion(size: 1..15, blank: false, nullable: false, attributes: [title: 'descripcion'])
+        descripcion(blank: false, nullable: false, attributes: [title: 'descripcion'])
     }
 }
