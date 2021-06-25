@@ -271,7 +271,7 @@
                         if(band == 1){
                             location.href="${createLink(controller: 'inicio', action: 'index')}";
                         }else{
-                            location.href="${createLink(controller: 'inicio', action: 'wizardEdu')}?id=" + parts[1];
+                            location.href="${createLink(controller: 'participante', action: 'wizardEdu')}?id=" + parts[1];
                         }
                     } else {
                         log("Error al guardar los datos","error");
