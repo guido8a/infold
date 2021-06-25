@@ -27,7 +27,7 @@ class Parroquia {
     }
     static constraints = {
         nombre(size: 1..63, blank: false, nullable: false, attributes: [title: 'nombre'])
-        numero(maxSize: 2, blank: false, nullable: false, attributes: [title: 'numero'])
+        numero(blank: true, nullable: true, attributes: [title: 'numero'])
         latitud(blank: true, nullable: true, attributes: [title: 'latitud'])
         longitud(blank: true, nullable: true, attributes: [title: 'longitud'])
         codigo(size: 0..6, blank: true, nullable: true, attributes: [title: 'codigo'])
