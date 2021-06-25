@@ -307,6 +307,7 @@ class ParticipanteController {
         def hojas = new File(path)
 //        hojas?.eachFileRecurse(FileType.FILES) { file ->
 //            file.delete()
+        println "archivo: $hojas"
 
             try{
                 hojas.delete()

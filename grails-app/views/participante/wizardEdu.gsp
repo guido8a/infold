@@ -1,24 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: fabricio
-  Date: 22/06/21
-  Time: 9:43
---%>
-
-<%--
-  Created by IntelliJ IDEA.
-  User: fabricio
-  Date: 23/06/21
-  Time: 11:11
---%>
-
-<%--
-  Created by IntelliJ IDEA.
-  User: fabricio
-  Date: 10/03/21
-  Time: 12:44
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
