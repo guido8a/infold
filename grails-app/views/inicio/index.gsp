@@ -104,7 +104,7 @@
     }
 
     .wrap:hover {
-        background: linear-gradient(135deg,#6394ff 0%,#0a193b 100%);
+        background: linear-gradient(135deg, #ffbb70 0%, #763500 100%);
         color: white;
     }
 
@@ -170,7 +170,8 @@
                     <asset:image src="apli/proyecto.png" title="Categorías"  width="80%" height="80%"/>
                 </div>
                 <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Registro de Participantes</span></h2>
+                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
+                        <span>Registro de Participantes e Instructores</span></h2>
                     <p class="mbr-fonts-style text1 mbr-text display-6">Registro de Participantes e Instructores</p>
                 </div>
             </div>
