@@ -60,21 +60,6 @@
     function cedula(band){
         var cedula = $("#cedula").val();
         location.href="${createLink(controller: 'participante', action: 'verificar_ajax')}?c=" + cedula + "&tipo=" + band;
-        %{--$.ajax({--}%
-        %{--    type: 'POST',--}%
-        %{--    url: '${createLink(controller: 'participante', action: 'wizardDatos')}',--}%
-        %{--    data:{--}%
-        %{--        cedula: cedula,--}%
-        %{--        tipo: band--}%
-        %{--    },--}%
-        %{--    success: function (msg){--}%
-        %{--        if(msg == 'ok'){--}%
-        %{--            --}%
-        %{--        }else{--}%
-        %{--         bootbox.alert("Cédula no encontrada!")   --}%
-        %{--        }--}%
-        %{--    }--}%
-        %{--})--}%
     }
 
 </script>

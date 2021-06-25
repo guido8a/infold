@@ -87,20 +87,22 @@
                 <div class="col-md-8">
                     <h3>Trabajo  - ${participante?.tipo == '1' ? 'Instructor' : 'Participante'}</h3>
 
-                    <div class="col-md-12" style="margin-bottom: 10px">
-                        <div class="form-group">
-                            <span class="grupo">
-                                <label class="col-md-3 control-label text-info">
-                                  Hoja de vida
-                                </label>
-                                <div class="col-md-6">
-                                    <a href="#" class="btn btn-rojo" id="btnHojaVida" title="Agregar hoja de vida">
-                                        <i class="fa fa-file-archive"></i> Cargar hoja de vida
-                                    </a>
-                                </div>
-                            </span>
+                    <g:if test="${tipo == '1'}">
+                        <div class="col-md-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <span class="grupo">
+                                    <label class="col-md-3 control-label text-info">
+                                        Hoja de vida
+                                    </label>
+                                    <div class="col-md-6">
+                                        <a href="#" class="btn btn-rojo" id="btnHojaVida" title="Agregar hoja de vida">
+                                            <i class="fa fa-file-archive"></i> Cargar hoja de vida
+                                        </a>
+                                    </div>
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                    </g:if>
 
                     <div class="col-md-12">
                         <div class="form-group ${hasErrors(bean: 'participante', field: 'resumenTrabajo', 'error')}">
@@ -241,7 +243,14 @@
         'Trabajo', 'progress-bar-wrapper');
 
     $(".btnSiguiente").click(function () {
-        submitFormTrabajo(1);
+        var f1 = $("#fortaleza1").val();
+        var f2 = $("#fortaleza2").val();
+        var f3 = $("#fortaleza3").val();
+        if(f1 == '' && f2 == '' && f3 == ''){
+            bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Debe ingresar al menos una fortaleza")
+        }else{
+            submitFormTrabajo(1);
+        }
     });
 
     function submitFormTrabajo(band) {

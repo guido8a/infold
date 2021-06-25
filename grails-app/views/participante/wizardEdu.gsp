@@ -171,6 +171,39 @@
 
 <script type="text/javascript">
 
+    revisarNivel($("#nivelEducacion").val())
+
+    $("#nivelEducacion").change(function (){
+        var nivel = $(this).val();
+        revisarNivel(nivel)
+    });
+
+    function revisarNivel(nivel){
+        var lista = [3,4,5];
+        if(nivel in lista){
+            $("#area").attr("disabled", true)
+            $("#area").val('')
+        }else{
+            $("#area").attr("disabled", false)
+        }
+    }
+
+    revisarEstudia($("#estudia").val());
+
+    $("#estudia").change(function (){
+       var estado = $(this).val();
+        revisarEstudia(estado)
+    });
+
+    function revisarEstudia(estado){
+        if(estado == 0){
+            $("#carreraEstudia").attr("disabled", true);
+            $("#carreraEstudia").val("")
+        }else{
+            $("#carreraEstudia").attr("disabled", false)
+        }
+    }
+
     $(".btnSalir").click(function () {
         bootbox.dialog({
             title   : "Alerta",
