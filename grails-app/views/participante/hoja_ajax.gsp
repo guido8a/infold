@@ -274,6 +274,7 @@
                                 height     : 50,
                                 fontWeight : "bold"
                             }).removeClass("subiendo");
+                            cargarTablaHoja();
                             // cargarTablaImagenes();
                         }
                     };
