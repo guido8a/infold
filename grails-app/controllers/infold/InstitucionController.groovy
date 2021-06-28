@@ -38,7 +38,6 @@ class InstitucionController {
 
     def inst(){
         println "params: $params"
-
         def institucion
 
         if(params.id){

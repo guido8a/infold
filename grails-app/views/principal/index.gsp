@@ -21,8 +21,6 @@
     <asset:link rel="icon" href="favicon.png" type="image/x-ico"/>
     <title>InfoLíderes</title>
 
-    %{--    <g:layoutHead/>--}%
-
     <!-- Bootstrap core CSS -->
 %{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />--}%
     <asset:stylesheet src="/merc/all.min.css"/>
@@ -34,6 +32,8 @@
     <asset:javascript src="/apli/fontawesome.all.min.js"/>
 
     <asset:javascript src="/merc/jquery.min.js"/>
+    <asset:javascript src="/merc/bootstrap.bundle.js"/>
+    <asset:javascript src="/apli/bootbox.js"/>
     <asset:javascript src="/merc/jquery.singlePageNav.min.js"/>
     <asset:javascript src="/merc/parallax.min.js"/>
     <asset:javascript src="/slick/slick.min.js"/>
@@ -41,7 +41,26 @@
     <asset:javascript src="/merc/templatemo-scripts.js"/>
 
 
+
     <style type="text/css">
+    .thickOutlined {
+        color: white;
+        text-shadow: -2px 2px 1px #222;
+        color: #ffffff;    }
+
+    .outlined {
+        font-size: xx-large;
+        color: white;
+        text-shadow:
+                -1px -1px 0 #000,
+                0   -1px 0 #000,
+                1px -1px 0 #000,
+                1px  0   0 #000,
+                1px  1px 0 #000,
+                0    1px 0 #000,
+                -1px  1px 0 #000,
+                -1px  0   0 #000;
+    }
     </style>
 </head>
 
@@ -62,7 +81,7 @@
                 </a>
                 </div>
 
-                <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
+                <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav" style="margin-top: -80px">
                     <li class="nav-item">
                         <a href="#intro" class="nav-link active">
                             <span class="d-inline-block mr-3">Nuestro Objetivo</span>
@@ -77,27 +96,33 @@
                     </li>
                     <li class="nav-item">
                         <a href="#work" class="nav-link">
-                            <span class="d-inline-block mr-3">Work</span>
+                            <span class="d-inline-block mr-3">Nuestra Acción</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#clients" class="nav-link">
-                            <span class="d-inline-block mr-3">Clients</span>
+                            <span class="d-inline-block mr-3">Convenios</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#talk" class="nav-link">
-                            <span class="d-inline-block mr-3">Let's Talk</span>
+                            <span class="d-inline-block mr-3">Contáctanos</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>
                 </ul>
 
-                <div style="margin-bottom: 40px">
-                    <a href="${createLink(controller: 'login', action: 'login')}"  class="btn btn-light nav-link" style="padding: 10px">
-                        <i class="fas fa-user-cog"></i>&nbsp; Ingresar
+                <div style="margin-bottom: 20px; margin-top: -30px">
+%{--                    <a href="${createLink(controller: 'login', action: 'login')}"  class="btn btn-info nav-link"--}%
+                    <a href="${createLink(controller: 'participante', action: 'cedula')}" class="btn btn-info nav-link"
+                       style="padding: 5px; font-size: medium">
+                        <i class="fas fa-user-cog"></i>&nbsp; Regístrate como Instructor
+                    </a>
+                    <a href="#" class="btn btn-warning nav-link" id = "registro"
+                       style="padding: 5px; font-size: medium">
+                        <i class="fas fa-user-cog"></i>&nbsp; Regístrate como Participante
                     </a>
                 </div>
 
@@ -146,6 +171,8 @@
                     data-image-src="${assetPath(src: '/apli/fondo.jpg')}">
                 <div class="tm-section-wrap">
                     <section id="intro" class="tm-section">
+                        <span class="outlined">${inst.nombre}</span>
+
                         <div class="tm-bg-white-transparent tm-intro">
                             <h2 class="tm-section-title mb-4 text-uppercase tm-color-primary">Objetivos</h2>
                             <p class="tm-color-gray">
@@ -444,6 +471,7 @@
 </div>
 <!--    </main>-->
 
+
 </body>
 
 <script type="text/javascript">
@@ -522,44 +550,6 @@
                             callback: function () {
                             }
                         }
-                    } //buttons
-                }); //dialog
-            } //success
-        }); //ajax
-    } //createEdit
-
-    $("#registro").click(function () {
-        cargarRegistro();
-    });
-
-    function cargarRegistro() {
-        // console.log("cargar")
-        bootbox.hideAll()
-        $.ajax({
-            type: "POST",
-            url: "${createLink(controller: 'persona', action: 'registro_ajax')}",
-            data: {},
-            success: function (msg) {
-                var b = bootbox.dialog({
-                    id: "dlgCreateEditRegistro",
-                    // class   : "long",
-                    // title   : "Registro de usuarios",
-                    message: msg,
-                    buttons: {
-                        cancelar: {
-                            label: "<i class='fa fa-times'></i> Salir",
-                            className: "btn-gris",
-                            callback: function () {
-                            }
-                        },
-                        guardar: {
-                            id: "btnSave",
-                            label: "<i class='fa fa-save'></i> Guardar",
-                            className: "btn-rojo",
-                            callback: function () {
-                                return submitFormRegistro();
-                            } //callback
-                        } //guardar
                     } //buttons
                 }); //dialog
             } //success
@@ -664,6 +654,22 @@
             return false;
         } //else
     }
+
+    $("#registro").click(function (){
+        $.ajax({
+            type    : "POST",
+            url     : "${createLink(controller: 'participante', action:'cedula_ajax')}",
+            data    : {
+            },
+            success : function (msg) {
+                var b = bootbox.dialog({
+                    // id      : "dlgSeleccion",
+                    // title   : "Seleccione el tipo",
+                    message : msg
+                }); //dialog
+            } //success
+        }); //ajax
+    });
 
 </script>
 

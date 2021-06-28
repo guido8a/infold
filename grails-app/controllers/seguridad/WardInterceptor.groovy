@@ -6,10 +6,11 @@ class WardInterceptor {
         matchAll().excludes(controller:'login')
                 .excludes(controller:'shield')
                 .excludes(controller:'principal')
+                .excludes(controller:'participante')
     }
 
     boolean before() {
-//        println "before acción: " + actionName + " controlador: " + controllerName + " params: $params"
+        println "before acción: " + actionName + " controlador: " + controllerName + " params: $params"
 //        println "usuario: ${session.usuario} , perfil: ${session?.perfil}"
         session.an = actionName
         session.cn = controllerName

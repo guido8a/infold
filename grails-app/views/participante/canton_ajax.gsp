@@ -20,7 +20,7 @@
     function cargarParroquia(id){
         $.ajax({
             type: 'POST',
-            url: '${createLink(controller: 'parroquia', action: 'parroquia_ajax')}',
+            url: '${createLink(controller: 'participante', action: 'parroquia_ajax')}',
             data:{
                 id: id,
                 participante: '${participante?.id}'

@@ -23,7 +23,7 @@
             <g:textField name="cedula" class="form-control" placeholder="Cédula"/>
         </div>
 
-        <div class="col-md-3 btn-group">
+        <div class="col-md-6 btn-group">
             <a href="#" class="btn btn-success btnAceptar"><i class="fa fa-check"></i> Aceptar</a>
             <a href="#" class="btn btn-primary btnCancelar"><i class="fa fa-times"></i> Cancelar</a>
         </div>
@@ -32,6 +32,13 @@
 </div>
 
 <script type="text/javascript">
+
+    $("#myModal").on("show", function() {    // wire up the OK button to dismiss the modal when shown
+        $("#myModal a.btn").on("click", function(e) {
+            console.log("button pressed");   // just as an example...
+            $("#myModal").modal('hide');     // dismiss the dialog
+        });
+    });
 
     var band = 0;
 

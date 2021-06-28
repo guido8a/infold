@@ -189,12 +189,4 @@ class ParroquiaController {
     }
 
 
-
-    def parroquia_ajax(){
-        def canton = Canton.get(params.id)
-        def parroquias = Parroquia.findAllByCanton(canton)
-        def participante = Participante.get(params.participante)
-        return[parroquias: parroquias, participante: participante]
-    }
-
 } //fin controller

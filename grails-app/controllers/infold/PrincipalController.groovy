@@ -9,7 +9,8 @@ class PrincipalController {
     def dbConnectionService
 
     def index() {
-
+        def inst = Institucion.get(1)
+        [inst: inst]
     }
 
 

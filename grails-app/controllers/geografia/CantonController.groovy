@@ -582,12 +582,6 @@ class CantonController {
         }
     }
 
-    def canton_ajax(){
-        def provincia = Provincia.get(params.id)
-        def cantones = Canton.findAllByProvincia(provincia).sort{it.nombre}
-        def participante = Participante.get(params.participante)
-        return[cantones:cantones, participante: participante]
-    }
 
 
 } //fin controller

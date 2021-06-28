@@ -1,5 +1,8 @@
 package infold
 
+import geografia.Canton
+import geografia.Parroquia
+import geografia.Provincia
 import grails.validation.ValidationException
 import groovy.io.FileType
 import seguridad.Persona
@@ -18,6 +21,10 @@ class ParticipanteController {
 //
 
 
+    def cedula_ajax(){
+
+    }
+
     def seleccion_ajax(){
 
     }
@@ -27,7 +34,6 @@ class ParticipanteController {
         def existe = Participante.findByCedula(params.c.toString().trim())
 
         if(existe){
-
             switch (existe.completado) {
                 case "1":
                     redirect(controller: 'participante', action: 'wizardDatos', params: [id: existe.id])
@@ -44,12 +50,10 @@ class ParticipanteController {
                 case "5":
                     redirect(controller: 'participante', action: 'wizardFor', params: [id: existe.id])
                     break
-
             }
         }else{
             redirect(controller: 'participante', action: 'wizardDatos', params:[cedula: params.c, tipo: params.tipo])
         }
-
     }
 
     def wizardDatos(){
@@ -329,5 +333,20 @@ class ParticipanteController {
 
 
     }
+
+    def canton_ajax(){
+        def provincia = Provincia.get(params.id)
+        def cantones = Canton.findAllByProvincia(provincia).sort{it.nombre}
+        def participante = Participante.get(params.participante)
+        return[cantones:cantones, participante: participante]
+    }
+
+    def parroquia_ajax(){
+        def canton = Canton.get(params.id)
+        def parroquias = Parroquia.findAllByCanton(canton)
+        def participante = Participante.get(params.participante)
+        return[parroquias: parroquias, participante: participante]
+    }
+
 
 }

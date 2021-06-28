@@ -202,7 +202,7 @@
     function cargarCanton(id){
         $.ajax({
             type: 'POST',
-            url: '${createLink(controller: 'canton', action: 'canton_ajax')}',
+            url: '${createLink(controller: 'participante', action: 'canton_ajax')}',
             data:{
                 id: id,
                 participante: $("#id").val()
