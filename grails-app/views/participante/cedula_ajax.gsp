@@ -20,8 +20,16 @@
 
 %{--<div class="modal-dialog">--}%
 %{--    <div class="modal-content">--}%
-        <div class="modal-header">
-            <h3>Registro como Participante</h3>
+
+<g:if test="${params.tipo == '1'}">
+    <g:set var="titl" value="${'Registro como Instructor'}"/>
+</g:if>
+<g:else>
+    <g:set var="titl" value="${'Registro como Participante'}"/>
+</g:else>
+
+<div class="modal-header">
+            <h3>${titl}</h3>
         </div>
         <div class="modal-body row">
             <div class="col-md-6">
@@ -37,18 +45,19 @@
             <button class="btn btn-primary" id="btnAceptar" type="button" data-bb-handler="confirm">
                 <i class="fa fa-check"></i> Aceptar</button>
         </div>
+
 %{--    </div>--}%
 %{--</div>--}%
 
 <script type="text/javascript">
 
     $("#btnAceptar").click(function (){
-        cedula(2);
+        cedula("${params.tipo}");
     });
 
-    function cedula(band){
+    function cedula(tipo){
         var cedula = $("#cedula").val();
-        location.href="${createLink(controller: 'participante', action: 'verificar_ajax')}?c=" + cedula + "&tipo=" + band;
+        location.href="${createLink(controller: 'participante', action: 'verificar_ajax')}?c=" + cedula + "&tipo=" + tipo;
     }
 
 </script>

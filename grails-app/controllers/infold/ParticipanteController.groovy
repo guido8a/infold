@@ -22,6 +22,7 @@ class ParticipanteController {
 
 
     def cedula_ajax(){
+        println "cedula_ajax --> $params"
 
     }
 

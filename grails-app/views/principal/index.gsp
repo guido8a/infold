@@ -116,11 +116,11 @@
 
                 <div style="margin-bottom: 20px; margin-top: -30px">
 %{--                    <a href="${createLink(controller: 'login', action: 'login')}"  class="btn btn-info nav-link"--}%
-                    <a href="${createLink(controller: 'participante', action: 'cedula')}" class="btn btn-info nav-link"
+                    <a href="#" id = "regInstructor" class="btn btn-info nav-link"
                        style="padding: 5px; font-size: medium">
                         <i class="fas fa-user-cog"></i>&nbsp; Regístrate como Instructor
                     </a>
-                    <a href="#" class="btn btn-warning nav-link" id = "registro"
+                    <a href="#"  id = "regAlumno" class="btn btn-warning nav-link"
                        style="padding: 5px; font-size: medium">
                         <i class="fas fa-user-cog"></i>&nbsp; Regístrate como Participante
                     </a>
@@ -655,16 +655,30 @@
         } //else
     }
 
-    $("#registro").click(function (){
+    $("#regInstructor").click(function (){
+        console.log('1')
         $.ajax({
             type    : "POST",
-            url     : "${createLink(controller: 'participante', action:'cedula_ajax')}",
+            url     : "${createLink(controller: 'participante', action:'cedula_ajax')}?tipo=1",
             data    : {
             },
             success : function (msg) {
                 var b = bootbox.dialog({
-                    // id      : "dlgSeleccion",
-                    // title   : "Seleccione el tipo",
+                    message : msg
+                }); //dialog
+            } //success
+        }); //ajax
+    });
+
+    $("#regAlumno").click(function (){
+        console.log('2')
+        $.ajax({
+            type    : "POST",
+            url     : "${createLink(controller: 'participante', action:'cedula_ajax')}?tipo=2",
+            data    : {
+            },
+            success : function (msg) {
+                var b = bootbox.dialog({
                     message : msg
                 }); //dialog
             } //success
