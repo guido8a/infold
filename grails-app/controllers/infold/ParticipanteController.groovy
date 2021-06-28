@@ -32,7 +32,7 @@ class ParticipanteController {
 
     def verificar_ajax(){
         println("params v " + params)
-        def existe = Participante.findByCedula(params.c.toString().trim())
+        def existe = Participante.findByCedulaAndTipo(params.c.toString().trim(), params.tipo)
 
         if(existe){
             switch (existe.completado) {

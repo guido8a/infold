@@ -208,21 +208,70 @@
     });
 
     $(".btnRetornar").click(function () {
-        submitFormEdu(0);
+        var lista = [3,4,5];
+        if($("#nivelEducacion option:selected").val() in lista){
+            if($("#estudia").val() == 0){
+                submitFormEdu(0);
+            }else{
+                if($("#carreraEstudia").val() == ''){
+                    bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese la carrera que estudia actualmente")
+                }else{
+                    submitFormEdu(0);
+                }
+            }
+        }else{
+            if($("#area").val() == ''){
+                bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese el área de especialización")
+            }else{
+                if($("#estudia").val() == 0){
+                    submitFormEdu(0);
+                }else{
+                    if($("#carreraEstudia").val() == ''){
+                        bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese la carrera que estudia actualmente")
+                    }else{
+                        submitFormEdu(0);
+                    }
+                }
+            }
+        }
     });
 
     ProgressBar.init(['Datos', 'Ubicación', 'Afiliación',  'Estudios', 'Trabajo'],
         'Estudios', 'progress-bar-wrapper');
 
     $(".btnSiguiente").click(function () {
-        submitFormEdu(1);
+        var lista = [3,4,5];
+        if($("#nivelEducacion option:selected").val() in lista){
+            if($("#estudia").val() == 0){
+                submitFormEdu(1);
+            }else{
+                if($("#carreraEstudia").val() == ''){
+                    bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese la carrera que estudia actualmente")
+                }else{
+                    submitFormEdu(1);
+                }
+            }
+        }else{
+            if($("#area").val() == ''){
+                bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese el área de especialización")
+            }else{
+                if($("#estudia").val() == 0){
+                    submitFormEdu(1);
+                }else{
+                    if($("#carreraEstudia").val() == ''){
+                        bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese la carrera que estudia actualmente")
+                    }else{
+                        submitFormEdu(1);
+                    }
+                }
+            }
+        }
     });
 
     function submitFormEdu(band) {
+
         var $form = $("#frmEdu");
-        // var $btn = $("#dlgCreateEdit").find("#btnSave");
         if ($form.valid()) {
-            // $btn.replaceWith(spinner);
             var l = cargarLoader("Grabando...");
             var data = $form.serialize();
             $.ajax({
