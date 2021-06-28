@@ -102,21 +102,22 @@
                                 </span>
                             </div>
                         </div>
-                    </g:if>
 
-                    <div class="col-md-12">
-                        <div class="form-group ${hasErrors(bean: 'participante', field: 'resumenTrabajo', 'error')}">
-                            <span class="grupo">
-                                <label class="col-md-3 control-label text-info">
-                                    Resumen de trabajo
-                                </label>
-                                <div class="col-md-6">
-                                    <g:textArea name="resumenTrabajo" maxlength="1024" style='resize: none; height: 60px' class="form-control" title="Resumen de trabajo"
-                                                value="${participante?.resumenTrabajo ?: ''}"/>
-                                </div>
-                            </span>
+
+                        <div class="col-md-12">
+                            <div class="form-group ${hasErrors(bean: 'participante', field: 'resumenTrabajo', 'error')}">
+                                <span class="grupo">
+                                    <label class="col-md-3 control-label text-info">
+                                        Resumen de trabajo
+                                    </label>
+                                    <div class="col-md-6">
+                                        <g:textArea name="resumenTrabajo" maxlength="1024" style='resize: none; height: 60px' class="form-control" title="Resumen de trabajo"
+                                                    value="${participante?.resumenTrabajo ?: ''}"/>
+                                    </div>
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                    </g:if>
 
                     <div class="col-md-12" style="margin-bottom: 5px">
                         <div class="form-group ${hasErrors(bean: 'participante', field: 'fortaleza1', 'error')} required">
