@@ -38,9 +38,12 @@ class InstitucionController {
 
     def inst(){
         println "params: $params"
-        def institucion = Institucion.get(1)
 
-        if(!institucion){
+        def institucion
+
+        if(params.id){
+            institucion = Institucion.get(1)
+        }else{
             institucion = new Institucion()
         }
 
@@ -48,9 +51,24 @@ class InstitucionController {
     }
 
     def saveInstitucion(){
-        println("params " + params)
-    }
+        println("params si " + params)
+        def institucion
 
+        if(params.id){
+            institucion = Institucion.get(params.id)
+        }else{
+            institucion = new Institucion()
+        }
+
+        institucion.properties = params
+
+        if(!institucion.save(flush:true)){
+            println("error al guardar la institucion " + institucion.errors)
+            render "no"
+        }else{
+            render "ok_" + institucion.id
+        }
+    }
 
     def saveProducto(){
         println "saveProducto $params"
