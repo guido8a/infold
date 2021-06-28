@@ -103,7 +103,6 @@
                             </div>
                         </div>
 
-
                         <div class="col-md-12">
                             <div class="form-group ${hasErrors(bean: 'participante', field: 'resumenTrabajo', 'error')}">
                                 <span class="grupo">
@@ -160,9 +159,6 @@
                             </span>
                         </div>
                     </div>
-
-
-
                 </div>
 
                 <div class="col-md-12" style="margin-bottom: 10px">
@@ -284,7 +280,11 @@
                             location.href="${createLink(controller: 'participante', action: 'wizardEdu')}?id=" + parts[1];
                         }
                     } else {
-                        log("Error al guardar los datos","error");
+                        if(parts[0] == 'er'){
+                             bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x'></i> Ingrese su hoja de vida")
+                        }else{
+                            log("Error al guardar los datos","error");
+                        }
                     }
                 }
             });

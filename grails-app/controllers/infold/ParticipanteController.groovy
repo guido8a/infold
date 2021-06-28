@@ -114,6 +114,7 @@ class ParticipanteController {
             participante.activo = 1
             participante.completado = '1'
             participante.fecha = new Date()
+            participante.estado = 'N'
         }
 
         participante.properties = params
@@ -148,16 +149,33 @@ class ParticipanteController {
         println("params poli " + params)
 
         def participante = Participante.get(params.id)
-//        participante.completado = '3'
 
-        participante.fechaModificacion = new Date()
-        participante.properties = params
+        if(participante.tipo == '1'){
+            if(participante.hojaVida){
+                participante.fechaModificacion = new Date()
+                participante.estado = 'S'
+                participante.properties = params
 
-        if(!participante.save(flush:true)){
-            println("error al guardar el participante " + participante.errors)
-            render "no"
+                if(!participante.save(flush:true)){
+                    println("error al guardar el participante " + participante.errors)
+                    render "no"
+                }else{
+                    render "ok_" + participante?.id
+                }
+            }else{
+                render "er"
+            }
         }else{
-            render "ok_" + participante?.id
+            participante.fechaModificacion = new Date()
+            participante.estado = 'S'
+            participante.properties = params
+
+            if(!participante.save(flush:true)){
+                println("error al guardar el participante " + participante.errors)
+                render "no"
+            }else{
+                render "ok_" + participante?.id
+            }
         }
     }
 
@@ -326,6 +344,7 @@ class ParticipanteController {
 
         if(band == ''){
             participante.hojaVida = null
+            participante.estado = 'N'
             participante.save(flush:true)
             render "ok"
         }else{

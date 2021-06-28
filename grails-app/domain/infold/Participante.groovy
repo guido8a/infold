@@ -35,6 +35,7 @@ class Participante {
     String fortaleza3
     String estudia
     String carreraEstudia
+    String estado
 
     static mapping = {
         table 'prtc'
@@ -75,6 +76,7 @@ class Participante {
             fortaleza1 column: 'prtcfr01'
             fortaleza2 column: 'prtcfr02'
             fortaleza3 column: 'prtcfr03'
+            estado column: 'prtcetdo'
         }
     }
     static constraints = {
@@ -109,5 +111,6 @@ class Participante {
         fortaleza1(size: 0..255,blank: true, nullable: true)
         fortaleza2(size: 0..255,blank: true, nullable: true)
         fortaleza3(size: 0..255,blank: true, nullable: true)
+        estado(blank: true, nullable: true)
     }
 }
