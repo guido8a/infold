@@ -47,6 +47,10 @@ class InstitucionController {
         return[institucion: institucion]
     }
 
+    def saveInstitucion(){
+        println("params " + params)
+    }
+
 
     def saveProducto(){
         println "saveProducto $params"
