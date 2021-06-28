@@ -58,7 +58,6 @@ class ParticipanteController {
     }
 
     def wizardDatos(){
-
         def participante
         def tipo
 
@@ -72,8 +71,6 @@ class ParticipanteController {
 
         return[participante: participante, tipo: tipo, cedula: params.cedula]
     }
-
-
 
 
 
