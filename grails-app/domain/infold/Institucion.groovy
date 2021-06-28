@@ -15,6 +15,7 @@ class Institucion implements Auditable{
     String mail
     String direccion
     String telefono
+    Date modificacion
 
 
     static auditable = true
@@ -27,16 +28,17 @@ class Institucion implements Auditable{
 
         columns {
             id column: 'inst__id'
-            nombre column: 'prsnnmbr'
-            sigla column: 'prsnsgla'
-            objetivo column: 'prsnobjt'
-            descricpion column: 'prsndscr'
-            ejesFormacion column: 'prsnejfr'
-            vision column: 'prsnvisn'
-            mision column: 'prsnmisn'
-            mail column: 'prsnmail'
-            direccion column: 'prsndire'
-            telefono column: 'prsntelf'
+            nombre column: 'instnmbr'
+            sigla column: 'instsgla'
+            objetivo column: 'instobjt'
+            descricpion column: 'instdscr'
+            ejesFormacion column: 'instejfr'
+            vision column: 'instvisn'
+            mision column: 'instmisn'
+            mail column: 'instmail'
+            direccion column: 'instdire'
+            telefono column: 'insttelf'
+            modificacion column: 'instfcmd'
         }
     }
     static constraints = {
@@ -50,6 +52,7 @@ class Institucion implements Auditable{
         mail(size: 3..255, blank: false, nullable: false)
         direccion(blank: true, nullable: true)
         telefono(blank: true, nullable: true)
+        modificacion(blank: true, nullable: true)
     }
 
     String toString() {

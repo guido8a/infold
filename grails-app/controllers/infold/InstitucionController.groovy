@@ -36,36 +36,15 @@ class InstitucionController {
         return[institucion: institucion, persona: persona]
     }
 
-    def institucion(){
+    def inst(){
         println "params: $params"
-        def persona = Persona.get(params.persona)
-        println("persona " + persona)
-        def institucion
-//        def path = "/var/ventas/productos/pro_"
-        def imagenes = []
+        def institucion = Institucion.get(1)
 
-        if(params.id){
-            institucion = Institucion.get(params.id)
-        }else{
+        if(!institucion){
             institucion = new Institucion()
         }
 
-        /**** imágenes ****/
-        if(institucion?.id){
-
-            def path = "/var/ventas/productos/pro_" + institucion.id + "/"
-            new File(path).mkdirs()
-
-            def imag = new File(path)
-            imag?.eachFileRecurse(FileType.FILES) { file ->
-                def img = ImageIO.read(file)
-                if (img) {
-                    imagenes.add([file: file.name])
-                }
-            }
-        }
-
-        return[institucion: institucion, persona: persona, imagenes: imagenes]
+        return[institucion: institucion]
     }
 
 
