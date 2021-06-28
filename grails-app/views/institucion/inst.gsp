@@ -14,16 +14,16 @@
 
 
     <style type="text/css">
-
-
-
-
-body {
-    /*background: #B4BAC0;*/
-    line-height: 1.0;
-}
-
-</style>
+        body {
+            /*background: #B4BAC0;*/
+            line-height: 1.0;
+        }
+        trix-editor {
+            height: 150px !important;
+            max-height: 150px !important;
+            overflow-y: auto !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -99,8 +99,8 @@ body {
                 </label>
                 <div class="col-md-8 form-check form-check-inline"
                      style=" margin-left:5px; border-radius: 4px; border-style: solid; border-color: #888;
-                     border-width: 1px; padding: 5px; height: 300px">
-                    <trix:editor name="texto" class="editor" value="${institucion?.objetivo}" height="240px"/>
+                     border-width: 1px; padding: 5px; height: 200px">
+                    <trix:editor name="texto" class="editor" value="${institucion?.objetivo}"/>
                 </div>
             </span>
         </div>
