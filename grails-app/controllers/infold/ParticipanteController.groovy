@@ -407,7 +407,6 @@ class ParticipanteController {
         }else{
             redirect(controller: 'participante', action: 'wizardDatos')
         }
-
     }
 
 
