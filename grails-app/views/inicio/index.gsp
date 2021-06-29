@@ -163,7 +163,7 @@
 
     <div class="row mbr-justify-content-center">
 
-    <a href= "#"  style="text-decoration: none" id="btnRegistroParticipantes">
+    <a href= "${createLink(controller:'institucion', action: 'inst')}"  style="text-decoration: none">
         <div class="col-lg-6 mbr-col-md-10">
             <div class="wrap">
                 <div style="width: 200px; height: 120px">
@@ -172,7 +172,7 @@
                 <div style="width: 450px; height: 120px">
                     <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
                         <span>Registro de Participantes e Instructores</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">Registro de Participantes e Instructores</p>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">La Institución</p>
                 </div>
             </div>
         </div>

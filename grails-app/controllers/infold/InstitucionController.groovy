@@ -37,12 +37,8 @@ class InstitucionController {
     }
 
     def inst(){
-        println "params: $params"
-        def institucion
-
-        if(params.id){
-            institucion = Institucion.get(1)
-        }else{
+        def institucion = Institucion.get(1)
+        if(!institucion){
             institucion = new Institucion()
         }
 

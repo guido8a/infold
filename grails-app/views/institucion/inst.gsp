@@ -52,7 +52,8 @@
                 Sigla
             </label>
             <div class="col-md-2">
-                <g:textField name="sigla" maxlength="127" class="form-control" value="${institucion?.sigla}"/>
+                <g:textField name="sigla" maxlength="127" required="" class="form-control required" value="${institucion?.sigla}"
+                style="font-size: x-large"/>
             </div>
         </span>
     </div>
@@ -63,7 +64,8 @@
                 Mail
             </label>
             <div class="col-md-4">
-                <g:textField name="mail" maxlength="255" class="email mail form-control" value="${institucion?.mail}"/>
+                <g:textField name="mail" maxlength="255" required="" class="email mail form-control required"
+                             value="${institucion?.mail}"/>
             </div>
 
             <label for="telefono" class="col-md-1 control-label text-info">

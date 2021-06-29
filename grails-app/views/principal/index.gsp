@@ -154,14 +154,17 @@
                         </a>
                     </li>
                 </ul>
-%{--
+
+
+                <div style="margin-bottom: 20px">
+                    <a href="${createLink(controller: 'login', action: 'login')}">
+                    <button type="button" class="btn btn-light btn-sm"><i class="fas fa-user-lock"></i>&nbsp; Administrador</button>
+                    </a>
+                </div>
+
                 <footer class="text-center text-white small">
-                    <p class="mb--0 mb-2">Copyright 2020 Dream Pulse</p>
-                    <p class="mb-0">Design:
-                        <a rel="nofollow" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
-                    </p>
+                    <p class="mb--0 mb-2">Desarrrollado por Tedein S.A.</p>
                 </footer>
---}%
             </div>
         </nav>
 
@@ -175,20 +178,7 @@
 
                         <div class="tm-bg-white-transparent tm-intro">
                             <h2 class="tm-section-title mb-4 text-uppercase tm-color-primary">Objetivos</h2>
-                            <p class="tm-color-gray">
-                                Ejecutar un programa de desarrollo de las capacidades de liderazgo de los dirigentes
-                                y activistas de los movimientos sociales, colectivos y territorios, comprometidos
-                                con la transformación democrática del país, en todos los niveles de gobierno.
-                            </p>
-                            <p class="tm-color-gray">
-                                Estructurar el programa de desarrollo de capacidades como una red nacional de
-                                cooperación y alianzas de liderazgos múltiples para incidir en políticas claves de
-                                los distintos niveles de gobierno.
-                            </p>
-                            <p class="tm-color-gray">
-                                Contribuir a la formación de un movimiento de las izquierdas, de nuevo tipo, amplia
-                                implantación y diversidad, y sin capillas excluyentes o propietarios.
-                            </p>
+                            <div class="tm-color-gray">${raw(inst.objetivo)}</div>
                         </div>
                     </section>
                 </div>
