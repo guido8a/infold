@@ -365,5 +365,15 @@ class ParticipanteController {
         return[parroquias: parroquias, participante: participante]
     }
 
+    def participante(){
+        println("participante " + params)
+        def prtc = Participante.findByCedulaAndTipo(params.c.toString().trim(), params.tipo)
+        if(!prtc) {
+            redirect(controller: 'participante', action: 'wizardDatos', params:[cedula: params.c, tipo: params.tipo])
+        } else {
+            [participante: prtc]
+        }
+    }
+
 
 }

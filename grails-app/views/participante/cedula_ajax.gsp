@@ -57,7 +57,8 @@
 
     function cedula(tipo){
         var cedula = $("#cedula").val();
-        location.href="${createLink(controller: 'participante', action: 'verificar_ajax')}?c=" + cedula + "&tipo=" + tipo;
+        %{--location.href="${createLink(controller: 'participante', action: 'verificar_ajax')}?c=" + cedula + "&tipo=" + tipo;--}%
+        location.href="${createLink(controller: 'participante', action: 'participante')}?c=" + cedula + "&tipo=" + tipo;
     }
 
 </script>

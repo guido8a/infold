@@ -167,12 +167,13 @@
         <div class="col-lg-6 mbr-col-md-10">
             <div class="wrap">
                 <div style="width: 200px; height: 120px">
-                    <asset:image src="apli/proyecto.png" title="Categorías"  width="80%" height="80%"/>
+                    <asset:image src="apli/portada.png" title="Categorías"  width="80%" height="80%"/>
                 </div>
                 <div style="width: 450px; height: 120px">
                     <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
-                        <span>Registro de Participantes e Instructores</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">La Institución</p>
+                        <span>El Instituto de Formación de Líderes</span></h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">La institución: Visión, Misión,
+                    Quienes somos, Objetivos, Ejes formativos, etc..</p>
                 </div>
             </div>
         </div>
@@ -185,8 +186,9 @@
                     <asset:image src="apli/proyecto.png" title="Períodos y semáforos por cantón"  width="80%" height="80%"/>
                 </div>
                 <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Promotores o Clientes</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">Revisión de Promotores y Clientes</p>
+                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>
+                        Participantes e Instructores</span></h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Revisión de Participantes e Instructores</p>
                 </div>
             </div>
         </div>

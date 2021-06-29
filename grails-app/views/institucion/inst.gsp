@@ -36,8 +36,13 @@
     <g:hiddenField name="id" value="${institucion?.id}" />
 
     <div class="col-md-12">
-        <div class="col-md-2 btn-group">
+        <div class="col-md-4">
+            <a href="${createLink(controller: 'inicio', action:'index')}" class="btn btn-primary">
+                <i class="fa fa-arrow-left"></i> Regresar</a>
             <a href="#" class="btn btn-success btnGuardarInsti"> <i class="fa fa-save"></i> Guardar</a>
+        </div>
+        <div class="col-md-8">
+            <h3>${institucion?.nombre}</h3>
         </div>
     </div>
     <div class="form-group ${hasErrors(bean: 'institucion', field: 'nombre', 'error')} required">
