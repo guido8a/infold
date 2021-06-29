@@ -142,6 +142,22 @@ class ParticipanteController {
         }
     }
 
+    def saveAfiliacion(){
+        println("params af " + params)
+
+        def participante = Participante.get(params.id)
+
+        participante.fechaModificacion = new Date()
+        participante.properties = params
+
+        if(!participante.save(flush:true)){
+            println("error al guardar el participante " + participante.errors)
+            render "no"
+        }else{
+            render "ok_" + participante?.id
+        }
+    }
+
     def savePoli(){
         println("params poli " + params)
 
@@ -367,11 +383,24 @@ class ParticipanteController {
 
     def participante(){
         println("participante " + params)
-        def prtc = Participante.findByCedulaAndTipo(params.c.toString().trim(), params.tipo)
+        def participante = Participante.get(params.id)
+        return[participante: participante]
+//        def prtc = Participante.findByCedulaAndTipo(params.c.toString().trim(), params.tipo)
+//        if(!prtc) {
+//            redirect(controller: 'participante', action: 'wizardDatos', params:[cedula: params.c, tipo: params.tipo])
+//        } else {
+//            [participante: prtc]
+//        }
+    }
+
+
+    def verificarParticipante(){
+        println("participante " + params)
+        def prtc = Participante.findByCedulaAndTipoAndEstado(params.c.toString().trim(), params.tipo, 'S')
         if(!prtc) {
             redirect(controller: 'participante', action: 'wizardDatos', params:[cedula: params.c, tipo: params.tipo])
         } else {
-            [participante: prtc]
+            redirect(controller: 'participante', action: 'participante', params:[id: prtc?.id])
         }
     }
 

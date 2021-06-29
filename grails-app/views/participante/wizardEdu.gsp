@@ -276,7 +276,7 @@
             var data = $form.serialize();
             $.ajax({
                 type    : "POST",
-                url     : '${createLink(action:'savePoli')}',
+                url     : '${createLink(action:'saveAfiliacion')}',
                 // data: data,
                 data: {
                     id: $("#id").val(),

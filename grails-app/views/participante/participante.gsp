@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="layout" content="main">
-    <title>Participante</title>
+    <title>${participante?.tipo == '1' ? 'Instructor - '  : 'Participante - '}${participante?.nombre + " " + participante?.apellido}</title>
 
     <style type="text/css">
     .mediano {
@@ -34,13 +34,13 @@
 
 <body>
 
-<h3>Participante</h3>
+<h3>${participante?.tipo == '1' ? 'Instructor - '  : 'Participante - '}${participante?.nombre + " " + participante?.apellido}</h3>
 
 <div class="panel panel-primary col-md-12">
 
     <div class="panel-heading" style="padding: 3px; margin-top: 2px; text-align: center">
         <a href="${createLink(controller: 'principal', action: 'index')}" id="btnConsultarBase"
-           class="btn btn-sm btn-warning" title="Consultar artículo">
+           class="btn btn-sm btn-warning" title="Salir" style="float: left">
             <i class="fa fa-arrow-left"></i> Salir
         </a>
         <a href="${createLink(controller: 'buscarBase', action: 'busquedaBase')}" id="btnConsultarBase"
@@ -67,42 +67,38 @@
         <a href="#" id="btnVerCronograma" class="btn btn-sm btn-info" title="Ver cronograma">
             <i class="fa fa-calendar-alt"></i> Cursos Asistidos
         </a>
-        <a href="#" id="btnGuardar" class="btn btn-sm btn-success" title="Guardar información">
-            <i class="fa fa-save"></i> Guardar
-        </a>
+        %{--        <a href="#" id="btnGuardar" class="btn btn-sm btn-success" title="Guardar información">--}%
+        %{--            <i class="fa fa-save"></i> Guardar--}%
+        %{--        </a>--}%
     </div>
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
             <g:form class="form-horizontal" name="frmProyecto" controller="proyecto" action="save_ajax">
-                <g:hiddenField name="id" value="${proy?.id}"/>
+                <g:hiddenField name="id" value="${participante?.id}"/>
+
+
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Código CUP</span>
-
-                        <g:if test="${proy?.id}">
-                            <div class="col-md-3">
-                                <g:textField name="codigoProyecto" id="codigoProyecto" class="form-control required"
-                                             maxlength="20" value="${proy?.codigoProyecto}" readonly=""/>
-                            </div>
-                        </g:if>
-                        <g:else>
-                            <div class="col-md-3">
-                                <g:textField name="codigoProyecto" id="codigoProyecto" class="form-control required"
-                                             maxlength="20" value="${proy?.codigoProyecto}"/>
-                            </div>
-                        </g:else>
+                        <span class="col-md-2 label label-primary text-info mediano">Cédula</span>
+                        <div class="col-md-3">
+                            <g:textField name="cedula" readonly="" class="form-control" value="${participante?.cedula}"/>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
                         <span class="col-md-2 label label-primary text-info mediano">Nombre</span>
-
-                        <div class="col-md-10">
+                        <div class="col-md-3">
                             <span class="grupo">
-                                <g:textField name="nombre" id="nombre" class="form-control required"
-                                             maxlength="255" value="${proy?.nombre}"/>
+                                <g:textField name="nombre" class="form-control" readonly="" value="${participante?.nombre}"/>
+                            </span>
+                        </div>
+                        <span class="col-md-1 label label-primary text-info mediano">Apellido</span>
+                        <div class="col-md-3">
+                            <span class="grupo">
+                                <g:textField name="apellido" class="form-control" readonly="" value="${participante?.apellido}"/>
                             </span>
                         </div>
                     </div>
@@ -110,96 +106,234 @@
 
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Productos</span>
-
-                        <div>
-                            <div class="col-md-10">
-                                <span class="grupo">
-                                    <g:textField name="producto" id="producto" class="form-control"
-                                                 maxlength="127" value="${proy?.producto}"/>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row izquierda">
-                    <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Descripción</span>
-
-                        <div class="col-md-10">
+                        <span class="col-md-2 label label-primary text-info mediano">Mail</span>
+                        <div class="col-md-3">
                             <span class="grupo">
-                                <g:textArea name="descripcion" id="descripcion" class="form-control" maxlength="1023"
-                                            style="height: 80px; resize: none" value="${proy?.descripcion}"/>
+                                <g:textField name="mail" class="form-control" readonly="" value="${participante?.mail}"/>
                             </span>
                         </div>
-                    </div>
-                </div>
-
-                <div class="row izquierda">
-                    <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Problema</span>
-
-                        <div class="col-md-10">
-                            <g:textArea name="problema" id="problema" class="form-control required" maxlength="1023"
-                                        style="height: 80px; resize: none" value="${proy?.problema}"/>
+                        <span class="col-md-1 label label-primary text-info mediano">Teléfono</span>
+                        <div class="col-md-3">
+                            <span class="grupo">
+                                <g:textField name="telefono" class="form-control" readonly="" value="${participante?.telefono}"/>
+                            </span>
                         </div>
-                    </div>
-                </div>
 
-                <div class="row izquierda">
-                    <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Justificación</span>
-
-                        <div class="col-md-10">
-                            <g:textArea name="justificacion" id="justificacion" class="form-control required"
-                                        maxlength="1023"
-                                        style="height: 80px; resize: none" value="${proy?.justificacion}"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row izquierda">
-                    <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Fecha Inicio</span>
-                        <span class="grupo">
-                            <div class="col-md-2 ">
-                                <input name="fechaInicio" id='fechaInicio' type='text' class="form-control"
-                                       value="${proy?.fechaInicio?.format("dd-MM-yyyy")}"/>
-
-                                <p class="help-block ui-helper-hidden"></p>
-                            </div>
-                        </span>
-                        <span class="col-md-2 mediano"></span>
-                        <span class="col-md-2 label label-primary text-info mediano">Fecha Fin</span>
-                        <span class="grupo">
-                            <div class="col-md-2">
-                                <input name="fechaFin" id='fechaFin' type='text' class="form-control"
-                                       value="${proy?.fechaFin?.format("dd-MM-yyyy")}"/>
-
-                                <p class="help-block ui-helper-hidden"></p>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="row izquierda" style="margin-bottom: 20px">
-                    <div class="col-md-6 input-group">
-                        <span class="col-md-4 label label-primary text-info mediano">Informar cada (meses)</span>
-
+                        <span class="col-md-1 label label-primary text-info mediano">Género</span>
                         <div class="col-md-2">
-                            <g:textField name="mes" id="mes" class="form-control" maxlength="5" value="${proy?.mes}"/>
-                        </div>
-                    </div>
-                    <div class="col-md-6 input-group">
-                        <span class="col-md-4 label label-primary text-info mediano">Monto del Proyecto</span>
-
-                        <div class="col-md-4">
-                            <g:textField name="monto" id="monto" class="form-control negrita" maxlength="16"
-                                         value="${util.formatNumber(number: proy?.monto, maxFractionDigits: 2, minFractionDigits: 2)}"/>
+                            <span class="grupo">
+                                <g:textField name="genero" class="form-control" readonly="" value="${participante?.genero == 'M' ? 'Masculino' : (participante?.genero == 'F' ? 'Femenino' : 'Otro')}"/>
+                            </span>
                         </div>
                     </div>
                 </div>
+            %{--                    </div>--}%
+            %{--                </div>--}%
+
+
+
+                <div class="row izquierda">
+                    <div class="col-md-12 input-group">
+                        <span class="col-md-2 label label-primary text-info mediano">Provincia</span>
+                        <div class="col-md-2">
+                            <span class="grupo">
+                                <g:textField name="provincia" class="form-control" readonly="" value="${participante?.parroquia?.canton?.provincia?.nombre}"/>
+                            </span>
+                        </div>
+                        <span class="col-md-1 label label-primary text-info mediano">Cantón</span>
+                        <div class="col-md-3">
+                            <span class="grupo">
+                                <g:textField name="canton" class="form-control" readonly="" value="${participante?.parroquia?.canton?.nombre}"/>
+                            </span>
+                        </div>
+                        <span class="col-md-1 label label-primary text-info mediano">Parroquia</span>
+                        <div class="col-md-3">
+                            <span class="grupo">
+                                <g:textField name="parroquia" class="form-control" readonly="" value="${participante?.parroquia?.nombre}"/>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row izquierda">
+                    <div class="col-md-12 input-group">
+                        <span class="col-md-2 label label-primary text-info mediano">Área de trabajo</span>
+                        <div class="col-md-2">
+                            <span class="grupo">
+                                <g:textField name="areaTrabajo" class="form-control" readonly="" value="${participante?.areaTrabajo?.descripcion}"/>
+                            </span>
+                        </div>
+                        <span class="col-md-1 label label-primary text-info mediano">Grupo Etario</span>
+                        <div class="col-md-3">
+                            <span class="grupo">
+                                <g:textField name="grupoEtario" class="form-control" readonly="" value="${participante?.grupoEtario?.descripcion}"/>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 10px">
+
+                    <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                        <i class="fa fa-user-injured"></i> Afiliación
+                    </button>
+                    <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                        <i class="fa fa-book-medical"></i> Estudios
+                    </button>
+                </p>
+
+                <div class="collapse" id="collapseExample2" style="margin-bottom: 20px">
+                    <div class="card card-body">
+                        <div class="row izquierda">
+                            <div class="col-md-12 input-group">
+                                <span class="col-md-2 label label-primary text-info mediano">Partido Político</span>
+                                <div class="col-md-6">
+                                    <span class="grupo">
+                                        <g:textField name="partidoPolítico" class="form-control" readonly="" value="${participante?.partido?.descripcion}"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row izquierda">
+                            <div class="col-md-12 input-group">
+                                <span class="col-md-2 label label-primary text-info mediano">Organización Social</span>
+                                <div class="col-md-6">
+                                    <span class="grupo">
+                                        <g:textArea name="organizacionSocial" class="form-control" readonly="" value="${participante?.organizacionSocial}" style="resize: none; height: 100px"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row izquierda">
+                            <div class="col-md-12 input-group">
+                                <span class="col-md-2 label label-primary text-info mediano">Movimiento Político</span>
+                                <div class="col-md-6">
+                                    <span class="grupo">
+                                        <g:textArea name="movimientoPolitico" class="form-control" readonly="" value="${participante?.movimientoPolitico}" style="resize: none; height: 100px"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse" id="collapseExample3" style="margin-bottom: 20px">
+                    <div class="card card-body">
+
+                        <div class="row izquierda">
+                            <div class="col-md-12 input-group">
+                                <span class="col-md-2 label label-primary text-info mediano">Nivel de Educación</span>
+                                <div class="col-md-6">
+                                    <span class="grupo">
+                                        <g:textField name="nivelEducacion" class="form-control" readonly="" value="${participante?.nivelEducacion?.descripcion}"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row izquierda">
+                            <div class="col-md-12 input-group">
+                                <span class="col-md-2 label label-primary text-info mediano">Área de espeacialización</span>
+                                <div class="col-md-6">
+                                    <span class="grupo">
+                                        <g:textArea name="organizacionSocial" class="form-control" readonly="" value="${participante?.estudia}" style="resize: none; height: 100px"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+%{--                        <div class="row izquierda">--}%
+%{--                            <div class="col-md-12 input-group">--}%
+%{--                                <span class="col-md-2 label label-primary text-info mediano">Movimiento Político</span>--}%
+%{--                                <div class="col-md-6">--}%
+%{--                                    <span class="grupo">--}%
+%{--                                        <g:textArea name="movimientoPolitico" class="form-control" readonly="" value="${participante?.movimientoPolitico}" style="resize: none; height: 100px"/>--}%
+%{--                                    </span>--}%
+%{--                                </div>--}%
+%{--                            </div>--}%
+%{--                        </div>--}%
+
+
+
+                    </div>
+                </div>
+
+
+
+            %{--                <div class="row izquierda">--}%
+            %{--                    <div class="col-md-12 input-group">--}%
+            %{--                        <span class="col-md-2 label label-primary text-info mediano">Descripción</span>--}%
+
+            %{--                        <div class="col-md-10">--}%
+            %{--                            <span class="grupo">--}%
+            %{--                                <g:textArea name="descripcion" id="descripcion" class="form-control" maxlength="1023"--}%
+            %{--                                            style="height: 80px; resize: none" value="${proy?.descripcion}"/>--}%
+            %{--                            </span>--}%
+            %{--                        </div>--}%
+            %{--                    </div>--}%
+            %{--                </div>--}%
+
+            %{--                <div class="row izquierda">--}%
+            %{--                    <div class="col-md-12 input-group">--}%
+            %{--                        <span class="col-md-2 label label-primary text-info mediano">Problema</span>--}%
+
+            %{--                        <div class="col-md-10">--}%
+            %{--                            <g:textArea name="problema" id="problema" class="form-control required" maxlength="1023"--}%
+            %{--                                        style="height: 80px; resize: none" value="${proy?.problema}"/>--}%
+            %{--                        </div>--}%
+            %{--                    </div>--}%
+            %{--                </div>--}%
+
+            %{--                <div class="row izquierda">--}%
+            %{--                    <div class="col-md-12 input-group">--}%
+            %{--                        <span class="col-md-2 label label-primary text-info mediano">Justificación</span>--}%
+
+            %{--                        <div class="col-md-10">--}%
+            %{--                            <g:textArea name="justificacion" id="justificacion" class="form-control required"--}%
+            %{--                                        maxlength="1023"--}%
+            %{--                                        style="height: 80px; resize: none" value="${proy?.justificacion}"/>--}%
+            %{--                        </div>--}%
+            %{--                    </div>--}%
+            %{--                </div>--}%
+
+            %{--                <div class="row izquierda">--}%
+            %{--                    <div class="col-md-12 input-group">--}%
+            %{--                        <span class="col-md-2 label label-primary text-info mediano">Fecha Inicio</span>--}%
+            %{--                        <span class="grupo">--}%
+            %{--                            <div class="col-md-2 ">--}%
+            %{--                                <input name="fechaInicio" id='fechaInicio' type='text' class="form-control"--}%
+            %{--                                       value="${proy?.fechaInicio?.format("dd-MM-yyyy")}"/>--}%
+
+            %{--                                <p class="help-block ui-helper-hidden"></p>--}%
+            %{--                            </div>--}%
+            %{--                        </span>--}%
+            %{--                        <span class="col-md-2 mediano"></span>--}%
+            %{--                        <span class="col-md-2 label label-primary text-info mediano">Fecha Fin</span>--}%
+            %{--                        <span class="grupo">--}%
+            %{--                            <div class="col-md-2">--}%
+            %{--                                <input name="fechaFin" id='fechaFin' type='text' class="form-control"--}%
+            %{--                                       value="${proy?.fechaFin?.format("dd-MM-yyyy")}"/>--}%
+
+            %{--                                <p class="help-block ui-helper-hidden"></p>--}%
+            %{--                            </div>--}%
+            %{--                        </span>--}%
+            %{--                    </div>--}%
+            %{--                </div>--}%
+
+            %{--                <div class="row izquierda" style="margin-bottom: 20px">--}%
+            %{--                    <div class="col-md-6 input-group">--}%
+            %{--                        <span class="col-md-4 label label-primary text-info mediano">Informar cada (meses)</span>--}%
+
+            %{--                        <div class="col-md-2">--}%
+            %{--                            <g:textField name="mes" id="mes" class="form-control" maxlength="5" value="${proy?.mes}"/>--}%
+            %{--                        </div>--}%
+            %{--                    </div>--}%
+            %{--                    <div class="col-md-6 input-group">--}%
+            %{--                        <span class="col-md-4 label label-primary text-info mediano">Monto del Proyecto</span>--}%
+
+            %{--                        <div class="col-md-4">--}%
+            %{--                            <g:textField name="monto" id="monto" class="form-control negrita" maxlength="16"--}%
+            %{--                                         value="${util.formatNumber(number: proy?.monto, maxFractionDigits: 2, minFractionDigits: 2)}"/>--}%
+            %{--                        </div>--}%
+            %{--                    </div>--}%
+            %{--                </div>--}%
             </g:form>
         </div>
     </div>
