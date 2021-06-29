@@ -40,8 +40,8 @@
 
     <div class="panel-heading" style="padding: 3px; margin-top: 2px; text-align: center">
         <a href="${createLink(controller: 'principal', action: 'index')}" id="btnConsultarBase"
-           class="btn btn-sm btn-info" title="Consultar artículo">
-            <i class="fa fa-arrow-left"></i> Regresar
+           class="btn btn-sm btn-warning" title="Consultar artículo">
+            <i class="fa fa-arrow-left"></i> Salir
         </a>
         <a href="${createLink(controller: 'buscarBase', action: 'busquedaBase')}" id="btnConsultarBase"
            class="btn btn-sm btn-primary" title="Consultar artículo">
