@@ -396,13 +396,18 @@ class ParticipanteController {
 
     def verificarParticipante(){
         println("participante " + params)
-        def prtc = Participante.findByCedulaAndTipoAndEstado(params.c.toString().trim(), params.tipo, 'S')
-        def prtc2 = Participante.findByCedulaAndTipoAnd(params.c.toString().trim(), params.tipo)
-        if(!prtc) {
-            redirect(controller: 'participante', action: 'wizardDatos', params:[cedula: params.c, tipo: params.tipo])
-        } else {
-            redirect(controller: 'participante', action: 'participante', params:[id: prtc2?.id])
+        def prtc = Participante.findByCedulaAndTipo(params.c.toString().trim(), params.tipo)
+
+        if(prtc){
+            if(prtc.estado == 'S'){
+                redirect(controller: 'participante', action: 'participante', params:[id: prtc?.id])
+            }else{
+                redirect(controller: 'participante', action: 'wizardDatos', params:[id: prtc?.id])
+            }
+        }else{
+            redirect(controller: 'participante', action: 'wizardDatos')
         }
+
     }
 
 
