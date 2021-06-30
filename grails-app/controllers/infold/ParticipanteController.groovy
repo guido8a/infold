@@ -310,7 +310,6 @@ class ParticipanteController {
                     '</html>';
             render output
         }
-
     }
 
     def tablaHojas_ajax(){
@@ -319,11 +318,11 @@ class ParticipanteController {
     }
 
     def descargar() {
-        println ("descargar" + params)
+//        println ("descargar" + params)
         def participante = Participante.get(params.id)
         def nombre = participante.hojaVida
         def parts = nombre.split('\\.')
-        println("parts " + parts)
+//        println("parts " + parts)
         def path = "/var/infold/hojas/${participante?.id}/${nombre}"
         def file = new File(path)
         def b = file.getBytes()
@@ -345,13 +344,13 @@ class ParticipanteController {
 //            file.delete()
         println "archivo: $hojas"
 
-            try{
-                hojas.delete()
-                band = ''
-            }catch(e){
-                println("error al borrar la hoja de vida " + e)
-                band = e
-            }
+        try{
+            hojas.delete()
+            band = ''
+        }catch(e){
+            println("error al borrar la hoja de vida " + e)
+            band = e
+        }
 
 //        }
 
@@ -363,8 +362,6 @@ class ParticipanteController {
         }else{
             render "no"
         }
-
-
     }
 
     def canton_ajax(){
@@ -385,17 +382,10 @@ class ParticipanteController {
         println("participante " + params)
         def participante = Participante.get(params.id)
         return[participante: participante]
-//        def prtc = Participante.findByCedulaAndTipo(params.c.toString().trim(), params.tipo)
-//        if(!prtc) {
-//            redirect(controller: 'participante', action: 'wizardDatos', params:[cedula: params.c, tipo: params.tipo])
-//        } else {
-//            [participante: prtc]
-//        }
     }
 
-
     def verificarParticipante(){
-        println("participante " + params)
+//        println("participante " + params)
         def prtc = Participante.findByCedulaAndTipo(params.c.toString().trim(), params.tipo)
 
         if(prtc){
@@ -411,32 +401,116 @@ class ParticipanteController {
 
     def enfoque_ajax(){
         def participante = Participante.get(params.id)
-        def enfoqueParticipante = EnfoqueParticipante.findByParticipante(participante)
-        return[enfoqueParticipante: enfoqueParticipante]
+        return[participante: participante]
     }
 
     def desarrollo_ajax(){
         def participante = Participante.get(params.id)
-        def desarrolloPersona = DesarrolloPersona.findByParticipante(participante)
-        return[desarrolloPersona: desarrolloPersona]
+        return[participante: participante]
     }
 
     def guardarEnfoque_ajax(){
-        println("params ge " + params)
+//        println("params ge " + params)
         def participante = Participante.get(params.id)
         def enfoque = Enfoque.get(params.enfoque)
-        def enfoqueParticipante = EnfoqueParticipante.findByParticipante(participante)
+        def existe = EnfoqueParticipante.findByParticipanteAndEnfoque(participante, enfoque)
+        def enfoqueParticipante
 
-        if(enfoqueParticipante){
-            enfoqueParticipante.enfoque = enfoque
+        if(existe){
+            render "no"
         }else{
             enfoqueParticipante = new EnfoqueParticipante()
-            enfoqueParticipante.enfoque = enfoque
             enfoqueParticipante.participante = participante
+            enfoqueParticipante.enfoque = enfoque
         }
 
         if(!enfoqueParticipante.save(flush:true)){
             println("error al guardar el enfoque participante " + enfoqueParticipante.errors)
+            render "no"
+        }else{
+            render "ok"
+        }
+    }
+
+    def desarrolloSel_ajax(){
+        def participante = Participante.get(params.id)
+        def existentes = DesarrolloPersona.findAllByParticipante(participante)
+        def desarrollos
+        if(existentes){
+            desarrollos = DesarrolloCapacidades.findAllByIdNotInList(existentes?.desarrolloCapacidades?.id)
+        }else{
+            desarrollos = DesarrolloCapacidades.list().sort{it.descripcion}
+        }
+
+        return[desarrollos:desarrollos]
+    }
+
+    def tablaDesarrollo_ajax(){
+        def participante = Participante.get(params.id)
+        def desarrollos = DesarrolloPersona.findAllByParticipante(participante)
+        return [desarrollos: desarrollos]
+    }
+
+    def enfoqueSel_ajax(){
+        def participante = Participante.get(params.id)
+        def existentes = EnfoqueParticipante.findAllByParticipante(participante)
+        def enfoques
+        if(existentes){
+            enfoques = Enfoque.findAllByIdNotInList(existentes?.enfoque?.id)
+        }else{
+            enfoques = Enfoque.list().sort{it.descripcion}
+        }
+
+        return[enfoques:enfoques]
+    }
+
+    def tablaEnfoque_ajax(){
+        def participante = Participante.get(params.id)
+        def enfoques = EnfoqueParticipante.findAllByParticipante(participante)
+        return[enfoques:enfoques]
+    }
+
+    def borrarEnfoque_ajax(){
+        def enfoquePersonal = EnfoqueParticipante.get(params.id)
+
+        try{
+            enfoquePersonal.delete(flush:true)
+            render "ok"
+        }catch(e){
+            println("error al borrar el enfoque " + enfoquePersonal.errors)
+            render "no"
+        }
+    }
+
+    def borrarDesarrollo_ajax(){
+        def desarrolloPersona = DesarrolloPersona.get(params.id)
+
+        try{
+            desarrolloPersona.delete(flush:true)
+            render "ok"
+        }catch(e){
+            println("error al borrar el desarrollo " + desarrolloPersona.errors)
+            render "no"
+        }
+    }
+
+    def guardarDesarrollo_ajax(){
+//        println("params ge " + params)
+        def participante = Participante.get(params.id)
+        def desarrolloCapacidades = DesarrolloCapacidades.get(params.desarrolloCapacidades)
+        def existe = DesarrolloPersona.findByParticipanteAndDesarrolloCapacidades(participante, desarrolloCapacidades)
+        def desarrolloPersona
+
+        if(existe){
+            render "no"
+        }else{
+            desarrolloPersona = new DesarrolloPersona()
+            desarrolloPersona.participante = participante
+            desarrolloPersona.desarrolloCapacidades = desarrolloCapacidades
+        }
+
+        if(!desarrolloPersona.save(flush:true)){
+            println("error al guardar el desarrollo " + desarrolloPersona.errors)
             render "no"
         }else{
             render "ok"

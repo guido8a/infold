@@ -8,13 +8,13 @@
 <g:if test="${participante?.hojaVida}">
     <div>
         <table class="table table-condensed table-bordered" width='100%'>
-            <head>
+            <thead>
                 <tr style="text-align: center">
                     <th>Archivo</th>
                     <th>Acciones</th>
                 </tr>
-            </head>
-            <body>
+            </thead>
+            <tbody>
             <tr>
                 <td style="font-weight: bold; font-size: 16px">
                     ${participante?.hojaVida}
@@ -28,7 +28,7 @@
                     </a>
                 </td>
             </tr>
-            </body>
+            </tbody>
         </table>
     </div>
 </g:if>

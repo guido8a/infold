@@ -51,7 +51,7 @@
             <i class="fas fa-book-reader"></i> Enfoque personal
         </a>
         <a href="#" id="btnDesarrollo" class="btn btn-sm btn-info" title="Desarrollo de capacidades">
-            <i class="fa fa-handshake"></i> Desarrollo de capacidades
+            <i class="fa fa-handshake"></i> Ejes de formación
         </a>
 %{--            <a href="#" id="btnEstado" class="btn btn-sm btn-info" title="Cambiar de estado al proyecto">--}%
 %{--                <i class="fa fa-check"></i> Estado--}%
@@ -272,7 +272,7 @@
                                     <div class="col-md-6">
                                         <span class="grupo">
                                             <a href="${createLink(controller: 'participante', action: 'descargar', params: [id: participante?.id])}" class="btn btn-sm btn-info" title="Descargar archivo">
-                                                <i class="fa fa-download"></i> Descargar
+                                                <i class="fa fa-download"></i> Descargar: <strong>${participante?.hojaVida}</strong>
                                             </a>
                                         </span>
                                     </div>
@@ -350,39 +350,12 @@
                             className : "btn-primary",
                             callback  : function () {
                             }
-                        },
-                        aceptar : {
-                            label     : "<i class='fa fa-save'></i> Aceptar",
-                            className : "btn-success",
-                            callback  : function () {
-                                guardarEnfoque()
-                            }
                         }
                     }
                 });
             }
         });
     });
-
-    function guardarEnfoque(){
-        var l = cargarLoader("Grabando...");
-        $.ajax({
-           type: 'POST',
-           url: '${createLink(controller: 'participante', action: 'guardarEnfoque_ajax')}',
-           data:{
-               id: '${participante?.id}',
-               enfoque: $("#enfoque option:selected").val()
-           },
-           success: function (msg) {
-                l.modal("hide");
-                if(msg == 'ok'){
-                    log("Enfoque personal guardado correctamente","success")
-                }else{
-                    log("Error al guardar el enfoque personal","error")
-                }
-            }
-        });
-    }
 
     $("#btnDesarrollo").click(function (){
         var id = '${participante?.id}';
@@ -394,18 +367,12 @@
             },
             success : function (msg) {
                 bootbox.dialog({
-                    title   : "Desarrollo de capacidades",
+                    title   : "Ejes de formación",
                     message : msg,
                     buttons : {
                         cancelar : {
                             label     : "<i class='fa fa-times'></i> Cancelar",
                             className : "btn-primary",
-                            callback  : function () {
-                            }
-                        },
-                        aceptar : {
-                            label     : "<i class='fa fa-save'></i> Aceptar",
-                            className : "btn-success",
                             callback  : function () {
                             }
                         }
@@ -414,55 +381,6 @@
             }
         });
     });
-
-    %{--$("#btnEstado").click(function () {--}%
-    %{--    bootbox.confirm({--}%
-    %{--        size: "small",--}%
-    %{--        title: 'Alerta',--}%
-    %{--        message: "<i class='fa fa-exclamation-triangle fa-3x pull-left text-warning text-shadow'></i> ¿Está seguro de cambiar el estado del proyecto?",--}%
-    %{--        buttons: {--}%
-    %{--            confirm: {--}%
-    %{--                label: 'Aceptar',--}%
-    %{--                className: 'btn-success'--}%
-    %{--            },--}%
-    %{--            cancel: {--}%
-    %{--                label: 'Cancelar',--}%
-    %{--                className: 'btn-primary'--}%
-    %{--            }--}%
-    %{--        },--}%
-    %{--        callback: function(result){--}%
-    %{--            if(result){--}%
-    %{--                $.ajax({--}%
-    %{--                    type: 'POST',--}%
-    %{--                    url: '${createLink(controller: 'proyecto', action: 'cambiarEstado_ajax')}',--}%
-    %{--                    data:{--}%
-    %{--                        id: '${proy?.id}'--}%
-    %{--                    },--}%
-    %{--                    success: function (msg) {--}%
-    %{--                        if(msg == 'ok'){--}%
-    %{--                            log("Estado cambiado correctamente","success");--}%
-    %{--                            setTimeout(function () {--}%
-    %{--                                location.reload(true)--}%
-    %{--                            }, 1000);--}%
-    %{--                        }else{--}%
-    %{--                            if(msg == 'er'){--}%
-    %{--                                bootbox.alert({--}%
-    %{--                                    size: "small",--}%
-    %{--                                    title: "Alerta!!!",--}%
-    %{--                                    message: "<i class='fa fa-exclamation-triangle fa-3x pull-left text-danger text-shadow'></i>  No se puede cambiar el estado, el marco lógico ya ha sido modificado!",--}%
-    %{--                                    callback: function(){}--}%
-    %{--                                })--}%
-    %{--                            }else{--}%
-    %{--                                log("Error al cambiar de estado","error")--}%
-    %{--                            }--}%
-    %{--                        }--}%
-    %{--                    }--}%
-    %{--                });--}%
-    %{--            }--}%
-    %{--        }--}%
-    %{--    });--}%
-    %{--});--}%
-
 
 </script>
 
