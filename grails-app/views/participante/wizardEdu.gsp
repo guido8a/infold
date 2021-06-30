@@ -200,7 +200,12 @@
                     label     : "<i class='fa fa-check'></i> Aceptar",
                     className : "btn-success",
                     callback  : function () {
-                        location.href="${createLink(controller: 'inicio', action: 'index')}"
+                        <g:if test="${participante?.estado == 'S'}">
+                        location.href="${createLink(controller: 'participante', action: 'participante', params: [id: participante?.id])}";
+                        </g:if>
+                        <g:else>
+                        location.href="${createLink(controller: 'inicio', action: 'index')}";
+                        </g:else>
                     }
                 }
             }

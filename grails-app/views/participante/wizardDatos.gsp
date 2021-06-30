@@ -204,7 +204,12 @@
                     label     : "<i class='fa fa-check'></i> Aceptar",
                     className : "btn-success",
                     callback  : function () {
-                        location.href="${createLink(controller: 'inicio', action: 'index')}"
+                        <g:if test="${participante?.estado == 'S'}">
+                        location.href="${createLink(controller: 'participante', action: 'participante', params: [id: participante?.id])}";
+                        </g:if>
+                        <g:else>
+                        location.href="${createLink(controller: 'inicio', action: 'index')}";
+                        </g:else>
                     }
                 }
             }
@@ -234,9 +239,6 @@
                     var parts = msg.split("_");
                     if (parts[0] == "ok") {
                             location.href="${createLink(controller: 'participante', action: 'wizardGeo')}?id=" + parts[1];
-                        %{--setTimeout(function () {--}%
-                        %{--    location.href="${createLink(controller: 'producto', action: 'wizardInfo')}?id=" + parts[1] + "&persona=" + '${persona?.id}' + "&tipo=" + '${tipo}';--}%
-                        %{--}, 500);--}%
                     } else {
                         log("Error al guardar los datos personales","error");
                     }

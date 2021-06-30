@@ -405,9 +405,42 @@ class ParticipanteController {
                 redirect(controller: 'participante', action: 'wizardDatos', params:[id: prtc?.id])
             }
         }else{
-            redirect(controller: 'participante', action: 'wizardDatos')
+            redirect(controller: 'participante', action: 'wizardDatos', params: [tipo: params.tipo, cedula: params.c])
         }
     }
 
+    def enfoque_ajax(){
+        def participante = Participante.get(params.id)
+        def enfoqueParticipante = EnfoqueParticipante.findByParticipante(participante)
+        return[enfoqueParticipante: enfoqueParticipante]
+    }
+
+    def desarrollo_ajax(){
+        def participante = Participante.get(params.id)
+        def desarrolloPersona = DesarrolloPersona.findByParticipante(participante)
+        return[desarrolloPersona: desarrolloPersona]
+    }
+
+    def guardarEnfoque_ajax(){
+        println("params ge " + params)
+        def participante = Participante.get(params.id)
+        def enfoque = Enfoque.get(params.enfoque)
+        def enfoqueParticipante = EnfoqueParticipante.findByParticipante(participante)
+
+        if(enfoqueParticipante){
+            enfoqueParticipante.enfoque = enfoque
+        }else{
+            enfoqueParticipante = new EnfoqueParticipante()
+            enfoqueParticipante.enfoque = enfoque
+            enfoqueParticipante.participante = participante
+        }
+
+        if(!enfoqueParticipante.save(flush:true)){
+            println("error al guardar el enfoque participante " + enfoqueParticipante.errors)
+            render "no"
+        }else{
+            render "ok"
+        }
+    }
 
 }

@@ -225,7 +225,12 @@
                     label     : "<i class='fa fa-check'></i> Aceptar",
                     className : "btn-success",
                     callback  : function () {
-                        location.href="${createLink(controller: 'inicio', action: 'index')}"
+                        <g:if test="${participante?.estado == 'S'}">
+                        location.href="${createLink(controller: 'participante', action: 'participante', params: [id: participante?.id])}";
+                        </g:if>
+                        <g:else>
+                        location.href="${createLink(controller: 'inicio', action: 'index')}";
+                        </g:else>
                     }
                 }
             }
@@ -275,7 +280,7 @@
                     var parts = msg.split("_");
                     if (parts[0] == "ok") {
                         if(band == 1){
-                            location.href="${createLink(controller: 'inicio', action: 'index')}";
+                            location.href="${createLink(controller: 'participante', action: 'participante')}?id=" + parts[1];
                         }else{
                             location.href="${createLink(controller: 'participante', action: 'wizardEdu')}?id=" + parts[1];
                         }
