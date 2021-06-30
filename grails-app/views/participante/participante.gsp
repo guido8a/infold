@@ -71,11 +71,11 @@
 
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Cédula</span>
-                        <div class="col-md-3">
+                        <span class="col-md-1 label label-primary text-info mediano">Cédula</span>
+                        <div class="col-md-2">
                             <g:textField name="cedula" readonly="" class="form-control" value="${participante?.cedula}"/>
                         </div>
-                        <div class="col-md-4"></div>
+                        <div class="col-md-5"></div>
                         <span class="col-md-1 label label-primary text-info mediano">Estado del registro</span>
                         <div class="col-md-2" style="margin-top: 10px">
                             <span class="grupo">
@@ -87,7 +87,7 @@
 
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Nombre</span>
+                        <span class="col-md-1 label label-primary text-info mediano">Nombre</span>
                         <div class="col-md-3">
                             <span class="grupo">
                                 <g:textField name="nombre" class="form-control" readonly="" value="${participante?.nombre}"/>
@@ -104,7 +104,7 @@
 
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Mail</span>
+                        <span class="col-md-1 label label-primary text-info mediano">Mail</span>
                         <div class="col-md-3">
                             <span class="grupo">
                                 <g:textField name="mail" class="form-control" readonly="" value="${participante?.mail}"/>
@@ -128,8 +128,8 @@
 
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Provincia</span>
-                        <div class="col-md-2">
+                        <span class="col-md-1 label label-primary text-info mediano">Provincia</span>
+                        <div class="col-md-3">
                             <span class="grupo">
                                 <g:textField name="provincia" class="form-control" readonly="" value="${participante?.parroquia?.canton?.provincia?.nombre}"/>
                             </span>
@@ -150,8 +150,8 @@
                 </div>
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
-                        <span class="col-md-2 label label-primary text-info mediano">Área de trabajo</span>
-                        <div class="col-md-2">
+                        <span class="col-md-1 label label-primary text-info mediano">Área de trabajo</span>
+                        <div class="col-md-3">
                             <span class="grupo">
                                 <g:textField name="areaTrabajo" class="form-control" readonly="" value="${participante?.areaTrabajo?.descripcion}"/>
                             </span>
@@ -183,7 +183,7 @@
                         <h3>Afiliación Política</h3>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Partido Político</span>
+                                <span class="col-md-1 label label-primary text-info mediano">Partido Político</span>
                                 <div class="col-md-6">
                                     <span class="grupo">
                                         <g:textField name="partidoPolítico" class="form-control" readonly="" value="${participante?.partido?.descripcion}"/>
@@ -193,7 +193,7 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Organización Social</span>
+                                <span class="col-md-1 label label-primary text-info mediano">Organización Social</span>
                                 <div class="col-md-6">
                                     <span class="grupo">
                                         <g:textArea name="organizacionSocial" class="form-control" readonly="" value="${participante?.organizacionSocial}" style="resize: none; height: 50px"/>
@@ -203,7 +203,7 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Movimiento Político</span>
+                                <span class="col-md-1 label label-primary text-info mediano">Movimiento Político</span>
                                 <div class="col-md-6">
                                     <span class="grupo">
                                         <g:textArea name="movimientoPolitico" class="form-control" readonly="" value="${participante?.movimientoPolitico}" style="resize: none; height: 50px"/>
@@ -219,7 +219,7 @@
                         <h3>Estudios</h3>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Nivel de Educación</span>
+                                <span class="col-md-1 label label-primary text-info mediano">Nivel de Educación</span>
                                 <div class="col-md-6">
                                     <span class="grupo">
                                         <g:textField name="nivelEducacion" class="form-control" readonly="" value="${participante?.nivelEducacion?.descripcion}"/>
@@ -229,7 +229,7 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Área de espeacialización</span>
+                                <span class="col-md-1 label label-primary text-info mediano">Área de espeacialización</span>
                                 <div class="col-md-6">
                                     <span class="grupo">
                                         <g:textArea name="area" class="form-control" readonly="" value="${participante?.nivelEducacion?.id?.toInteger() in [3,4,5] ? participante?.area : 'N/A'}" style="resize: none; height: 50px"/>
@@ -239,7 +239,7 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Estudia actualmente</span>
+                                <span class="col-md-1 label label-primary text-info mediano">Estudia actualmente</span>
                                 <div class="col-md-6">
                                     <span class="grupo">
                                         <g:textField name="estudia" class="form-control" readonly="" value="${participante?.estudia == '0' ? 'NO' : 'SI'}"/>
@@ -249,7 +249,7 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Carrera que estudia</span>
+                                <span class="col-md-1 label label-primary text-info mediano">Carrera que estudia</span>
                                 <div class="col-md-6">
                                     <span class="grupo">
                                         <g:textArea name="carreraEstudia" class="form-control" readonly="" value="${participante?.estudia == '0' ? 'N/A' : participante?.carreraEstudia}" style="resize: none; height: 50px"/>
@@ -268,12 +268,14 @@
                         <g:if test="${participante?.tipo == '1'}">
                             <div class="row izquierda">
                                 <div class="col-md-12 input-group">
-                                    <span class="col-md-2 label label-primary text-info mediano">Hoja de vida</span>
+                                    <span class="col-md-1 label label-primary text-info mediano">Hoja de vida</span>
                                     <div class="col-md-6">
+                                        <span class="grupo col-md-6">
+                                                Documento existente: <strong>${participante?.hojaVida}</strong>
+                                        </span>
                                         <span class="grupo">
                                             <a href="${createLink(controller: 'participante', action: 'descargar', params: [id: participante?.id])}" class="btn btn-sm btn-info" title="Descargar archivo">
-                                                <i class="fa fa-download"></i> Descargar: <strong>${participante?.hojaVida}</strong>
-                                            </a>
+                                                <i class="fa fa-download"></i> Descargar</a>
                                         </span>
                                     </div>
                                 </div>
@@ -282,40 +284,44 @@
 
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Resumen trabajo</span>
-                                <div class="col-md-6">
+                                <span class="col-md-1 label label-primary text-info mediano">Resumen trabajo</span>
+                                <div class="col-md-11">
                                     <span class="grupo">
-                                        <g:textArea name="resumenTrabajo" class="form-control" readonly="" value="${participante?.resumenTrabajo}" style="resize: none; height: 60px"/>
+                                        <g:textArea name="resumenTrabajo" class="form-control" readonly=""
+                                                    value="${participante?.resumenTrabajo}" style="resize: none; height: 45px"/>
                                     </span>
                                 </div>
                             </div>
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Fortaleza 1</span>
-                                <div class="col-md-6">
+                                <span class="col-md-1 label label-primary text-info mediano">Fortaleza 1</span>
+                                <div class="col-md-11">
                                     <span class="grupo">
-                                        <g:textArea name="fortaleza1" class="form-control" readonly="" value="${participante?.fortaleza1}" style="resize: none; height: 60px"/>
+                                        <g:textArea name="fortaleza1" class="form-control" readonly=""
+                                                    value="${participante?.fortaleza1}" style="resize: none; height: 45px"/>
                                     </span>
                                 </div>
                             </div>
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Fortaleza 2</span>
-                                <div class="col-md-6">
+                                <span class="col-md-1 label label-primary text-info mediano">Fortaleza 2</span>
+                                <div class="col-md-11">
                                     <span class="grupo">
-                                        <g:textArea name="fortaleza2" class="form-control" readonly="" value="${participante?.fortaleza2}" style="resize: none; height: 60px"/>
+                                        <g:textArea name="fortaleza2" class="form-control" readonly=""
+                                                    value="${participante?.fortaleza2}" style="resize: none; height: 45px"/>
                                     </span>
                                 </div>
                             </div>
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-2 label label-primary text-info mediano">Fortaleza 3</span>
-                                <div class="col-md-6">
+                                <span class="col-md-1 label label-primary text-info mediano">Fortaleza 3</span>
+                                <div class="col-md-11">
                                     <span class="grupo">
-                                        <g:textArea name="fortaleza3" class="form-control" readonly="" value="${participante?.fortaleza3}" style="resize: none; height: 60px"/>
+                                        <g:textArea name="fortaleza3" class="form-control" readonly=""
+                                                    value="${participante?.fortaleza3}" style="resize: none; height: 45px"/>
                                     </span>
                                 </div>
                             </div>

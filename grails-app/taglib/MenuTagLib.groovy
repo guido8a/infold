@@ -222,8 +222,7 @@ class MenuTagLib {
             html += '<li class="divider"></li>'
             html += '<li><a href="' + g.createLink(controller: 'login', action: 'logout') + '"><i class="fa fa-power-off"></i> Salir</a></li>'
         } else {
-            html += "<p class='text-info pull-right' style='font-size: 14px; margin-top: 20px'> " +
-                    "<a href='http://www.tedein.com.ec\'>Auspiciado y Desarrollado por <strong>Tedein S.A.</strong></a></p>"
+            html += "<p class='text-info pull-right' style='font-size: 14px; margin-top: 20px'> "
         }
         html += '</ul>'
         html += '</li>'
