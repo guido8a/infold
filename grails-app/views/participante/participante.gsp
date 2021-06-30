@@ -165,7 +165,8 @@
                     </div>
                 </div>
 
-                <p style="margin-top: 10px">
+                <p style="margin-top: 10px; border-color: #1B274E; border-radius: 4px; border-style: solid;
+                padding: 5px; border-width: 1px">
 
                     <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
                         <i class="fa fa-user-tag"></i> Afiliación
