@@ -231,7 +231,7 @@ class BuscadorService {
     }
 
     def parmInstructor () {
-        [[campo: 'prtcnmbr', nombre: 'Nombre',        operador: "contiene:contiene,inicia:inicia con"],
+        [[campo: 'prtcnmbr', nombre: 'Nombre del Instructor o del Participante Nombre del Instructor o del Participante Nombre del Instructor o del Participante',        operador: "contiene:contiene,inicia:inicia con"],
          [campo: 'prtcapll', nombre: 'Apellido',      operador: "contiene:contiene,inicia:inicia con"],
          [campo: 'prtcestd', nombre: 'Estudia',       operador: "inicia:inicia con, contiene:contiene"],
          [campo: 'prtccmpl', nombre: 'Completado',    operador: "igual:igual"]
