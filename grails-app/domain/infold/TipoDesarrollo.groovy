@@ -14,10 +14,11 @@ class TipoDesarrollo {
         columns {
             id column: 'tpds__id'
             descripcion column: 'tpdsdscr'
+            orden column: 'tpdsordn'
         }
     }
     static constraints = {
-        descripcion(size: 1..63, blank: false, nullable: false, attributes: [title: 'descripcion'])
+        descripcion(size: 1..127, blank: false, nullable: false, attributes: [title: 'descripcion'])
         orden(blank: true, nullable: true, attributes: [title: 'orden'])
     }
 }
