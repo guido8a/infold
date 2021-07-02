@@ -22,6 +22,7 @@
         border-color: #5c6e80;
         border-style: solid;
     }
+
     .item2 {
         width: 660px;
         height: 160px;
@@ -40,6 +41,7 @@
         margin: auto;
         margin-top: 10px;
     }
+
     .imagen2 {
         width: 180px;
         height: 130px;
@@ -76,15 +78,15 @@
     }
 
     body {
-        background : #e5e4e7;
+        background: #e5e4e7;
     }
 
     .color1 {
-        background : #e7f5f1;
+        background: #e7f5f1;
     }
 
     .color2 {
-        background : #FFF;
+        background: #FFF;
     }
 
 
@@ -93,14 +95,16 @@
         padding-bottom: 5rem;
         background-color: #f1f4fa;
     }
+
     .wrap {
         display: flex;
         background: white;
         padding: 1rem 1rem 1rem 1rem;
         border-radius: 0.5rem;
-        box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
+        box-shadow: 7px 7px 30px -5px rgba(0, 0, 0, 0.1);
         margin-bottom: 1rem;
-        width: 553px; height: 115px
+        width: 553px;
+        height: 115px
     }
 
     .wrap:hover {
@@ -118,6 +122,7 @@
         margin: 1rem;
         padding-right: 1rem;
     }
+
     .vcenter {
         margin: auto;
     }
@@ -125,14 +130,17 @@
     .mbr-section-title3 {
         text-align: left;
     }
+
     h2 {
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
     }
+
     .display-5 {
-        font-family: 'Source Sans Pro',sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
         font-size: 1.4rem;
     }
+
     .mbr-bold {
         font-weight: 700;
     }
@@ -142,9 +150,10 @@
         padding-bottom: 0.5rem;
         line-height: 25px;
     }
+
     .display-6 {
-        font-family: 'Source Sans Pro',sans-serif;
-        font-size: 1re
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 1 re
     }
 
 
@@ -163,139 +172,156 @@
 
     <div class="row mbr-justify-content-center">
 
-    <a href= "${createLink(controller:'institucion', action: 'inst')}"  style="text-decoration: none">
-        <div class="col-lg-6 mbr-col-md-10">
-            <div class="wrap">
-                <div style="width: 200px; height: 120px">
-                    <asset:image src="apli/portada.png" title="Categorías"  width="80%" height="80%"/>
-                </div>
-                <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
-                        <span>El Instituto de Formación de Líderes</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">La institución: Visión, Misión,
-                    Quienes somos, Objetivos, Ejes formativos, etc..</p>
-                </div>
-            </div>
-        </div>
-    </a>
+        <a href="${createLink(controller: 'institucion', action: 'inst')}" style="text-decoration: none">
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div style="width: 200px; height: 120px">
+                        <asset:image src="apli/portada.png" title="Instituto de Formación de Líderes"
+                                     width="80%" height="80%"/>
+                    </div>
 
-    <a href= "${createLink(controller:'promotor', action: 'list')}" style="text-decoration: none">
-        <div class="col-lg-6 mbr-col-md-10">
-            <div class="wrap">
-                <div style="width: 200px; height: 120px">
-                    <asset:image src="apli/proyecto.png" title="Períodos y semáforos por cantón"  width="80%" height="80%"/>
-                </div>
-                <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>
-                        Participantes e Instructores</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">Revisión de Participantes e Instructores</p>
+                    <div style="width: 450px; height: 120px">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
+                            <span>El Instituto de Formación de Líderes</span></h2>
+
+                        <p class="mbr-fonts-style text1 mbr-text display-6">La institución: Visión, Misión,
+                        Quienes somos, Objetivos, Ejes formativos, etc..</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </a>
+        </a>
 
-    <a href= "${createLink(controller:'categoria', action: 'arbol')}" style="text-decoration: none">
-        <div class="col-lg-6 mbr-col-md-10">
-            <div class="wrap">
-                <div style="width: 200px; height: 120px">
-                    <asset:image src="apli/proyecto.png" title="Categorías"  width="80%" height="80%"/>
-                </div>
-                <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Categorías</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">Categorías de ventas</p>
-                </div>
-            </div>
-        </div>
-    </a>
+        <a href="${createLink(controller: 'admnParticipante', action: 'index')}" style="text-decoration: none">
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div style="width: 200px; height: 120px">
+                        <asset:image src="apli/proyecto.png" title="Instructores" width="80%"
+                                     height="80%"/>
+                    </div>
 
-    <a href= "${createLink(controller:'link', action: 'list')}" style="text-decoration: none">
-        <div class="col-lg-6 mbr-col-md-10">
-            <div class="wrap">
-                <div style="width: 200px; height: 120px">
-                    <asset:image src="apli/proyecto.png" title="Períodos y semáforos por cantón"  width="80%" height="80%"/>
-                </div>
-                <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Acceso a Consultas</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">Enlaces a consultas de interés general</p>
+                    <div style="width: 450px; height: 120px">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>
+                            Instructores del Instituto</span></h2>
+
+                        <p class="mbr-fonts-style text1 mbr-text display-6">Adminsitración de Instructores del Instituto</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </a>
+        </a>
 
-    <a href= "${createLink(controller:'tipoPago', action: 'list')}" style="text-decoration: none">
-        <div class="col-lg-6 mbr-col-md-10">
-            <div class="wrap">
-                <div style="width: 200px; height: 120px">
-                    <asset:image src="apli/proyecto.png" title="Documentos por cantón"  width="80%" height="80%"/>
-                </div>
-                <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Planes de publicación</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">Registro de períodos de publicación</p>
-                </div>
-            </div>
-        </div>
-    </a>
+        <a href="${createLink(controller: 'admnParticipante', action: 'index')}" style="text-decoration: none">
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div style="width: 200px; height: 120px">
+                        <asset:image src="apli/proyecto.png" title="Participantes registrados" width="80%"
+                                     height="80%"/>
+                    </div>
 
-    <a href= "${createLink(controller:'canton', action: 'arbol')}" style="text-decoration: none">
-        <div class="col-lg-6 mbr-col-md-10">
-            <div class="wrap">
-                <div style="width: 200px; height: 120px">
-                    <asset:image src="apli/proyecto.png" title="Cantones"  width="80%" height="80%"/>
-                </div>
-                <div style="width: 450px; height: 120px">
-                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>División política</span></h2>
-                    <p class="mbr-fonts-style text1 mbr-text display-6">División política</p>
+                    <div style="width: 450px; height: 120px">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>
+                            Participantes Registrados</span></h2>
+
+                        <p class="mbr-fonts-style text1 mbr-text display-6">Administración de Participantes registrados</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </a>
+        </a>
+
+        <a href="${createLink(controller: 'link', action: 'list')}" style="text-decoration: none">
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div style="width: 200px; height: 120px">
+                        <asset:image src="apli/proyecto.png" title="Períodos y semáforos por cantón" width="80%"
+                                     height="80%"/>
+                    </div>
+
+                    <div style="width: 450px; height: 120px">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Acceso a Consultas</span>
+                        </h2>
+
+                        <p class="mbr-fonts-style text1 mbr-text display-6">Enlaces a consultas de interés general</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="${createLink(controller: 'tipoPago', action: 'list')}" style="text-decoration: none">
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div style="width: 200px; height: 120px">
+                        <asset:image src="apli/proyecto.png" title="Documentos por cantón" width="80%" height="80%"/>
+                    </div>
+
+                    <div style="width: 450px; height: 120px">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>Planes de publicación</span>
+                        </h2>
+
+                        <p class="mbr-fonts-style text1 mbr-text display-6">Registro de períodos de publicación</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="${createLink(controller: 'canton', action: 'arbol')}" style="text-decoration: none">
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div style="width: 200px; height: 120px">
+                        <asset:image src="apli/proyecto.png" title="Cantones" width="80%" height="80%"/>
+                    </div>
+
+                    <div style="width: 450px; height: 120px">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5"><span>División política</span>
+                        </h2>
+
+                        <p class="mbr-fonts-style text1 mbr-text display-6">División política</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+    <script type="text/javascript">
 
 
-
-</div>
-<script type="text/javascript">
-
-
-    $("#btnRegistroParticipantes").click(function (){
-        $.ajax({
-            type    : "POST",
-            url     : "${createLink(controller: 'participante', action:'seleccion_ajax')}",
-            data    : {
-            },
-            success : function (msg) {
-                var b = bootbox.dialog({
-                    id      : "dlgSeleccion",
-                    title   : "Seleccione el tipo",
-                    message : msg
-                }); //dialog
-            } //success
-        }); //ajax
-    });
-
-    $(".fuera").hover(function () {
-        var d = $(this).find(".imagen,.imagen2")
-        d.width(d.width() + 10)
-        d.height(d.height() + 10)
-
-    }, function () {
-        var d = $(this).find(".imagen, .imagen2")
-        d.width(d.width() - 10)
-        d.height(d.height() - 10)
-    })
-
-
-    $(function () {
-        $(".openImagenDir").click(function () {
-            openLoader();
+        $("#btnRegistroParticipantes").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "${createLink(controller: 'participante', action:'seleccion_ajax')}",
+                data: {},
+                success: function (msg) {
+                    var b = bootbox.dialog({
+                        id: "dlgSeleccion",
+                        title: "Seleccione el tipo",
+                        message: msg
+                    }); //dialog
+                } //success
+            }); //ajax
         });
 
-        $(".openImagen").click(function () {
-            openLoader();
+        $(".fuera").hover(function () {
+            var d = $(this).find(".imagen,.imagen2")
+            d.width(d.width() + 10)
+            d.height(d.height() + 10)
+
+        }, function () {
+            var d = $(this).find(".imagen, .imagen2")
+            d.width(d.width() - 10)
+            d.height(d.height() - 10)
+        })
+
+
+        $(function () {
+            $(".openImagenDir").click(function () {
+                openLoader();
+            });
+
+            $(".openImagen").click(function () {
+                openLoader();
+            });
         });
-    });
 
 
 
-</script>
+    </script>
 </body>
 </html>

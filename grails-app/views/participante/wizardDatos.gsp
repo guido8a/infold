@@ -157,8 +157,8 @@
                                     Género
                                 </label>
                                 <div class="col-md-3">
-                                    <g:select name="genero" from="${['M' : 'Masculino', 'F' : 'Femenino', 'I' : 'Indeterminado']}" class="form-control"
-                                              optionKey="key" optionValue="value"
+                                    <g:select name="genero" from="${['M':'Masculino', 'F':'Femenino', 'G':'GLBTI+']}"
+                                              class="form-control" optionKey="key" optionValue="value"
                                               value="${participante?.genero}"/>
                                 </div>
                             </span>

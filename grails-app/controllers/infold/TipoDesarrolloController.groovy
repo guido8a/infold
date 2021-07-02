@@ -5,7 +5,7 @@ package infold
 class TipoDesarrolloController {
 
     def list(){
-        def tipos = TipoDesarrollo.list().sort{it.orden}
+        def tipos = TipoDesarrollo.list([sort: 'orden'])
         return [tipos:tipos]
     }
 

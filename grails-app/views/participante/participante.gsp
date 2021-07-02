@@ -120,7 +120,8 @@
                         <span class="col-md-1 label label-primary text-info mediano">Género</span>
                         <div class="col-md-2">
                             <span class="grupo">
-                                <g:textField name="genero" class="form-control" readonly="" value="${participante?.genero == 'M' ? 'Masculino' : (participante?.genero == 'F' ? 'Femenino' : 'Otro')}"/>
+                                <g:textField name="genero" class="form-control" readonly=""
+                                    value="${participante?.genero == 'M' ? 'Masculino' : (participante?.genero == 'F' ? 'Femenino' : 'GLBTI+')}"/>
                             </span>
                         </div>
                     </div>

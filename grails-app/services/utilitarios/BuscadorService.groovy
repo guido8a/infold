@@ -230,10 +230,11 @@ class BuscadorService {
         return lista
     }
 
-    def parmAnuncios () {
-        [[campo: 'prsnnmbr', nombre: 'Nombre',        operador: "contiene:contiene,inicia:inicia con"],
-         [campo: 'prsncntc', nombre: 'Contacto',      operador: "inicia:inicia con, contiene:contiene"],
-         [campo: 'anunetdo', nombre: 'Estado',        operador: "inicia:inicia con, contiene:contiene"],
+    def parmInstructor () {
+        [[campo: 'prtcnmbr', nombre: 'Nombre',        operador: "contiene:contiene,inicia:inicia con"],
+         [campo: 'prtcapll', nombre: 'Apellido',      operador: "contiene:contiene,inicia:inicia con"],
+         [campo: 'prtcestd', nombre: 'Estudia',       operador: "inicia:inicia con, contiene:contiene"],
+         [campo: 'prtccmpl', nombre: 'Completado',    operador: "igual:igual"]
         ]
     }
 
