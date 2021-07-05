@@ -15,7 +15,7 @@
                 Descripción
             </label>
             <div class="col-md-10">
-                <g:textArea name="descripcion" maxlength="63" class="form-control required" value="${enfoque?.descripcion}" style="resize: none"/>
+                <g:textArea name="descripcion" maxlength="127" class="form-control required" value="${enfoque?.descripcion}" style="resize: none"/>
             </div>
         </span>
     </div>

@@ -5,6 +5,23 @@
   Time: 15:05
 --%>
 
+<style>
+
+select#tipoDesarrollo option{
+    max-width: 100%;
+    border: 1px solid cornflowerblue;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px #888;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.select-selected {
+    background-color: DodgerBlue;
+}
+
+</style>
 
 <g:form class="form-horizontal" name="frmDesarrollo" action="saveEnfoque">
     <g:hiddenField name="id" value="${desarrollo?.id}"/>
@@ -15,7 +32,7 @@
                 Tipo de desarrollo
             </label>
             <div class="col-md-10">
-                <g:select name="tipoDesarrollo" from="${infold.TipoDesarrollo?.list()?.sort{it.descripcion}}" class="form-control" value="${desarrollo?.tipoDesarrollo?.id}" optionKey="id" optionValue="descripcion"/>
+                <g:select name="tipoDesarrollo" from="${infold.TipoDesarrollo?.list()?.sort{it.descripcion}}" class="form-control slll" value="${desarrollo?.tipoDesarrollo?.id}" optionKey="id" optionValue="descripcion"/>
             </div>
         </span>
     </div>
@@ -34,7 +51,7 @@
             <label for="orden" class="col-md-2 control-label text-info">
                 Orden
             </label>
-            <div class="col-md-10">
+            <div class="col-md-3">
                 <g:textField name="orden" maxlength="63" class="form-control required" value="${desarrollo?.orden}" style="resize: none"/>
             </div>
         </span>
