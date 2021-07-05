@@ -9,8 +9,6 @@
     <meta name="layout" content="main">
     <title>Instructores</title>
 
-    <asset:javascript src="/bootstrap-select-1.6.3/dist/js/bootstrap-select.js"/>
-    <asset:stylesheet src="/bootstrap-select-1.6.3/dist/css/bootstrap-select.css"/>
 
 
     <style type="text/css">
