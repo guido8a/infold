@@ -9,7 +9,7 @@ class Institucion implements Auditable{
     String sigla
     String objetivo
     String descricpion
-    String ejesFormacion
+//    String ejesFormacion
     String vision
     String mision
     String mail
@@ -32,7 +32,7 @@ class Institucion implements Auditable{
             sigla column: 'instsgla'
             objetivo column: 'instobjt'
             descricpion column: 'instdscr'
-            ejesFormacion column: 'instejfr'
+//            ejesFormacion column: 'instejfr'
             vision column: 'instvisn'
             mision column: 'instmisn'
             mail column: 'instmail'
@@ -46,7 +46,7 @@ class Institucion implements Auditable{
         sigla(size: 0..15, blank: true, nullable: true)
         objetivo(blank: true, nullable: true)
         descricpion(blank: true, nullable: true)
-        ejesFormacion(blank: true, nullable: true)
+//        ejesFormacion(blank: true, nullable: true)
         vision(blank: true, nullable: true)
         mision(blank: true, nullable: true)
         mail(size: 3..255, blank: false, nullable: false)

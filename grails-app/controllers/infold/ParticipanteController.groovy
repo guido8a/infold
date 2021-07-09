@@ -3,16 +3,6 @@ package infold
 import geografia.Canton
 import geografia.Parroquia
 import geografia.Provincia
-import grails.validation.ValidationException
-import groovy.io.FileType
-import seguridad.Persona
-
-import javax.imageio.ImageIO
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.nio.file.StandardCopyOption
-
-
 
 class ParticipanteController {
 
@@ -434,12 +424,12 @@ class ParticipanteController {
 
     def desarrolloSel_ajax(){
         def participante = Participante.get(params.id)
-        def existentes = DesarrolloPersona.findAllByParticipante(participante)
+        def existentes = AreasPersona.findAllByParticipante(participante)
         def desarrollos
         if(existentes){
-            desarrollos = DesarrolloCapacidades.findAllByIdNotInList(existentes?.desarrolloCapacidades?.id)
+            desarrollos = Areas.findAllByIdNotInList(existentes?.desarrolloCapacidades?.id)
         }else{
-            desarrollos = DesarrolloCapacidades.list().sort{it.descripcion}
+            desarrollos = Areas.list().sort{it.descripcion}
         }
 
         return[desarrollos:desarrollos]
@@ -447,7 +437,7 @@ class ParticipanteController {
 
     def tablaDesarrollo_ajax(){
         def participante = Participante.get(params.id)
-        def desarrollos = DesarrolloPersona.findAllByParticipante(participante)
+        def desarrollos = AreasPersona.findAllByParticipante(participante)
         return [desarrollos: desarrollos]
     }
 
@@ -483,7 +473,7 @@ class ParticipanteController {
     }
 
     def borrarDesarrollo_ajax(){
-        def desarrolloPersona = DesarrolloPersona.get(params.id)
+        def desarrolloPersona = AreasPersona.get(params.id)
 
         try{
             desarrolloPersona.delete(flush:true)
@@ -497,14 +487,14 @@ class ParticipanteController {
     def guardarDesarrollo_ajax(){
 //        println("params ge " + params)
         def participante = Participante.get(params.id)
-        def desarrolloCapacidades = DesarrolloCapacidades.get(params.desarrolloCapacidades)
-        def existe = DesarrolloPersona.findByParticipanteAndDesarrolloCapacidades(participante, desarrolloCapacidades)
+        def desarrolloCapacidades = Areas.get(params.desarrolloCapacidades)
+        def existe = AreasPersona.findByParticipanteAndDesarrolloCapacidades(participante, desarrolloCapacidades)
         def desarrolloPersona
 
         if(existe){
             render "no"
         }else{
-            desarrolloPersona = new DesarrolloPersona()
+            desarrolloPersona = new AreasPersona()
             desarrolloPersona.participante = participante
             desarrolloPersona.desarrolloCapacidades = desarrolloCapacidades
         }

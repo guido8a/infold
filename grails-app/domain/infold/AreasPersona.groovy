@@ -1,24 +1,24 @@
 package infold
 
-class DesarrolloPersona {
+class AreasPersona {
 
     Participante participante
-    DesarrolloCapacidades desarrolloCapacidades
+    Areas areas
 
     static mapping = {
-        table 'dcpr'
+        table 'arpr'
         cache usage: 'read-write', include: 'non-lazy'
-        id column: 'dcpr__id'
+        id column: 'arpr__id'
         id generator: 'identity'
         version false
         columns {
-            id column: 'dcpr__id'
+            id column: 'arpr__id'
             participante column: 'prtc__id'
-            desarrolloCapacidades column: 'dscp__id'
+            areas column: 'area__id'
         }
     }
     static constraints = {
         participante(blank: false, nullable: false, attributes: [title: 'participante'])
-        desarrolloCapacidades(blank: false, nullable: false, attributes: [title: 'desarrollo'])
+        areas(blank: false, nullable: false, attributes: [title: 'desarrollo'])
     }
 }

@@ -1,9 +1,9 @@
 package infold
 
-class DesarrolloCapacidadesController {
+class AreasController {
 
     def list(){
-        def desarrollos = DesarrolloCapacidades.list().sort{it.tipoDesarrollo.descripcion}
+        def desarrollos = Areas.list().sort{it.ejes.descripcion}
         return [desarrollos:desarrollos]
     }
 
@@ -11,9 +11,9 @@ class DesarrolloCapacidadesController {
         def desarrollo
 
         if(params.id){
-            desarrollo = DesarrolloCapacidades.get(params.id)
+            desarrollo = Areas.get(params.id)
         }else{
-            desarrollo = new DesarrolloCapacidades()
+            desarrollo = new Areas()
         }
 
         return[desarrollo: desarrollo]
@@ -24,9 +24,9 @@ class DesarrolloCapacidadesController {
         def desarrollo
 
         if(params.id){
-            desarrollo = DesarrolloCapacidades.get(params.id)
+            desarrollo = Areas.get(params.id)
         }else{
-            desarrollo = new DesarrolloCapacidades()
+            desarrollo = new Areas()
         }
 
         desarrollo.properties = params
@@ -40,7 +40,7 @@ class DesarrolloCapacidadesController {
     }
 
     def eliminar_ajax(){
-        def desarrollo = DesarrolloCapacidades.get(params.id)
+        def desarrollo = Areas.get(params.id)
 
         try{
             desarrollo.delete(flush:true)

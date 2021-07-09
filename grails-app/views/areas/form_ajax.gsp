@@ -1,3 +1,4 @@
+<%@ page import="infold.Ejes" %>
 <%--
   Created by IntelliJ IDEA.
   User: fabricio
@@ -26,13 +27,14 @@ select#tipoDesarrollo option{
 <g:form class="form-horizontal" name="frmDesarrollo" action="saveEnfoque">
     <g:hiddenField name="id" value="${desarrollo?.id}"/>
 
-    <div class="form-group ${hasErrors(bean: desarrollo, field: 'tipoDesarrollo', 'error')} ">
+    <div class="form-group ${hasErrors(bean: desarrollo, field: 'ejes', 'error')} ">
         <span class="grupo">
             <label for="tipoDesarrollo" class="col-md-2 control-label text-info">
-                Tipo de desarrollo
+                Eje de desarrollo
             </label>
             <div class="col-md-10">
-                <g:select name="tipoDesarrollo" from="${infold.TipoDesarrollo?.list()?.sort{it.descripcion}}" class="form-control slll" value="${desarrollo?.tipoDesarrollo?.id}" optionKey="id" optionValue="descripcion"/>
+                <g:select name="tipoDesarrollo" from="${infold.Ejes?.list()?.sort{it.descripcion}}"
+                          class="form-control" value="${desarrollo?.ejes?.id}" optionKey="id" optionValue="descripcion"/>
             </div>
         </span>
     </div>
@@ -42,7 +44,8 @@ select#tipoDesarrollo option{
                 Descripción
             </label>
             <div class="col-md-10">
-                <g:textField name="descripcion" maxlength="63" class="form-control required" value="${desarrollo?.descripcion}" style="resize: none"/>
+                <g:textArea name="descripcion" maxlength="255" class="form-control required"
+                             value="${desarrollo?.descripcion}" style="resize: none"/>
             </div>
         </span>
     </div>
@@ -51,7 +54,7 @@ select#tipoDesarrollo option{
             <label for="orden" class="col-md-2 control-label text-info">
                 Orden
             </label>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <g:textField name="orden" maxlength="63" class="form-control required" value="${desarrollo?.orden}" style="resize: none"/>
             </div>
         </span>

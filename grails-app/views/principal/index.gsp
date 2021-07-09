@@ -188,70 +188,25 @@
                 <section id="about" class="row tm-section">
                     <div class="col-xl-5">
                         <div class="tm-section-half">
-%{--                            <div><i class="far fa-6x fa-handshake mb-5 tm-section-icon" style="width: 100%"></i></div>--}%
                             <div><i class="fas fa-graduation-cap fa-6x mb-5 tm-section-icon" style="width: 100%"></i></div>
-                            <h2 class="tm-section-title tm-color-primary mb-5">Quienes Somos</h2>
-                            <p class="mb-5">
-                                When first section is scrolled up, BG image will be
-                                disappeared with a parallax effect. Donec ac tempor tellus, a
-                                eleifend ligula. Fusce vitae sem sed purus euismod
-                                condimentum.
-                            </p>
-                            <p>
-                                Sed at orci non metus tristique suscipit vitae in nibh. Sed
-                                rutrum odio ac est hendrerit, at vestibulum felis condimentum.
-                            </p>
+                            <h2 class="tm-section-title tm-color-primary mb-3" style="text-align: center">${inst.sigla}</h2>
+%{--                            <h2 class="tm-section-title tm-color-primary mb-5">${raw(inst.sigla)}</h2>--}%
+                            <p class="mb-5">${raw(inst.descricpion)}</p>
                         </div>
                     </div>
+
                     <div class="col-xl-7">
                         <div class="tm-section-half">
                             <div><i class="far fa-6x fa-building mb-5 tm-section-icon" style="width: 100%"></i></div>
                             <h2 class="tm-section-title tm-color-primary mb-3" style="text-align: center">Ejes de Formación</h2>
-                            Desafíos y visiones globales
-                            <ul>
-                            <li>
-                                Grandes tendencias económicas, sociales y ambientales
-                            </li>
-                            <li>
-                                Lecciones de las revoluciones políticas, y científico-tecnológicas
-                            </li>
-                            <li>
-                                Grandes propuestas mundiales
-                            </li>
-                            <li>
-                                Opciones de cambio y transformación
-                            </li>
-                            </ul>
-                            Transformar el Ecuador
-                            <ul>
-                            <li>
-                                Ecuador del Pasado-presente y del Presente-futuro
-                            </li>
-                            <li>
-                                Liderazgos territoriales: Gobiernos descentralizados y gobierno central
-                            </li>
-                            <li>
-                                Liderazgo por Causas y Derechos
-                            </li>
-                            <li>
-                                Estrategias para la transformación
-                            </li>
-                            </ul>
-                            Aprendiendo a cooperar y a vivir para construir cambios y visiones de cambio
-                            <ul>
-                            <li>
-                                Desarrollar la escucha y la conversación.
-                            </li>
-                            <li>
-                                Desarrollar habilidades de lectura y comunicación
-                            </li>
-                            <li>
-                                Desarrollar capacidades para construir sinergias
-                            </li>
-                            <li>
-                                Vocerías
-                            </li>
-                            </ul>
+                            <g:each in="${infold.Ejes.list([sort: 'orden'])}" var="ej">
+                                <strong>${ej.orden}: ${ej.descripcion}</strong>
+                                <ol>
+                                <g:each in="${infold.Areas.findAllByEjes(ej, [sort: 'orden'])}" var="ar">
+                                    <li>${ar.descripcion}</li>
+                                </g:each>
+                                </ol>
+                            </g:each>
                         </div>
                     </div>
                 </section>
@@ -263,84 +218,84 @@
                         <div class="w-100 tm-double-border-1 tm-border-gray">
                             <div class="tm-double-border-2 tm-border-gray tm-box-pad">
                                 <div class="tm-gallery-wrap">
-                                    <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Our Work</h2>
+                                    <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Imágenes de Cursos y Eventos</h2>
                                     <div class="tm-gallery">
                                         <div class="tm-gallery-item">
                                             <figure class="effect-bubba">
-                                                <img src="img/gallery/01.jpg" alt="Our Work Image" class="img-fluid">
+                                                <img src="img/gallery/01.jpg" alt="Imagen de eventos" class="img-fluid">
                                                 <figcaption>
-                                                    <h2>Fresh <span>Bubba</span></h2>
-                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <h2>Fresh <span>Imagen</span></h2>
+                                                    <p>Imagen likes to appear out of thin air.</p>
                                                     <a href="img/gallery/large/01.jpg">View more</a>
                                                 </figcaption>
                                             </figure>
                                         </div>
                                         <div class="tm-gallery-item">
                                             <figure class="effect-bubba">
-                                                <img src="img/gallery/02.jpg" alt="Our Work Image" class="img-fluid">
+                                                <img src="img/gallery/02.jpg" alt="Imagen de eventos" class="img-fluid">
                                                 <figcaption>
-                                                    <h2>Fresh <span>Bubba</span></h2>
-                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <h2>Fresh <span>Imagen</span></h2>
+                                                    <p>Imagen likes to appear out of thin air.</p>
                                                     <a href="img/gallery/large/02.jpg">View more</a>
                                                 </figcaption>
                                             </figure>
                                         </div>
                                         <div class="tm-gallery-item">
                                             <figure class="effect-bubba">
-                                                <img src="img/gallery/03.jpg" alt="Our Work Image" class="img-fluid">
+                                                <img src="img/gallery/03.jpg" alt="Imagen de eventos" class="img-fluid">
                                                 <figcaption>
-                                                    <h2>Fresh <span>Bubba</span></h2>
-                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <h2>Fresh <span>Imagen</span></h2>
+                                                    <p>Imagen likes to appear out of thin air.</p>
                                                     <a href="img/gallery/large/03.jpg">View more</a>
                                                 </figcaption>
                                             </figure>
                                         </div>
                                         <div class="tm-gallery-item">
                                             <figure class="effect-bubba">
-                                                <img src="img/gallery/04.jpg" alt="Our Work Image" class="img-fluid">
+                                                <img src="img/gallery/04.jpg" alt="Imagen de eventos" class="img-fluid">
                                                 <figcaption>
-                                                    <h2>Fresh <span>Bubba</span></h2>
-                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <h2>Fresh <span>Imagen</span></h2>
+                                                    <p>Imagen likes to appear out of thin air.</p>
                                                     <a href="img/gallery/large/04.jpg">View more</a>
                                                 </figcaption>
                                             </figure>
                                         </div>
                                         <div class="tm-gallery-item">
                                             <figure class="effect-bubba">
-                                                <img src="img/gallery/05.jpg" alt="Our Work Image" class="img-fluid">
+                                                <img src="img/gallery/05.jpg" alt="Imagen de eventos" class="img-fluid">
                                                 <figcaption>
-                                                    <h2>Fresh <span>Bubba</span></h2>
-                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <h2>Fresh <span>Imagen</span></h2>
+                                                    <p>Imagen likes to appear out of thin air.</p>
                                                     <a href="img/gallery/large/05.jpg">View more</a>
                                                 </figcaption>
                                             </figure>
                                         </div>
                                         <div class="tm-gallery-item">
                                             <figure class="effect-bubba">
-                                                <img src="img/gallery/06.jpg" alt="Our Work Image" class="img-fluid">
+                                                <img src="img/gallery/06.jpg" alt="Imagen de eventos" class="img-fluid">
                                                 <figcaption>
-                                                    <h2>Fresh <span>Bubba</span></h2>
-                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <h2>Fresh <span>Imagen</span></h2>
+                                                    <p>Imagen likes to appear out of thin air.</p>
                                                     <a href="img/gallery/large/06.jpg">View more</a>
                                                 </figcaption>
                                             </figure>
                                         </div>
                                         <div class="tm-gallery-item">
                                             <figure class="effect-bubba">
-                                                <img src="img/gallery/07.jpg" alt="Our Work Image" class="img-fluid">
+                                                <img src="img/gallery/07.jpg" alt="Imagen de eventos" class="img-fluid">
                                                 <figcaption>
-                                                    <h2>Fresh <span>Bubba</span></h2>
-                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <h2>Fresh <span>Imagen</span></h2>
+                                                    <p>Imagen likes to appear out of thin air.</p>
                                                     <a href="img/gallery/large/07.jpg">View more</a>
                                                 </figcaption>
                                             </figure>
                                         </div>
                                         <div class="tm-gallery-item">
                                             <figure class="effect-bubba">
-                                                <img src="img/gallery/08.jpg" alt="Our Work Image" class="img-fluid">
+                                                <img src="img/gallery/08.jpg" alt="Imagen de eventos" class="img-fluid">
                                                 <figcaption>
-                                                    <h2>Fresh <span>Bubba</span></h2>
-                                                    <p>Bubba likes to appear out of thin air.</p>
+                                                    <h2>Fresh <span>Imagen</span></h2>
+                                                    <p>Imagen likes to appear out of thin air.</p>
                                                     <a href="img/gallery/large/08.jpg">View more</a>
                                                 </figcaption>
                                             </figure>
@@ -358,54 +313,54 @@
                     <div class="col-12 tm-section-pad">
                         <div class="tm-flex-item-left">
                             <div class="tm-w-80">
-                                <h2 class="tm-color-primary tm-section-title mb-4">Our Clients</h2>
+                                <h2 class="tm-color-primary tm-section-title mb-4">Miembros y Convenios</h2>
                                 <p class="mb-5">
-                                    Aenean est augue, iaculis ut arcu a, cursus tempus eros.
-                                    Maecenas ut efficitur lectus, vel commodo nibh. Vivamus
-                                    consequat massa non euismod facilisis. Morbi assumsan non libero
-                                    a vehicula. Donec blandit suscipit magna sit amet elementum.
+                                    Instituciones que nos apoyan y quienes particpan activamente del Instituto.
+                                    Convenios con Universidades<br>
+                                    Asociaciones Sociales<br>
+                                    Organizacioines sin fines de lucro<br>
                                 </p>
                             </div>
 
                             <div class="row tm-clients-images">
                                 <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
                                     <a href="https://google.com">
-                                        <img src="img/client-1.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                        <img src="img/client-1.png" alt="Imágenes de Organizaciones" class="img-fluid tm-client-img" />
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
                                     <a href="https://facebook.com">
-                                        <img src="img/client-2.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                        <img src="img/client-2.png" alt="Imágenes de Organizaciones" class="img-fluid tm-client-img" />
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
                                     <a href="https://twitter.com">
-                                        <img src="img/client-3.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                        <img src="img/client-3.png" alt="Imágenes de Organizaciones" class="img-fluid tm-client-img" />
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
                                     <a href="https://instagram.com">
-                                        <img src="img/client-4.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                        <img src="img/client-4.png" alt="Imágenes de Organizaciones" class="img-fluid tm-client-img" />
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
                                     <a href="https://google.com">
-                                        <img src="img/client-5.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                        <img src="img/client-5.png" alt="Imágenes de Organizaciones" class="img-fluid tm-client-img" />
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
                                     <a href="https://facebook.com">
-                                        <img src="img/client-6.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                        <img src="img/client-6.png" alt="Imágenes de Organizaciones" class="img-fluid tm-client-img" />
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
                                     <a href="https://twitter.com">
-                                        <img src="img/client-7.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                        <img src="img/client-7.png" alt="Imágenes de Organizaciones" class="img-fluid tm-client-img" />
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
                                     <a href="https://instagram.com">
-                                        <img src="img/client-8.png" alt="Client Image" class="img-fluid tm-client-img" />
+                                        <img src="img/client-8.png" alt="Imágenes de Organizaciones" class="img-fluid tm-client-img" />
                                     </a>
                                 </div>
                             </div>
@@ -419,15 +374,17 @@
                     <div class="col-xl-6 mb-5">
                         <div class="tm-double-border-1 tm-border-gray">
                             <div class="tm-double-border-2 tm-border-gray tm-box-pad">
-                                <h2 class="tm-color-primary tm-section-title mb-4">Talk to Us</h2>
+                                <h2 class="tm-color-primary tm-section-title mb-4">Contacte con Nosotros</h2>
                                 <p class="mb-4">
-                                    Sed aliquet, nibh ac hendrerit faucibus, tellus metus viverra
-                                    tellus, vel volutpat purus orci ac ex.
+                                    Envíenos sus preguntas o consultas y nos pondremos en contacto con Usted.
                                 </p>
                                 <p class="mb-3">
-                                    120-240 Orci varius natoque penatibus, <br>
-                                    parturient montes, 10660 <br>
-                                    nasvetur ridiculus mus
+                                    No olvide escribrir correctamente sus datos personales.<br>
+                            <ul>
+                                <li>Nombres y apellidos </li>
+                                <li>Correo electrónico </li>
+                                <li>Mensaje o consulta</li>
+                            </ul>
                                 </p>
                             </div>
                         </div>
@@ -436,19 +393,25 @@
                         <div class="tm-contact-form-wrap">
                             <form action="" method="POST" class="tm-contact-form">
                                 <div class="form-group">
-                                    <input type="text" id="contact_name" name="contact_name" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Name" required="" />
+                                    <input type="text" id="contact_name" name="contact_name"
+                                           class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+                                           placeholder="Su Nombre" required="" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" id="contact_email" name="contact_email" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Email" required="" />
+                                    <input type="email" id="contact_email" name="contact_email"
+                                           class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+                                           placeholder="Su correo electrónico" required="" />
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea rows="4" id="contact_message" name="contact_message" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Message..." required=""></textarea>
+                                    <textarea rows="4" id="contact_message" name="contact_message"
+                                              class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+                                              placeholder="Mensaje o consulta" required=""></textarea>
                                 </div>
 
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
-                                        SEND
+                                        Enviar
                                     </button>
                                 </div>
                             </form>

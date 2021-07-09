@@ -1,15 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: fabricio
-  Date: 30/06/21
-  Time: 15:05
+  Date: 01/07/21
+  Time: 11:43
 --%>
+
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
-    <title>Lista de Ejes de Formación</title>
+    <title>Lista de Tipos de Desarrollo</title>
 
     <style>
 
@@ -22,8 +23,8 @@
 <!-- botones -->
 <div class="btn-toolbar toolbar" style="margin-top: 5px">
     <div class="btn-group">
-        <a href="#" class="btn btn-rojo btnNuevoDesarrollo">
-            <i class="fa fa-file"></i> Nuevo eje
+        <a href="#" class="btn btn-rojo btnNuevoTipo">
+            <i class="fa fa-file"></i> Nuevo Eje de Desarrollo
         </a>
     </div>
 </div>
@@ -31,9 +32,8 @@
 <table class="table table-condensed table-bordered">
     <thead>
     <tr style="width: 100%">
-        <th style="width: 35%">Tipo de Desarrollo</th>
-        <th style="width: 44%">Descripción</th>
-        <th style="width: 11%">Orden</th>
+        <th style="width: 10%">Orden</th>
+        <th style="width: 55%">Descripción</th>
     </tr>
     </thead>
 </table>
@@ -41,12 +41,11 @@
 <div class=""  style="width: 99.7%;height: 350px; overflow-y: auto; margin-top: -20px">
     <table class="table-bordered table-condensed table-hover" width="100%">
         <tbody id="tabla_bandeja">
-        <g:if test="${desarrollos.size() > 0}">
-            <g:each in="${desarrollos}" var="desarrollo">
-                <tr data-id="${desarrollo?.id}" style="width: 100%">
-                    <td style="width: 35%">${desarrollo?.tipoDesarrollo?.descripcion}</td>
-                    <td style="width: 44%">${desarrollo?.descripcion}</td>
-                    <td style="width: 10%">${desarrollo?.orden}</td>
+        <g:if test="${tipos.size() > 0}">
+            <g:each in="${tipos}" var="tipo">
+                <tr data-id="${tipo?.id}" style="width: 100%">
+                    <td style="width: 10%">${tipo?.orden}</td>
+                    <td style="width: 55%">${tipo?.descripcion}</td>
                 </tr>
             </g:each>
         </g:if>
@@ -61,29 +60,29 @@
 
 <script type="text/javascript">
 
-    $(".btnNuevoDesarrollo").click(function () {
+    $(".btnNuevoTipo").click(function () {
         createEditRow();
     });
 
     function submitForm() {
-        var $form = $("#frmDesarrollo");
+        var $form = $("#frmTipoDesarrollo");
         var $btn = $("#dlgCreateEdit").find("#btnSave");
         if ($form.valid()) {
             $btn.replaceWith(spinner);
             var l = cargarLoader("Grabando...");
             $.ajax({
                 type    : "POST",
-                url     : '${createLink(action:'saveDesarrollo')}',
+                url     : '${createLink(action:'saveTipoDesarrollo')}',
                 data    : $form.serialize(),
                 success : function (msg) {
                     l.modal("hide");
                     if (msg == "ok") {
-                        log("Eje de formación guardado correctamente","success");
+                        log("Tipo de desarrollo guardado correctamente","success");
                         setTimeout(function () {
                             location.reload(true);
                         }, 1000);
                     } else {
-                        log("Error al guardar el eje de formación","error");
+                        log("Error al guardar el tipo de desarrollo","error");
                     }
                 }
             });
@@ -97,14 +96,14 @@
         var data = id ? { id: id } : {};
         $.ajax({
             type    : "POST",
-            url     : "${createLink(controller: 'desarrolloCapacidades', action:'form_ajax')}",
+            url     : "${createLink(controller: 'ejes', action:'form_ajax')}",
             data    : {
                 id: id ? id : ''
             },
             success : function (msg) {
                 var b = bootbox.dialog({
                     id      : "dlgCreateEdit",
-                    title   : title + " Eje de formación",
+                    title   : title + " Eje de Desarrollo",
                     message : msg,
                     buttons : {
                         cancelar : {
@@ -132,8 +131,8 @@
 
     function deleteRow(id) {
         bootbox.dialog({
-            title   : "Eliminar Eje de formación",
-            message : "<i class='fa fa-trash fa-2x pull-left text-warning text-shadow'></i><span style='font-size: 14px; font-weight: bold'>&nbsp; ¿Está seguro que desea eliminar este eje de formación?.</span>",
+            title   : "Eliminar tipo de desarrollo",
+            message : "<i class='fa fa-trash fa-2x pull-left text-warning text-shadow'></i><span style='font-size: 14px; font-weight: bold'>&nbsp; ¿Está seguro que desea eliminar este tipo de desarrollo?.</span>",
             buttons : {
                 cancelar : {
                     label     : "<i class='fa fa-times'></i> Cancelar",
@@ -147,7 +146,7 @@
                     callback  : function () {
                         $.ajax({
                             type    : "POST",
-                            url     : "${createLink(controller: 'desarrolloCapacidades', action:'eliminar_ajax')}",
+                            url     : "${createLink(controller: 'enfoque', action:'eliminar_ajax')}",
                             data    : {
                                 id:id
                             },
@@ -158,7 +157,7 @@
                                         location.reload(true);
                                     }, 1000);
                                 }else{
-                                    log("Error al eliminar el eje de formación","error")
+                                    log("Error al eliminar el enfoque","error")
                                 }
                             } //success
                         }); //ajax

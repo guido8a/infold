@@ -119,6 +119,7 @@
         </span>
     </div>
 
+%{--
     <div class="form-group ${hasErrors(bean: 'institucion', field: 'ejesFormacion', 'error')}">
         <span class="grupo">
             <label class="col-md-2 control-label text-info">
@@ -131,17 +132,7 @@
             </div>
         </span>
     </div>
-
-%{--        <div class="form-group ${hasErrors(bean: 'promotor', field: 'estado', 'error')}">--}%
-%{--            <span class="grupo">--}%
-%{--                <label class="col-md-2 control-label text-info">--}%
-%{--                    Estado--}%
-%{--                </label>--}%
-%{--                <div class="col-md-6 form-check form-check-inline" style="margin-top: 5px">--}%
-%{--                    <input name="estado" class="form-check-input" type="checkbox" id="inlineCheckbox1" ${producto?.estado == '1' ? 'checked' : ''}> <span class="badge bg-primary">OK=Activo, No=Inactivo</span>--}%
-%{--                </div>--}%
-%{--            </span>--}%
-%{--        </div>--}%
+--}%
 
     <div class="form-group ${hasErrors(bean: 'institucion', field: 'vision', 'error')}">
         <span class="grupo">

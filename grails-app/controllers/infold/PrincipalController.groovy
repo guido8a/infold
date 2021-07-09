@@ -10,7 +10,8 @@ class PrincipalController {
 
     def index() {
         def inst = Institucion.get(1)
-        [inst: inst]
+        def ejes = Ejes.list([sort: 'orden'])
+        [inst: inst, ejes: ejes]
     }
 
 

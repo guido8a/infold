@@ -2,10 +2,10 @@ package infold
 
 
 
-class TipoDesarrolloController {
+class EjesController {
 
     def list(){
-        def tipos = TipoDesarrollo.list([sort: 'orden'])
+        def tipos = Ejes.list([sort: 'orden'])
         return [tipos:tipos]
     }
 
@@ -13,9 +13,9 @@ class TipoDesarrolloController {
         def tipo
 
         if(params.id){
-            tipo = TipoDesarrollo.get(params.id)
+            tipo = Ejes.get(params.id)
         }else{
-            tipo = new TipoDesarrollo()
+            tipo = new Ejes()
         }
 
         return[tipo: tipo]
@@ -26,9 +26,9 @@ class TipoDesarrolloController {
         def tipo
 
         if(params.id){
-            tipo = TipoDesarrollo.get(params.id)
+            tipo = Ejes.get(params.id)
         }else{
-            tipo = new TipoDesarrollo()
+            tipo = new Ejes()
         }
 
         tipo.properties = params
@@ -42,7 +42,7 @@ class TipoDesarrolloController {
     }
 
     def eliminar_ajax(){
-        def tipo = TipoDesarrollo.get(params.id)
+        def tipo = Ejes.get(params.id)
 
         try{
             tipo.delete(flush:true)
