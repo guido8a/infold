@@ -127,7 +127,7 @@
             <th class="alinear" style="width: 5%">Curr.</th>
             <th class="alinear" style="width: 5%">Comp.</th>
             <th class="alinear" style="width: 6%">Partido</th>
-            <th class="alinear" style="width: 20%">Organización</th>
+            <th class="alinear" style="width: 20%">Organización Social</th>
             <th class="alinear" style="width: 20%">Movimiento político</th>
         </tr>
         </thead>

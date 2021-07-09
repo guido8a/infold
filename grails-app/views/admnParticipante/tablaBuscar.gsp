@@ -12,7 +12,7 @@ th, td {
 }
 
 .superior {
-    background-color: #fffff8;
+    background-color: #fffff4;
 }
 .completo {
     color: #000;
