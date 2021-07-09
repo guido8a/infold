@@ -24,4 +24,8 @@ class GrupoEtario {
         desde(blank: false, nullable: false, attributes: [title: 'desde'])
         hasta(blank: false, nullable: false, attributes: [title: 'hasta'])
     }
+
+    String toString() {
+        "De ${this.desde} a ${this.hasta} años (${this.descripcion})"
+    }
 }

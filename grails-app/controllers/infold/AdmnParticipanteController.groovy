@@ -14,7 +14,9 @@ class AdmnParticipanteController {
         def areas = cn.rows(sql.toString())
         areas.add([id:0, descripcion: 'Todas...'])
         areas = areas.sort{it.id}
-        def niveles = NivelEducacion.list([sort: 'id'])
+        def niveles = NivelEducacion.list()
+        niveles.add([id:0, descripcion: 'Todos...'])
+        niveles = niveles.sort{it.id}
 
         println "actual: ${params}"
         return[actual: params.actual, areas: areas, niveles: niveles]
@@ -50,10 +52,10 @@ class AdmnParticipanteController {
         def operador = buscadorService.operadores()
 //        def wh = " edif.edif__id = prsn.edif__id and tpoc.tpoc__id = prsn.tpoc__id and prsnactv = 1 " //condicion fija
 
-        def sqlSelect = "select * from admnanun() "
+        def sqlSelect = "select * from instructor() "
 
         //condicion fija
-        def wh = " prsn__id is not null "
+        def wh = " prtc__id is not null "
         def sqlWhere = "where ${wh}"
 
         def sqlOrder = "order by ${params.ordenar} limit 51"
@@ -66,11 +68,11 @@ class AdmnParticipanteController {
                 sqlWhere += " and ${params.buscador} ${op.operador} ${op.strInicio}${params.criterio}${op.strFin}";
             }
         }
-        if(params.ctgr != '0') {
-            sqlWhere += " and sbct__id = '${params.ctgr}' ";
+        if(params.area != '0') {
+            sqlWhere += " and artb__id = ${params.area} "
         }
-        if(params.etdo != 'T') {
-            sqlWhere += " and anunetdo = '${params.etdo}' ";
+        if(params.nvel != '0') {
+            sqlWhere += " and nved__id = ${params.nvel} "
         }
 //        println "-->sql: $sqlSelect $sqlWhere $sqlOrder"
         "$sqlSelect $sqlWhere $sqlOrder".toString()

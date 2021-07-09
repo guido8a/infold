@@ -160,7 +160,7 @@
                         <span class="col-md-1 label label-primary text-info mediano">Grupo Etario</span>
                         <div class="col-md-3">
                             <span class="grupo">
-                                <g:textField name="grupoEtario" class="form-control" readonly="" value="${participante?.grupoEtario?.descripcion}"/>
+                                <g:textField name="grupoEtario" class="form-control" readonly="" value="${participante?.grupoEtario}"/>
                             </span>
                         </div>
                     </div>

@@ -15,6 +15,7 @@ class Dicta {
         version false
         columns {
             id column: 'dcta__id'
+            curso column: 'crso__id'
             fechaInicio column: 'dctafcin'
             fechaFin column: 'dctafcfn'
             nombre column: 'dctanmbr'

@@ -133,7 +133,9 @@
                                     Área de trabajo
                                 </label>
                                 <div class="col-md-6">
-                                    <g:select name="areaTrabajo" from="${infold.AreaTrabajo.list().sort{it.descripcion}}" class="form-control" optionKey="id" optionValue="descripcion" value="${participante?.areaTrabajo?.id}"/>
+                                    <g:select name="areaTrabajo" from="${infold.AreaTrabajo.list().sort{it.descripcion}}"
+                                              class="form-control" optionKey="id" optionValue="descripcion"
+                                              value="${participante?.areaTrabajo?.id}"/>
                                 </div>
                             </span>
                         </div>
@@ -146,7 +148,8 @@
                                     Grupo Etario
                                 </label>
                                 <div class="col-md-6">
-                                    <g:select name="grupoEtario" from="${infold.GrupoEtario.list().sort{it.descripcion}}" class="form-control" optionKey="id" optionValue="descripcion" value="${participante?.grupoEtario?.id}"/>
+                                    <g:select name="grupoEtario" from="${infold.GrupoEtario.list().sort{it.descripcion}}"
+                                              class="form-control" optionKey="id" value="${participante?.grupoEtario?.id}"/>
                                 </div>
                             </span>
                         </div>

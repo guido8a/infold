@@ -121,7 +121,7 @@
                         <i class="fas fa-chalkboard-teacher"></i>&nbsp; Regístrate como Instructor
                     </a>
                     <a href="#"  id = "regAlumno" class="btn btn-warning nav-link"
-                       style="padding: 5px; font-size: medium">
+                       style="padding: 5px; font-size: medium;">
                         <i class="fas fa-user-edit"></i>&nbsp; Regístrate como Participante
 %{--                        <i class="fas fa-user-tie"></i>&nbsp; Regístrate como Participante--}%
                     </a>
@@ -130,7 +130,7 @@
                 <div style="margin-bottom: 20px; margin-top: -10px">
 %{--                    <a href="${createLink(controller: 'login', action: 'login')}"  class="btn btn-info nav-link"--}%
                     <a href="#" id = "regInstructor" class="btn btn-primary nav-link"
-                       style="padding: 5px; font-size: medium">
+                       style="padding: 5px; font-size: medium; width: 256px">
                         <i class="fas fa-book-reader"></i>&nbsp; Cursos Abiertos
                     </a>
                 </div>

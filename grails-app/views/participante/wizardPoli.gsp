@@ -101,7 +101,9 @@
                                     Partido Político
                                 </label>
                                 <div class="col-md-6">
-                                    <g:select name="partido" from="${infold.Partido.list().sort{it.descripcion}}" class="form-control" optionKey="id" optionValue="descripcion" value="${participante?.partido?.id}"/>
+                                    <g:select name="partido" from="${infold.Partido.list().sort{it.descripcion}}"
+                                              class="form-control" optionKey="id" optionValue="descripcion"
+                                              value="${participante?.partido?.id}" noSelection="['null': '']"/>
                                 </div>
                             </span>
                         </div>

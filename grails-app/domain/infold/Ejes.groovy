@@ -21,4 +21,9 @@ class Ejes {
         descripcion(size: 1..127, blank: false, nullable: false, attributes: [title: 'descripcion'])
         orden(blank: true, nullable: true, attributes: [title: 'orden'])
     }
+
+    @Override
+    String toString() {
+        "${this.descripcion}"
+    }
 }

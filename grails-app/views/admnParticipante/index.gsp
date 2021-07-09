@@ -25,7 +25,9 @@
         height: 70px;
         display: block;
     }
-    </style>
+
+
+ </style>
 
 </head>
 
@@ -61,22 +63,22 @@
                         <span id="selOpt"></span>
                     </div>
                     <div class="col-xs-3 col-md-3">
-                        <b style="margin-left: 20px">Criterio: </b>
+                        <strong style="margin-left: 20px;">Criterio:</strong>
                         <g:textField name="criterio" style="margin-left: 10px; width: 100%; border-color: #AF5B00"
                                      value="${params.criterio}" id="criterio_con" class="form-control"/>
                     </div>
                     <div class="col-xs-3 col-md-3">
                         <b>Ordenado por: </b>
                         <elm:select name="buscador" from = "${buscadorServ.parmInstructor()}" value="${params.ordenar}"
-                                    optionKey="campo" optionValue="nombre" optionClass="operador" id="ordenar_por"
-                                    style="width: 100px" class="form-control"/>
+                                    optionKey="campo" optionValue="nombre" id="ordenar_por"
+                                    style="width: 100px; word-wrap: normal" class="form-control"/>
                     </div>
                 </div>
 
                 <div class="col-xs-6 col-md-6">
                     <div class="btn-group col-xs-4" style="margin-left: -10px; margin-top: 0px;">
                         <b>Área de trabajo:</b>
-                        <g:select name="area" from="${areas}" class="form-control"
+                        <g:select name="areas" from="${areas}" class="form-control"
                                   optionKey="id" optionValue="descripcion" style="border-color: #4F1B00"
                                   value="${params.actual}"/>
 
@@ -84,7 +86,7 @@
 
                     <div class="btn-group col-xs-3" style="margin-left: -10px; margin-top: 0px;">
                         <b>Nivel de Educación:</b>
-                        <g:select name="sector" from = "${niveles}" class="form-control" style="border-color: #4F1B00"
+                        <g:select name="niveles" from = "${niveles}" class="form-control" style="border-color: #4F1B00"
                                     optionKey="id" optionValue="descripcion" value="${actual?:1}"/>
                     </div>
 
@@ -101,28 +103,32 @@
                     </div>
 
                 </div>
-
             </div>
 
         </div>
     </div>
+
+
 </div>
 
+
+
 <div style="margin-top: 30px; min-height: 650px" class="vertical-container">
-    <p class="css-vertical-text">Anuncios por Categoria</p>
+    <p class="css-vertical-text">Instructores</p>
 
     <div class="linea"></div>
     <table class="table table-bordered table-hover table-condensed" style="width: 1070px">
         <thead>
         <tr>
-            <th class="alinear" style="width: 15%">Usuario</th>
-            <th class="alinear" style="width: 20%">Anuncio</th>
-            <th class="alinear" style="width: 22%">Tipo de Anuncio</th>
-            <th class="alinear" style="width: 8%">Fecha Ingreso</th>
-            <th class="alinear" style="width: 8%">Inicio</th>
-            <th class="alinear" style="width: 8%">Fin</th>
-            <th class="alinear" style="width: 5%">Estado</th>
-            <th class="alinear" style="width: 14%">Acciones</th>
+            <th class="alinear" style="width: 15%">Nombre</th>
+            <th class="alinear" style="width: 12%">Educación</th>
+            <th class="alinear" style="width: 8%">Edad</th>
+            <th class="alinear" style="width: 8%">Trabajo</th>
+            <th class="alinear" style="width: 5%">Curr.</th>
+            <th class="alinear" style="width: 5%">Comp.</th>
+            <th class="alinear" style="width: 6%">Partido</th>
+            <th class="alinear" style="width: 20%">Organización</th>
+            <th class="alinear" style="width: 20%">Movimiento político</th>
         </tr>
         </thead>
     </table>
@@ -148,7 +154,7 @@ como máximo 30
         });
     });
 
-    <g:if test="${categoria}">
+    <g:if test="${areas}">
     cargarBusqueda();
     </g:if>
     <g:else>
@@ -161,30 +167,28 @@ como máximo 30
     });
 
 
-    function cargarBusqueda () {
-        var ctgr = $("#categoria option:selected").val();
-        var etdo = $("#estados option:selected").val()
-        if(ctgr) {
-            $("#detalle").html("").append($("<div style='width:100%; text-align: center;'/>").append(spinnerSquare64));
-            $.ajax({
-                type: "POST",
-                url: "${g.createLink(controller: 'admin', action: 'tablaBuscar')}",
-                data: {
-                    buscador: $("#buscador_con").val(),
-                    ordenar:  $("#ordenar_por").val(),
-                    criterio: $("#criterio_con").val(),
-                    operador: $("#oprd").val(),
-                    ctgr: ctgr,
-                    etdo: etdo
-                },
-                success: function (msg) {
-                    $("#detalle").html(msg);
-                },
-                error: function (msg) {
-                    $("#detalle").html("Ha ocurrido un error");
-                }
-            });
-        }
+    function cargarBusqueda() {
+        var area = $("#areas option:selected").val();
+        var nvel = $("#niveles option:selected").val()
+        $("#detalle").html("").append($("<div style='width:100%; text-align: center;'/>").append(spinnerSquare64));
+        $.ajax({
+            type: "POST",
+            url: "${g.createLink(controller: 'admnParticipante', action: 'tablaBuscar')}",
+            data: {
+                buscador: $("#buscador_con").val(),
+                ordenar: $("#ordenar_por").val(),
+                criterio: $("#criterio_con").val(),
+                operador: $("#oprd").val(),
+                area: area,
+                nvel: nvel
+            },
+            success: function (msg) {
+                $("#detalle").html(msg);
+            },
+            error: function (msg) {
+                $("#detalle").html("Ha ocurrido un error");
+            }
+        });
     }
 
     $("#btnBusqueda").click(function () {
