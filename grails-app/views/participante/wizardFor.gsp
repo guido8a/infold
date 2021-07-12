@@ -119,7 +119,7 @@
                     </g:if>
 
 
-                    <div class="col-md-12" style="margin-bottom: 10px">
+                    <div class="col-md-12" style="margin-bottom: 5px">
                         <div class="form-group ${hasErrors(bean: 'participante', field: 'sectorEconomico')}">
                             <span class="grupo">
                                 <label class="col-md-3 control-label text-info">
