@@ -125,7 +125,6 @@
                         </div>
                     </div>
 
-
                     <div class="col-md-12" style="margin-bottom: 10px">
                         <div class="form-group ${hasErrors(bean: 'participante', field: 'areaTrabajo', 'error')}">
                             <span class="grupo">

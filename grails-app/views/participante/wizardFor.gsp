@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="card" style="width: 100%; height: ${participante?.tipo == '1' ? '400px' : '350px'}">
+    <div class="card" style="width: 100%; height: ${participante?.tipo == '1' ? '450px' : '400px'}">
         <div class="card-body">
 
             <div style="margin-top: 10px">
@@ -98,6 +98,20 @@
                                         <a href="#" class="btn btn-rojo" id="btnHojaVida" title="Agregar hoja de vida">
                                             <i class="fa fa-file-archive"></i> Cargar hoja de vida
                                         </a>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" style="margin-bottom: 10px">
+                            <div class="form-group ${hasErrors(bean: 'participante', field: 'sectorEconomico')}">
+                                <span class="grupo">
+                                    <label class="col-md-3 control-label text-info">
+                                        Sector Económico
+                                    </label>
+                                    <div class="col-md-6">
+                                        <g:select name="sectorEconomico" from="${infold.SectorEconomico.list().sort{it.descripcion}}"
+                                                  optionValue="descripcion" optionKey="id" class="form-control" value="${participante?.sectorEconomico?.id}"/>
                                     </div>
                                 </span>
                             </div>
@@ -271,6 +285,7 @@
                     tipo: $("#tipo").val(),
                     completado: $("#completado").val(),
                     resumenTrabajo: $("#resumenTrabajo").val(),
+                    sectorEconomico: $("#sectorEconomico").val(),
                     fortaleza1: $("#fortaleza1").val(),
                     fortaleza2: $("#fortaleza2").val(),
                     fortaleza3: $("#fortaleza3").val()

@@ -14,7 +14,7 @@ class SectorEconomico {
         columns {
             id column: 'scec__id'
             codigo column: 'sceccdgo'
-            descripcion column: 'escedscr'
+            descripcion column: 'scecdscr'
         }
     }
     static constraints = {
