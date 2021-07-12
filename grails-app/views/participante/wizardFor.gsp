@@ -103,20 +103,6 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12" style="margin-bottom: 10px">
-                            <div class="form-group ${hasErrors(bean: 'participante', field: 'sectorEconomico')}">
-                                <span class="grupo">
-                                    <label class="col-md-3 control-label text-info">
-                                        Sector Económico
-                                    </label>
-                                    <div class="col-md-6">
-                                        <g:select name="sectorEconomico" from="${infold.SectorEconomico.list().sort{it.descripcion}}"
-                                                  optionValue="descripcion" optionKey="id" class="form-control" value="${participante?.sectorEconomico?.id}"/>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-
                         <div class="col-md-12">
                             <div class="form-group ${hasErrors(bean: 'participante', field: 'resumenTrabajo', 'error')}">
                                 <span class="grupo">
@@ -131,6 +117,21 @@
                             </div>
                         </div>
                     </g:if>
+
+
+                    <div class="col-md-12" style="margin-bottom: 10px">
+                        <div class="form-group ${hasErrors(bean: 'participante', field: 'sectorEconomico')}">
+                            <span class="grupo">
+                                <label class="col-md-3 control-label text-info">
+                                    Sector Económico
+                                </label>
+                                <div class="col-md-6">
+                                    <g:select name="sectorEconomico" from="${infold.SectorEconomico.list().sort{it.descripcion}}"
+                                              optionValue="descripcion" optionKey="id" class="form-control" value="${participante?.sectorEconomico?.id}"/>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
 
                     <div class="col-md-12" style="margin-bottom: 5px">
                         <div class="form-group ${hasErrors(bean: 'participante', field: 'fortaleza1', 'error')} required">

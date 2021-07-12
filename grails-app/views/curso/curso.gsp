@@ -23,7 +23,6 @@
 %{--<g:form class="form-horizontal" name="frmCurso" role="form" action="saveCurso" method="POST">--}%
 
 
-
             <div class="col-md-10">
 
 
