@@ -88,13 +88,13 @@
                         <span class="col-md-1 label label-primary text-info mediano">Nombre</span>
                         <div class="col-md-6">
                             <span class="grupo">
-                                <g:textField name="nombre" maxlength="127" class="form-control" value="${curso?.nombre}"/>
+                                <g:textField name="nombre" maxlength="127" class="form-control required" value="${curso?.nombre}"/>
                             </span>
                         </div>
                         <span class="col-md-1 label label-primary text-info mediano">Sigla</span>
                         <div class="col-md-2">
                             <span class="grupo">
-                                <g:textField name="sigla" maxlength="15" class="allCaps form-control" value="${curso?.sigla}"/>
+                                <g:textField name="sigla" maxlength="15" class="allCaps form-control required" value="${curso?.sigla}"/>
                             </span>
                         </div>
                     </div>

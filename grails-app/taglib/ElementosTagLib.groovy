@@ -1577,6 +1577,58 @@ class ElementosTagLib {
         out << output
     }
 
+    def selectMultiple = { attrs ->
+        println "selectMultiple ${attrs}"
+        def selected = ""
+        def texto = ""
+        def noSelection = attrs.remove('noSelection')
+        if (noSelection != null) {
+            noSelection = noSelection.entrySet().iterator().next()
+        }
+        def from = attrs.remove('from')
+        def value = attrs.remove('value')
+        def id = attrs.remove('id')
+        def lt = attrs.remove('letras')?: 40
+        lt = lt.toInteger()
+        println "lt: $lt"
+        if (attrs.selected) {
+            selected = true
+        }
+        def output = "<select id=\"" + id + "\" class=\"" + attrs.class + "\"" + " style=\"" + attrs.style + "\">"
+        if (noSelection) {
+//            noSelection.key, noSelection.value, value
+            output += "<option value=\"${(noSelection.key == null ? '' : noSelection.key)}\"${noSelection.key == value ? ' selected="selected"' : ''}>${noSelection.value.encodeAsHTML()}</option>"
+        }
+
+        def patron = "(?s)(.{1,${lt}})(?:\\s|\$)"
+        println "patron: $patron"
+        def tmp = "", text = ""
+        def tx = ""
+        def pos = 0
+        if (from) {
+            from.each { el ->
+                println "<option value=  ${el.descripcion}"
+                text = el.descripcion; pos = 0; tx = ""; tmp = ""
+                while(text.size() > lt) {
+                    tmp = text[0..(lt-1)]
+                    pos = tmp.lastIndexOf(' ')
+                    tx += tmp[0..(pos-1)] + '|'
+                    text = text[(pos+1).. (text.size()-1)]
+                }
+                texto = tx + text
+                println "-->: ${texto}"
+                output += "\n<option value='${el.id}' ${el.id == value ? 'selected' : ''}>${texto}</option>"
+
+//                <g:each in="${infold.SectorEconomico.list().sort{it.descripcion}}" var="scec">
+//                <option value="${scec.id}" ${scec.id == participante.sectorEconomico.id? 'selected' : ''}>
+//                ${scec.descripcion}</option>
+//                                        </g:each>
+            }
+        }
+//        output += num
+        out << output + "</select>"
+    }
+
     def wizardAvales = { attrs ->
         println "wizardAvales $attrs"
         def paso = attrs.paso ? attrs.paso.toInteger() : 1

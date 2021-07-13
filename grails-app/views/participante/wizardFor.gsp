@@ -5,7 +5,7 @@
   Time: 9:44
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="infold.Partido" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main">
@@ -13,6 +13,10 @@
 
     <asset:stylesheet src="/bar/main.css"/>
     <asset:javascript src="/bar/progress-bar.js"/>
+
+    <asset:stylesheet src="/apli/jquery.multilineSelectmenu.css"/>
+    <asset:stylesheet src="/apli/jquery-ui.theme.css"/>
+    <asset:javascript src="/apli/jquery.multilineSelectmenu.js"/>
 
     <style>
 
@@ -45,6 +49,11 @@
         -webkit-box-shadow : 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
         -moz-box-shadow    : 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
         box-shadow         : 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    }
+
+    li.ui-menu-item {
+        padding: 5px;
+        border-bottom: solid 1px #ddd;
     }
 
     </style>
@@ -126,8 +135,10 @@
                                     Sector Económico
                                 </label>
                                 <div class="col-md-6">
-                                    <g:select name="sectorEconomico" from="${infold.SectorEconomico.list().sort{it.descripcion}}"
-                                              optionValue="descripcion" optionKey="id" class="form-control" value="${participante?.sectorEconomico?.id}"/>
+                                    <elm:selectMultiple from="${infold.SectorEconomico.list().sort{it.descripcion}}"
+                                        id="sectorEconomico" noSelection="${[0:'Ninguno']}" selected="3"
+                                        class="form-control input-sm selectpicker" letras="50"
+                                        value="${participante?.sectorEconomico?.id}"/>
                                 </div>
                             </span>
                         </div>
@@ -189,6 +200,27 @@
 </g:form>
 
 <script type="text/javascript">
+
+    $("#sectorEconomico").multilineSelectmenu();
+    $("#select").multilineSelectmenu();
+    $('#button').click(function(){
+        $('#select').append($('<option>').html('new option'));
+        setTimeout(function(){
+            $("#select").multilineSelectmenu();
+        }, 3000);
+
+    })
+    $('#button').click(function(){
+        $('#sectorEconomico').append($('<option>').html('new option'));
+        setTimeout(function(){
+            $("#sectorEconomico").multilineSelectmenu();
+        }, 3000);
+
+    })
+
+
+
+
 
     $("#btnHojaVida").click(function () {
         cargarHoja($("#id").val())
