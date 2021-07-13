@@ -31,7 +31,7 @@
     <p class="css-vertical-text">Contenidos - ${curso?.nombre}</p>
 
     <div class="linea"></div>
-    <table class="table table-bordered table-hover table-condensed" style="width: 1070px">
+    <table class="table table-bordered table-hover table-condensed">
         <thead>
         <tr>
             %{--            <th class="alinear" style="width: 15%">Curso</th>--}%
@@ -52,32 +52,32 @@
         <table class="table-bordered table-condensed table-hover">
             <g:each in="${contenidos}" var="contenido" status="z">
 
-                <tr id="${contenido?.id}">
-                    <td width="8%">
+                <tr data-id="${contenido?.id}">
+                    <td width="5%">
                         ${contenido?.numero}
                     </td>
-                    <td width="12%">
+                    <td width="10%">
                         ${contenido?.areas?.ejes?.descripcion}
                     </td>
 
-                    <td width="8%">
+                    <td width="10%">
                         ${contenido?.areas?.descripcion}
                     </td>
-                    <td width="5%" class="centrado">
+                    <td width="6%" class="centrado">
                         ${contenido?.numeroHorasDocente}
                     </td>
 
-                    <td width="5%" class="centrado">
+                    <td width="6%" class="centrado">
                         ${contenido?.numeroHorasPractica}
                     </td>
 
                     <td width="6%" class="centrado">
                         ${contenido?.numeroHorasAprendizajeAutonomo}
                     </td>
-                    <td width="20%">
+                    <td width="10%">
                         ${contenido?.metodologia}
                     </td>
-                    <td width="20%">
+                    <td width="30%">
                         ${contenido?.contenido}
                     </td>
                 </tr>
@@ -93,24 +93,24 @@
     });
 
     function submitForm() {
-        var $form = $("#frmPartido");
+        var $form = $("#frmContenidos");
         var $btn = $("#dlgCreateEdit").find("#btnSave");
         if ($form.valid()) {
             $btn.replaceWith(spinner);
             var l = cargarLoader("Grabando...");
             $.ajax({
                 type    : "POST",
-                url     : '${createLink(action:'savePartido')}',
+                url     : '${createLink(action:'saveContenido_ajax')}',
                 data    : $form.serialize(),
                 success : function (msg) {
                     l.modal("hide");
                     if (msg == "ok") {
-                        log("Partido político guardado correctamente","success");
+                        log("Contenido guardado correctamente","success");
                         setTimeout(function () {
                             location.reload(true);
                         }, 1000);
                     } else {
-                        log("Error al guardar el partido político","error");
+                        log("Error al guardar el contenido","error");
                     }
                 }
             });

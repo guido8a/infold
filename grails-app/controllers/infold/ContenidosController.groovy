@@ -22,5 +22,23 @@ class ContenidosController {
         return [contenido:contenido, areas: areas, curso: curso]
     }
 
+    def saveContenido_ajax(){
+        def contenido
+        if(params.id){
+            contenido = Contenidos.get(params.id)
+        }else{
+            contenido = new Contenidos()
+        }
+
+        contenido.properties = params
+
+        if(!contenido.save(flush:true)){
+            println("error al guardar el contenido " + contenido.errors)
+            render "no"
+        }else{
+            render "ok"
+        }
+    }
+
 
 }

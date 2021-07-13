@@ -30,7 +30,7 @@ class Contenidos {
         }
     }
     static constraints = {
-        curso(blank:true, nullable: true)
+        curso(blank:false, nullable: false)
         areas(blank:true, nullable: true)
         numero(blank:true, nullable: true)
         contenido(blank: true, nullable: true, attributes: [title: 'caracterización'])

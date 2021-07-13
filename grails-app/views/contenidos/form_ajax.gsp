@@ -7,6 +7,7 @@
 
 <g:form class="form-horizontal" name="frmContenidos" action="saveContenido_ajax">
     <g:hiddenField name="id" value="${contenido?.id}"/>
+    <g:hiddenField name="curso" value="${curso?.id}"/>
 
     <div class="form-group ${hasErrors(bean: contenido, field: 'areas', 'error')} ">
         <span class="grupo">
