@@ -2,6 +2,7 @@ package infold
 
 class Curso {
 
+    Ejes ejes
     Curso requisito
     String nombre
     String sigla
@@ -21,6 +22,7 @@ class Curso {
         version false
         columns {
             id column: 'crso__id'
+            ejes column: 'ejes__id'
             requisito column: 'crsorqst'
             descripcion column: 'crsodscr'
             nombre column: 'crsonmbr'
@@ -35,6 +37,7 @@ class Curso {
     }
     static constraints = {
         requisito(blank:true, nullable: true)
+        ejes(blank:false, nullable: false)
         nombre(size:1..127, blank: false, nullable: false, attributes: [title: 'nombre'])
         sigla(size:0..15, blank: true, nullable: true, attributes: [title: 'sigla'])
         objetivo(blank: true, nullable: true, attributes: [title: 'objetivo'])

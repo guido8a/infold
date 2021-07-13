@@ -47,12 +47,31 @@
                 <i class="fa fa-save"></i> Guardar
             </a>
         </div>
+        <a href="#" id="btnNuevo" class="btn btn-sm btn-info" title="Nuevo Curso">
+            <i class="fa fa-file"></i> Nuevo curso
+        </a>
+        <g:if test="${curso?.id}">
+            <a href="#" id="btnContenido" class="btn btn-sm btn-warning" title="Contenidos del curso">
+                <i class="fa fa-book"></i> Contenidos
+            </a>
+        </g:if>
     </div>
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
             <g:form class="form-horizontal" name="frmCurso" role="form" method="POST" controller="curso" action="saveCurso_ajax">
                 <g:hiddenField name="id" value="${curso?.id}"/>
+
+                <div class="row izquierda">
+                    <div class="col-md-12 input-group">
+                        <span class="col-md-1 label label-primary text-info mediano">Ejes de formación</span>
+                        <div class="col-md-6">
+                            <g:select name="ejes" from="${infold.Ejes.list().sort{it.descripcion}}"
+                                      optionKey="id" optionValue="descripcion" class="form-control required" value="${curso?.ejes?.id}"/>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="row izquierda">
                     <div class="col-md-12 input-group">
@@ -156,6 +175,10 @@
 
 <script type="text/javascript">
 
+    $("#btnContenido").click(function (){
+       location.href="${createLink(controller: 'contenidos', action: 'list')}/" + '${curso?.id}'
+    });
+
     function validarNumPunto(ev) {
         /*
         48-57      -> numeros
@@ -189,7 +212,12 @@
             {
                 bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> <span style='font-size: 14px'>Ingrese una sigla</span>")
             }else{
-                submitFormCurso();
+                if($("#ejes").val() == '' || $("#ejes").val() == null)
+                {
+                    bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> <span style='font-size: 14px'>Seleccione un eje de formación</span>")
+                }else{
+                    submitFormCurso();
+                }
             }
         }
     });
