@@ -119,9 +119,10 @@
     <i class="fa fa-info-circle fa-2x"></i>
     Se puede cargar archivos de tipo <strong>.jpeg, .jpg, .png, .pdf, .doc, .docx, .odt </strong>
     <br>
-</div>
-
-<div class="alert alert-warning" style="margin-top: 5px;">
+    <br>
+%{--</div>--}%
+%{----}%
+%{--<div class="alert alert-warning" style="margin-top: 5px;">--}%
     <i class="fa fa-info-circle fa-2x"></i>
     Peso máximo del archivo <strong>5MB</strong>.
     <br>

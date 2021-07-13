@@ -87,15 +87,15 @@
         </div>
     </div>
 
-    <div class="card" style="width: 100%; height: ${participante?.tipo == '1' ? '450px' : '400px'}">
+%{--    <div class="card" style="width: 100%; height: ${participante?.tipo == '1' ? '450px' : '400px'}">--}%
+    <div class="container-fluid content-row">
+    <div class="row" style="background-color: white; box-shadow: 0px 0px 10px #444; display: inline-block; margin-bottom: 20px">
+    <div>
         <div class="card-body">
-
             <div style="margin-top: 10px">
-                <p class="numeroPaso">5</p>
-                <h1 class="textoPaso">Trabajo</h1>
-                <div class="col-md-8">
-                    <h3>Trabajo  - ${participante?.tipo == '1' ? 'Instructor' : 'Participante'}</h3>
-
+                <p class="numeroPaso" style="margin-left: 10px">5</p>
+                <h1 class="textoPaso">Trabajo - ${participante?.tipo == '1' ? 'Instructor' : 'Participante'}</h1>
+                <div class="col-md-12">
                     <g:if test="${tipo == '1'}">
                         <div class="col-md-12" style="margin-bottom: 10px">
                             <div class="form-group">
@@ -118,7 +118,7 @@
                                     <label class="col-md-3 control-label text-info">
                                         Resumen de trabajo
                                     </label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <g:textArea name="resumenTrabajo" maxlength="1024" style='resize: none; height: 60px' class="form-control" title="Resumen de trabajo"
                                                     value="${participante?.resumenTrabajo ?: ''}"/>
                                     </div>
@@ -134,10 +134,10 @@
                                 <label class="col-md-3 control-label text-info">
                                     Sector Económico
                                 </label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <elm:selectMultiple from="${infold.SectorEconomico.list().sort{it.descripcion}}"
                                         id="sectorEconomico" noSelection="${[0:'Ninguno']}" selected="3"
-                                        class="form-control input-sm selectpicker" letras="50"
+                                        class="form-control input-sm selectpicker" letras="80"
                                         value="${participante?.sectorEconomico?.id}"/>
                                 </div>
                             </span>
@@ -150,7 +150,7 @@
                                 <label class="col-md-3 control-label text-info">
                                     Fortaleza uno
                                 </label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <g:textArea name="fortaleza1" maxlength="255" style='resize: none; height: 60px' class="form-control" title="Fortaleza 1"
                                                 value="${participante?.fortaleza1 ?: ''}"/>
                                 </div>
@@ -164,7 +164,7 @@
                                 <label class="col-md-3 control-label text-info">
                                     Fortaleza dos
                                 </label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <g:textArea name="fortaleza2" maxlength="255" style='resize: none; height: 60px' class="form-control" title="Fortaleza 2"
                                                 value="${participante?.fortaleza2 ?: ''}"/>
                                 </div>
@@ -178,7 +178,7 @@
                                 <label class="col-md-3 control-label text-info">
                                     Fortaleza tres
                                 </label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <g:textArea name="fortaleza3" maxlength="255" style='resize: none; height: 60px' class="form-control" title="Fortaleza 3"
                                                 value="${participante?.fortaleza3 ?: ''}"/>
                                 </div>
@@ -195,6 +195,8 @@
 
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
 </g:form>
