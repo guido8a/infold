@@ -50,9 +50,7 @@ class AdmnParticipanteController {
 //        println "armaSql: $params"
         def campos = buscadorService.parmInstructor()
         def operador = buscadorService.operadores()
-//        def wh = " edif.edif__id = prsn.edif__id and tpoc.tpoc__id = prsn.tpoc__id and prsnactv = 1 " //condicion fija
-
-        def sqlSelect = "select * from instructor() "
+        def sqlSelect = "select * from instructor('I') "
 
         //condicion fija
         def wh = " prtc__id is not null "

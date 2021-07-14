@@ -621,7 +621,7 @@
         console.log('1')
         $.ajax({
             type    : "POST",
-            url     : "${createLink(controller: 'participante', action:'cedula_ajax')}?tipo=1",
+            url     : "${createLink(controller: 'participante', action:'cedula_ajax')}?tipo=I",
             data    : {
             },
             success : function (msg) {
@@ -636,7 +636,7 @@
         console.log('2')
         $.ajax({
             type    : "POST",
-            url     : "${createLink(controller: 'participante', action:'cedula_ajax')}?tipo=2",
+            url     : "${createLink(controller: 'participante', action:'cedula_ajax')}?tipo=A",
             data    : {
             },
             success : function (msg) {

@@ -375,7 +375,7 @@ class ParticipanteController {
     }
 
     def verificarParticipante(){
-//        println("participante " + params)
+        println("verificarParticipante " + params)
         def prtc = Participante.findByCedulaAndTipo(params.c.toString().trim(), params.tipo)
 
         if(prtc){
@@ -485,7 +485,7 @@ class ParticipanteController {
     }
 
     def guardarDesarrollo_ajax(){
-//        println("params ge " + params)
+        println("params ge " + params)
         def participante = Participante.get(params.id)
         def desarrolloCapacidades = Areas.get(params.desarrolloCapacidades)
         def existe = AreasPersona.findByParticipanteAndDesarrolloCapacidades(participante, desarrolloCapacidades)

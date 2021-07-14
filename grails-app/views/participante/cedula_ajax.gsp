@@ -21,7 +21,7 @@
 %{--<div class="modal-dialog">--}%
 %{--    <div class="modal-content">--}%
 
-<g:if test="${params.tipo == '1'}">
+<g:if test="${params.tipo == 'I'}">
     <g:set var="titl" value="${'Registro como Instructor'}"/>
 </g:if>
 <g:else>

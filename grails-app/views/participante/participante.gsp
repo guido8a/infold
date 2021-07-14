@@ -185,8 +185,8 @@
                         <h3>Afiliación Política</h3>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Partido Político</span>
-                                <div class="col-md-6">
+                                <span class="col-md-2 label label-primary text-info mediano">Partido Político de su preferencia</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textField name="partidoPolítico" class="form-control" readonly="" value="${participante?.partido?.descripcion}"/>
                                     </span>
@@ -195,8 +195,8 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Organización Social</span>
-                                <div class="col-md-6">
+                                <span class="col-md-2 label label-primary text-info mediano">Organización Social a la que pertenece</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textArea name="organizacionSocial" class="form-control" readonly="" value="${participante?.organizacionSocial}" style="resize: none; height: 50px"/>
                                     </span>
@@ -205,8 +205,8 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Movimiento Político</span>
-                                <div class="col-md-6">
+                                <span class="col-md-2 label label-primary text-info mediano">Movimiento Político al que pertenece</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textArea name="movimientoPolitico" class="form-control" readonly="" value="${participante?.movimientoPolitico}" style="resize: none; height: 50px"/>
                                     </span>
@@ -221,8 +221,8 @@
                         <h3>Estudios</h3>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Nivel de Educación</span>
-                                <div class="col-md-6">
+                                <span class="col-md-2 label label-primary text-info mediano">Nivel de Educación</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textField name="nivelEducacion" class="form-control" readonly="" value="${participante?.nivelEducacion?.descripcion}"/>
                                     </span>
@@ -231,8 +231,8 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Área de espeacialización</span>
-                                <div class="col-md-6">
+                                <span class="col-md-2 label label-primary text-info mediano">Área de espeacialización</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textArea name="area" class="form-control" readonly="" value="${participante?.nivelEducacion?.id?.toInteger() in [3,4,5] ? participante?.area : 'N/A'}" style="resize: none; height: 50px"/>
                                     </span>
@@ -241,8 +241,8 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Estudia actualmente</span>
-                                <div class="col-md-6">
+                                <span class="col-md-2 label label-primary text-info mediano">Estudia actualmente</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textField name="estudia" class="form-control" readonly="" value="${participante?.estudia == '0' ? 'NO' : 'SI'}"/>
                                     </span>
@@ -251,8 +251,8 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Carrera que estudia</span>
-                                <div class="col-md-6">
+                                <span class="col-md-2 label label-primary text-info mediano">Carrera que estudia</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textArea name="carreraEstudia" class="form-control" readonly="" value="${participante?.estudia == '0' ? 'N/A' : participante?.carreraEstudia}" style="resize: none; height: 50px"/>
                                     </span>
@@ -286,8 +286,8 @@
 
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Resumen trabajo</span>
-                                <div class="col-md-11">
+                                <span class="col-md-2 label label-primary text-info mediano">Resumen de su Trabajo</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textArea name="resumenTrabajo" class="form-control" readonly=""
                                                     value="${participante?.resumenTrabajo}" style="resize: none; height: 45px"/>
@@ -297,8 +297,8 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Fortaleza 1</span>
-                                <div class="col-md-11">
+                                <span class="col-md-2 label label-primary text-info mediano">Descripción de su Fortaleza 1</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textArea name="fortaleza1" class="form-control" readonly=""
                                                     value="${participante?.fortaleza1}" style="resize: none; height: 45px"/>
@@ -308,8 +308,8 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Fortaleza 2</span>
-                                <div class="col-md-11">
+                                <span class="col-md-2 label label-primary text-info mediano">Descripción de su Fortaleza 2</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textArea name="fortaleza2" class="form-control" readonly=""
                                                     value="${participante?.fortaleza2}" style="resize: none; height: 45px"/>
@@ -319,8 +319,8 @@
                         </div>
                         <div class="row izquierda">
                             <div class="col-md-12 input-group">
-                                <span class="col-md-1 label label-primary text-info mediano">Fortaleza 3</span>
-                                <div class="col-md-11">
+                                <span class="col-md-2 label label-primary text-info mediano">Descripción de su Fortaleza 3</span>
+                                <div class="col-md-10">
                                     <span class="grupo">
                                         <g:textArea name="fortaleza3" class="form-control" readonly=""
                                                     value="${participante?.fortaleza3}" style="resize: none; height: 45px"/>
