@@ -4,7 +4,7 @@ class ContenidosController {
 
     def list(){
         def curso = Curso.get(params.id)
-        def contenidos = Contenidos.findAllByCurso(curso)
+        def contenidos = Contenidos.findAllByCurso(curso).sort{it.numero}
         return[contenidos:contenidos, curso:curso]
     }
 
@@ -37,6 +37,19 @@ class ContenidosController {
             render "no"
         }else{
             render "ok"
+        }
+    }
+
+    def eliminar_ajax(){
+
+        def contenido = Contenidos.get(params.id)
+
+        try{
+            contenido.delete(flush:true)
+            render "ok"
+        }catch(e){
+            println("error al borrar el contenido " + contenido.errors)
+            render "no"
         }
     }
 

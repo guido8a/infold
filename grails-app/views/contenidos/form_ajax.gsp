@@ -5,6 +5,19 @@
   Time: 15:05
 --%>
 
+<asset:javascript src="/trix.js"/>
+<asset:stylesheet src="/trix.css"/>
+
+
+<style type="text/css">
+
+trix-editor {
+    height: 150px !important;
+    max-height: 150px !important;
+    overflow-y: auto !important;
+}
+</style>
+
 <g:form class="form-horizontal" name="frmContenidos" action="saveContenido_ajax">
     <g:hiddenField name="id" value="${contenido?.id}"/>
     <g:hiddenField name="curso" value="${curso?.id}"/>
@@ -15,7 +28,7 @@
                 Área
             </label>
             <div class="col-md-8">
-               <g:select name="areas" from="${areas}" optionValue="descripcion" optionKey="id" class="form-control" value="${contenido?.areas?.id}"/>
+                <g:select name="areas" from="${areas}" optionValue="descripcion" optionKey="id" class="form-control required" value="${contenido?.areas?.id}"/>
             </div>
         </span>
     </div>
@@ -34,8 +47,10 @@
             <label for="contenido" class="col-md-2 control-label text-info">
                 Contenido
             </label>
-            <div class="col-md-8">
-                <g:textArea name="contenido" class="form-control required" value="${contenido?.contenido}" style="resize: none; height: 150px"/>
+            <div class="col-md-8 form-check form-check-inline"
+                 style=" margin-left:5px; border-radius: 4px; border-style: solid; border-color: #888;
+                 border-width: 1px; padding: 5px; height: 200px">
+                <trix:editor name="contenido" class="editor" value="${contenido?.contenido}"/>
             </div>
         </span>
     </div>
@@ -44,8 +59,10 @@
             <label for="contenido" class="col-md-2 control-label text-info">
                 Metodología
             </label>
-            <div class="col-md-8">
-                <g:textArea name="metodologia" class="form-control" value="${contenido?.metodologia}" style="resize: none; height: 150px"/>
+            <div class="col-md-8 form-check form-check-inline"
+                 style=" margin-left:5px; border-radius: 4px; border-style: solid; border-color: #888;
+                 border-width: 1px; padding: 5px; height: 200px">
+                <trix:editor name="metodologia" class="editor" value="${contenido?.metodologia}"/>
             </div>
         </span>
     </div>
