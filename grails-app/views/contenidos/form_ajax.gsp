@@ -5,8 +5,6 @@
   Time: 15:05
 --%>
 
-<asset:javascript src="/trix.js"/>
-<asset:stylesheet src="/trix.css"/>
 
 
 <style type="text/css">
@@ -53,6 +51,7 @@ trix-editor {
                 <trix:editor name="contenido" class="editor" value="${contenido?.contenido}"/>
             </div>
         </span>
+
     </div>
     <div class="form-group ${hasErrors(bean: contenido, field: 'metodologia', 'error')} ">
         <span class="grupo">
@@ -112,4 +111,6 @@ trix-editor {
         }
         return true;
     });
+
+    // $("#contenido").replace('<input id="contenido" type="hidden" name="contenido" value="&lt;div&gt;Primera partes&lt;/div&gt;" /><trix-editor input="contenido" ></trix-editor>');
 </script>

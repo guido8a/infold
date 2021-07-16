@@ -11,6 +11,11 @@
     <meta name="layout" content="main">
     <title>Contenidos - ${curso?.nombre}</title>
 
+    <asset:javascript src="/trix.js"/>
+    <asset:stylesheet src="/trix.css"/>
+
+
+
     <style>
     .hiddenRow {padding: 0 !important;}
     </style>
@@ -193,6 +198,7 @@
                             label     : "<i class='fa fa-times'></i> Cancelar",
                             className : "btn-primary",
                             callback  : function () {
+                                $('#frmContenidos')[0].reset();
                             }
                         },
                         guardar  : {
