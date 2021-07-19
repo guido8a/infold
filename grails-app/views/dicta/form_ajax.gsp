@@ -4,9 +4,9 @@
   Date: 16/07/21
   Time: 14:02
 --%>
-<asset:javascript src="/jquery/jquery-2.2.4.js"/>
-<asset:stylesheet src="/material-date-range-picker/dist/duDatepicker.min.css"/>
-<asset:javascript src="/material-date-range-picker/dist/duDatepicker.min.js"/>
+
+<asset:stylesheet src="/jquery-date-range-picker-master/dist/daterangepicker.css"/>
+<asset:javascript src="/jquery-date-range-picker-master/dist/jquery.daterangepicker.min.js"/>
 
 
 <g:form class="form-horizontal" name="frmDicta" action="saveDicta">
@@ -28,13 +28,12 @@
 
 </g:form>
 
+<div class="calender"></div>
+
+
 <script type="text/javascript">
 
-    $('#dp').duDatepicker({
-        // options here
-    });
-
-
+    $('#dp').dateRangePicker();
 
     var validator = $("#frmDicta").validate({
         errorClass     : "help-block",
