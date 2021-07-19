@@ -178,6 +178,10 @@
 
 <script type="text/javascript">
 
+    $("#btnDicta").click(function () {
+        location.href="${createLink(controller: 'dicta', action: 'list')}/" + '${curso?.id}'
+    });
+
     $("#btnContenido").click(function (){
        location.href="${createLink(controller: 'contenidos', action: 'list')}/" + '${curso?.id}'
     });

@@ -17,22 +17,22 @@
         <g:layoutTitle default="monitor"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-%{--    <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>--}%
+    %{--    <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>--}%
     <asset:link rel="icon" href="favicon.png" type="image/x-ico"/>
 
-%{--
-    <asset:stylesheet src="/merc/bootstrap.min.css"/>
-    <asset:stylesheet src="/apli/shop-homepage.css"/>
-    <asset:javascript src="/merc/jquery.min.js"/>
-    <asset:javascript src="/merc/bootstrap.bundle.js"/>
-    <asset:javascript src="/apli/bootbox.js"/>
-    <asset:javascript src="/jquery-validation-1.11.1/js/jquery.validate.min.js"/>
-    <asset:javascript src="/jquery-validation-1.11.1/js/jquery.validate.js"/>
-    <asset:javascript src="/jquery-validation-1.11.1/localization/messages_es.js"/>
-    <asset:javascript src="/apli/functions.js"/>
-    <asset:javascript src="/apli/loader.js"/>
-    <asset:javascript src="/apli/fontawesome.all.min.js"/>
---}%
+    %{--
+        <asset:stylesheet src="/merc/bootstrap.min.css"/>
+        <asset:stylesheet src="/apli/shop-homepage.css"/>
+        <asset:javascript src="/merc/jquery.min.js"/>
+        <asset:javascript src="/merc/bootstrap.bundle.js"/>
+        <asset:javascript src="/apli/bootbox.js"/>
+        <asset:javascript src="/jquery-validation-1.11.1/js/jquery.validate.min.js"/>
+        <asset:javascript src="/jquery-validation-1.11.1/js/jquery.validate.js"/>
+        <asset:javascript src="/jquery-validation-1.11.1/localization/messages_es.js"/>
+        <asset:javascript src="/apli/functions.js"/>
+        <asset:javascript src="/apli/loader.js"/>
+        <asset:javascript src="/apli/fontawesome.all.min.js"/>
+    --}%
 
     <asset:stylesheet src="/bootstrap-3.3.2/dist/css/bootstrap.css"/>
     <asset:stylesheet src="/bootstrap-3.3.2/dist/css/bootstrap-theme.css"/>
@@ -77,6 +77,9 @@
 
     <asset:javascript src="/bootstrap-3.3.2/dist/js/bootstrap.min.js"/>
 
+%{--    <asset:stylesheet src="/material-date-range-picker/dist/duDatepicker.min.css"/>--}%
+%{--    <asset:javascript src="/material-date-range-picker/dist/duDatepicker.min.js"/>--}%
+
     <script type="text/javascript">
         var spinner = $('<asset:image src="apli/spinner32.gif" style="padding: 40px;"/>');
         var spinnerSquare64 = $('<asset:image src="/spinner_64.GIF" style="padding: 40px;"/>');
@@ -93,7 +96,7 @@
 %{--<div id="modalTableGray"></div>--}%
 
 %{--<g:if test="${session?.usuario}">--}%
-   <mn:menu title="${g.layoutTitle(default: 'Monitor')}"/>
+<mn:menu title="${g.layoutTitle(default: 'Monitor')}"/>
 %{--</g:if>--}%
 
 %{--<div class="container" style="min-width: 1000px !important; margin-top: 0px; overflow-y: hidden">--}%
