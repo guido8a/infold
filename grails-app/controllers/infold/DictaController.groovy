@@ -48,5 +48,17 @@ class DictaController {
         return [dictas:dictas]
     }
 
+    def eliminar_ajax(){
+        def dicta = Dicta.get(params.id)
+
+        try{
+            dicta.delete(flush:true)
+            render "ok"
+        }catch(e){
+            println("error al borrar la fecha " + dicta.errors)
+            render "no"
+        }
+    }
+
 
 }

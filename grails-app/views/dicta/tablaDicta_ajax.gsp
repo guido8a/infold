@@ -12,8 +12,11 @@
             <g:each in="${dictas}" var="dicta">
                 <tr data-id="${dicta?.id}" style="width: 100%">
                     <td style="width: 55%">${dicta?.nombre}</td>
-                    <td style="width: 20%">${dicta?.fechaInicio?.format("dd-MM-yyyy")}</td>
-                    <td style="width: 20%">${dicta?.fechaFin?.format("dd-MM-yyyy")}</td>
+                    <td style="width: 20%; font-size: 14px; font-weight: bold; text-align: center; background-color: #eeb51f">${dicta?.fechaInicio?.format("dd-MM-yyyy")}</td>
+                    <td style="width: 20%; font-size: 14px; font-weight: bold; text-align: center; background-color: #afafaf">${dicta?.fechaFin?.format("dd-MM-yyyy")}</td>
+                    <td style="width: 5%; text-align: center">
+                        <a href="#" class="btn btn-xs btn-danger btnBorrarFecha" data-id="${dicta?.id}" title="Borrar fecha"><i class="fa fa-trash"></i></a>
+                    </td>
                 </tr>
             </g:each>
         </g:if>
@@ -25,3 +28,86 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+
+    $(".btnBorrarFecha").click(function (){
+        var id = $(this).data("id");
+        deleteRow(id)
+    });
+
+    function deleteRow(id) {
+        bootbox.dialog({
+            title   : "Eliminar fecha",
+            message : "<i class='fa fa-trash fa-2x pull-left text-warning text-shadow'></i><span style='font-size: 14px; font-weight: bold'>&nbsp; ¿Está seguro que desea eliminar este registro?.</span>",
+            buttons : {
+                cancelar : {
+                    label     : "<i class='fa fa-times'></i> Cancelar",
+                    className : "btn-gris",
+                    callback  : function () {
+                    }
+                },
+                aceptar : {
+                    label     : "<i class='fa fa-check'></i> Aceptar",
+                    className : "btn-rojo",
+                    callback  : function () {
+                        $.ajax({
+                            type    : "POST",
+                            url     : "${createLink(controller: 'dicta', action:'eliminar_ajax')}",
+                            data    : {
+                                id:id
+                            },
+                            success : function (msg) {
+                                if(msg == 'ok'){
+                                    log("Eliminado correctamente","success");
+                                    cargarTablaDicta();
+                                }else{
+                                    log("Error al eliminar el registro","error")
+                                }
+                            } //success
+                        }); //ajax
+                    }
+                }
+            }
+        });
+    } //createEdit
+
+    // function createContextMenu(node) {
+    //     var $tr = $(node);
+    //
+    //     var items = {
+    //         header : {
+    //             label  : "Acciones",
+    //             header : true
+    //         }
+    //     };
+    //
+    //     var id = $tr.data("id");
+    //
+    //
+    //     var eliminar = {
+    //         label            : 'Eliminar',
+    //         icon             : "fa fa-trash text-warning",
+    //         action           : function (e) {
+    //             var id = $tr.data("id");
+    //             deleteRow(id);
+    //         }
+    //     };
+    //
+    //     // items.editar = editar;
+    //     items.eliminar = eliminar;
+    //     return items;
+    // }
+    // //
+    // $("tr").contextMenu({
+    //     items  : createContextMenu,
+    //     onShow : function ($element) {
+    //         $element.addClass("trHighlight");
+    //     },
+    //     onHide : function ($element) {
+    //         $(".trHighlight").removeClass("trHighlight");
+    //     }
+    // });
+
+
+</script>
