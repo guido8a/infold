@@ -10,6 +10,8 @@
 <head>
     <meta name="layout" content="main">
     <title>Fecha que se dicta el curso</title>
+    <asset:stylesheet src="/jquery-date-range-picker-master/dist/daterangepicker.css"/>
+    <asset:javascript src="/jquery-date-range-picker-master/dist/jquery.daterangepicker.min.js"/>
 
 </head>
 <body>
@@ -19,10 +21,30 @@
 <!-- botones -->
 <div class="btn-toolbar toolbar" style="margin-top: 5px">
     <div class="btn-group">
-        <a href="#" class="btn btn-rojo btnNuevoDicta">
-            <i class="fa fa-file"></i> Nuevo
+        <a href="${createLink(controller: 'curso', action: 'curso', params: [id: curso?.id])}" class="btn btn-gris btnRegresa">
+            <i class="fa fa-arrow-left"></i> Curso
         </a>
     </div>
+</div>
+
+<div class="form-group">
+    <span class="grupo">
+        <label class="col-md-1 control-label text-info">
+            Descripción
+        </label>
+        <div class="col-md-4">
+            <g:textField name="nombre" class="form-control" />
+        </div>
+        <label class="col-md-1 control-label text-info">
+            Fechas
+        </label>
+        <div class="col-md-4">
+            <g:textField name="dp" class="form-control"/>
+        </div>
+        <a href="#" class="btn btn-sm btn-success btnAgregarHorario" title="Agregar horario del curso">
+            <i class="fa fa-plus"></i>
+        </a>
+    </span>
 </div>
 
 <table class="table table-condensed table-bordered">
@@ -35,97 +57,67 @@
     </thead>
 </table>
 
-<div class=""  style="width: 99.7%;height: 350px; overflow-y: auto; margin-top: -20px">
-    <table class="table-bordered table-condensed table-hover" width="100%">
-        <tbody id="tabla_bandeja">
-        <g:if test="${dictas.size() > 0}">
-            <g:each in="${dictas}" var="dicta">
-                <tr data-id="${dicta?.id}" style="width: 100%">
-                    <td style="width: 55%">${dicta?.nombre}</td>
-                    <td style="width: 20%">${dicta?.fechaInicio}</td>
-                    <td style="width: 20%">${dicta?.fechaFin}</td>
-                </tr>
-            </g:each>
-        </g:if>
-        <g:else>
-            <div class="alert alert-warning" role="alert" style="text-align: center">
-                <p style="font-size: 14px"><i class="fa fa-exclamation-triangle"></i> No existen registros</p>
-            </div>
-        </g:else>
-        </tbody>
-    </table>
+<div id="divTablaDicta">
+
 </div>
 
 <script type="text/javascript">
 
-    $(".btnNuevoDicta").click(function () {
-        createEditRow();
+    cargarTablaDicta();
+
+    $('#dp').dateRangePicker({
+        separator: ' al ',
+        format: 'DD-MM-YYYY',
+        startOfWeek: 'monday',
+        startDate: new Date(),
+        getValue: function() {
+            return $(this).val();
+        }
     });
 
-    function submitForm() {
-        var $form = $("#frmEnfoque");
-        var $btn = $("#dlgCreateEdit").find("#btnSave");
-        if ($form.valid()) {
-            $btn.replaceWith(spinner);
-            var l = cargarLoader("Grabando...");
-            $.ajax({
-                type    : "POST",
-                url     : '${createLink(action:'saveDicta')}',
-                data    : $form.serialize(),
-                success : function (msg) {
-                    l.modal("hide");
-                    if (msg == "ok") {
-                        log("Guardado correctamente","success");
-                        setTimeout(function () {
-                            location.reload(true);
-                        }, 1000);
-                    } else {
-                        log("Error al guardar","error");
+    $(".btnAgregarHorario").click(function () {
+        if($("#nombre").val() == ''){
+             bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese una descripción del horario")
+        }else{
+            if($("#dp").val() == ''){
+                bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese las fechas")
+            }else{
+                var l = cargarLoader("Grabando...");
+                $.ajax({
+                    type: 'POST',
+                    url: '${createLink(controller: 'dicta', action: 'saveDicta')}',
+                    data:{
+                        curso: '${curso?.id}',
+                        nombre: $("#nombre").val(),
+                        dp: $("#dp").val()
+                    },
+                    success: function (msg) {
+                        l.modal("hide");
+                        if(msg == 'ok'){
+                            log("Horario agregado correctamente","success")
+                            cargarTablaDicta();
+                        }else{
+                            log("Error al agregar el horario","error")
+                        }
                     }
-                }
-            });
-        } else {
-            return false;
-        } //else
+                });
+            }
+        }
+    });
+
+    function cargarTablaDicta(){
+        $.ajax({
+            type: 'POST',
+            url:'${createLink(controller: 'dicta', action: 'tablaDicta_ajax')}',
+            data:{
+                curso: '${curso?.id}'
+            },
+            success: function (msg) {
+                $("#divTablaDicta").html(msg)
+            }
+        })
     }
 
-    function createEditRow(id) {
-        var title = id ? "Editar" : "Crear";
-        var data = id ? { id: id } : {};
-        $.ajax({
-            type    : "POST",
-            url     : "${createLink(controller: 'dicta', action:'form_ajax')}",
-            data    : {
-                id: id ? id : ''
-            },
-            success : function (msg) {
-                var b = bootbox.dialog({
-                    id      : "dlgCreateEdit",
-                    title   : title + " curso a dictar",
-                    message : msg,
-                    buttons : {
-                        cancelar : {
-                            label     : "<i class='fa fa-times'></i> Cancelar",
-                            className : "btn-primary",
-                            callback  : function () {
-                            }
-                        },
-                        guardar  : {
-                            id        : "btnSave",
-                            label     : "<i class='fa fa-save'></i> Guardar",
-                            className : "btn-rojo",
-                            callback  : function () {
-                                return submitForm();
-                            } //callback
-                        } //guardar
-                    } //buttons
-                }); //dialog
-                setTimeout(function () {
-                    b.find(".form-control").not(".datepicker").first().focus()
-                }, 500);
-            } //success
-        }); //ajax
-    } //createEdit
 
     function deleteRow(id) {
         bootbox.dialog({

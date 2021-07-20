@@ -23,7 +23,19 @@
         </span>
     </div>
 
-    <input type="text" id="dp" />
+    <div class="form-group ${hasErrors(bean: dicta, field: 'nombre', 'error')} ">
+        <span class="grupo">
+            <label for="nombre" class="col-md-2 control-label text-info">
+                Fechas
+            </label>
+            <div class="col-md-10">
+                <g:textField name="dp" class="form-control"/>
+            </div>
+        </span>
+    </div>
+
+
+%{--    <input type="text" id="dp" />--}%
 
 
 </g:form>
