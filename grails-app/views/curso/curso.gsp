@@ -55,7 +55,7 @@
                 <i class="fa fa-book"></i> Contenidos
             </a>
             <a href="#" id="btnDicta" class="btn btn-sm btn-info" title="Horarios en los que se dicta el curso">
-                <i class="fa fa-calendar"></i> Horarios
+                <i class="fa fa-calendar"></i> Programar cursos
             </a>
         </g:if>
     </div>

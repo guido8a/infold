@@ -11,12 +11,12 @@
   cursor: pointer;
   color: #303030;
   position: relative;
-  z-index: 1000;
+  z-index: 2;
 }
 
 .date-picker-wrapper {
   position: absolute;
-  z-index: 1000;
+  z-index: 1;
   border: 1px solid #bfbfbf;
   background-color: #efefef;
   padding: 5px 12px;
