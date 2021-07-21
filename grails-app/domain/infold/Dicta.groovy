@@ -6,6 +6,8 @@ class Dicta {
     Date fechaInicio
     Date fechaFin
     String nombre
+    Date fechaMatricula
+    Date fechaCierre
 
     static mapping = {
         table 'dcta'
@@ -19,6 +21,8 @@ class Dicta {
             fechaInicio column: 'dctafcin'
             fechaFin column: 'dctafcfn'
             nombre column: 'dctanmbr'
+            fechaMatricula column: 'dctafcma'
+            fechaCierre column: 'dctafcci'
         }
     }
     static constraints = {
@@ -26,5 +30,7 @@ class Dicta {
         curso(blank: false, nullable: false, attributes: [title: 'curso'])
         fechaInicio(blank: false, nullable: false, attributes: [title: 'Fecha Inicio'])
         fechaFin(blank: true, nullable: true, attributes: [title: 'Fecha Fin'])
+        fechaMatricula(blank: true, nullable: true, attributes: [title: 'Fecha Matricula'])
+        fechaCierre(blank: true, nullable: true, attributes: [title: 'Fecha Cierre'])
     }
 }
