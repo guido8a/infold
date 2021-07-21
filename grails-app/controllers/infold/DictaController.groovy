@@ -22,6 +22,7 @@ class DictaController {
     def saveDicta(){
         println("params " + params)
         def fechas = params.dp.split(" al ")
+        def matricula = params.matricula.split(" al ")
         println("fechas " + fechas)
         def dicta
         if(params.id){
@@ -32,6 +33,10 @@ class DictaController {
 
         params.fechaInicio = new Date().parse("dd-MM-yyyy",fechas[0])
         params.fechaFin = new Date().parse("dd-MM-yyyy",fechas[1])
+
+        params.fechaMatricula = new Date().parse("dd-MM-yyyy",matricula[0])
+        params.fechaCierre = new Date().parse("dd-MM-yyyy",matricula[1])
+
         dicta.properties = params
 
         if(!dicta.save(flush:true)){

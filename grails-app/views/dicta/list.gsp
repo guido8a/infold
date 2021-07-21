@@ -38,42 +38,57 @@
     </div>
 </div>
 
-<div class="form-group divDatos" style="margin-top: 10px;  border-radius: 4px; border-style: solid; padding: 5px; border-width: 1px">
+<div class="form-group divDatos row" style="margin-top: 10px;  border-radius: 4px; border-style: solid; padding: 5px; border-width: 1px">
     <g:hiddenField name="id"/>
     <span class="grupo">
         <label class="col-md-1 control-label text-info">
             Descripción
         </label>
         <div class="col-md-5">
-            <g:textField name="nombre" class="form-control" />
+            <g:textArea name="nombre" class="form-control" style="resize: none"/>
         </div>
-        <label class="col-md-1 control-label text-info">
-            Fechas
-        </label>
-        <div class="col-md-3">
-            <g:textField name="dp" class="form-control"/>
+        <div class="col-md-4" style="margin-bottom: 5px">
+            <label class="col-md-2 control-label text-info">
+                Fechas
+            </label>
+            <div class="col-md-8">
+                <g:textField name="dp" class="form-control"/>
+            </div>
         </div>
-        <a href="#" class="btn btn-sm btn-rojo btnAgregarHorario" title="Agregar horario del curso">
-            <i class="fa fa-plus"></i> Agregar Fechas
-        </a>
-        <a href="#" class="btn btn-sm btn-rojo btnGuardarHorario hidden" title="Guardar cambios">
-            <i class="fa fa-save"></i> Guardar
-        </a>
-        <a href="#" class="btn btn-sm btn-gris btnCancelar hidden" title="Cancelar edición">
-            <i class="fa fa-times"></i> Cancelar
-        </a>
+        <div class="col-md-4">
+            <label class="col-md-2 control-label text-info">
+                Matrícula
+            </label>
+            <div class="col-md-8">
+                <g:textField name="fechasMatricula" class="form-control"/>
+            </div>
+        </div>
+
     </span>
+    <a href="#" class="btn btn-sm btn-rojo btnAgregarHorario" title="Agregar horario del curso">
+        <i class="fa fa-plus"></i> Agregar
+    </a>
+    <a href="#" class="btn btn-sm btn-rojo btnGuardarHorario hidden" title="Guardar cambios">
+        <i class="fa fa-save"></i> Guardar
+    </a>
+    <a href="#" class="btn btn-sm btn-gris btnCancelar hidden" title="Cancelar edición">
+        <i class="fa fa-times"></i> Cancelar
+    </a>
+</div>
+<div>
+    <h3>Fechas asignadas al curso: ${curso?.nombre}</h3>
 </div>
 
-<h3>Fechas asignadas al curso: ${curso?.nombre}</h3>
 
 <table class="table table-condensed table-bordered">
     <thead>
     <tr style="width: 100%">
         <th style="width: 50%">Descripción</th>
-        <th style="width: 20%">Fecha Inicio</th>
-        <th style="width: 20%">Fecha Fin</th>
-        <th style="width: 10%">Borrar</th>
+        <th style="width: 10%">Fecha Inicio</th>
+        <th style="width: 10%">Fecha Fin</th>
+        <th style="width: 10%">Fecha Matricula</th>
+        <th style="width: 10%">Fecha Cierre</th>
+        <th style="width: 10%">Acciones</th>
     </tr>
     </thead>
 </table>
@@ -85,15 +100,17 @@
 <script type="text/javascript">
 
     $(".btnCancelar").click(function () {
-       cancelarEdicion();
+        cancelarEdicion();
     });
 
     function cancelarEdicion() {
         var id = $(this).data("");
         var nombre = $(this).data("");
         var fecha = $(this).data("");
+        var fechaMatricula = $(this).data("");
         $("#nombre").val(nombre);
         $("#dp").val(fecha);
+        $("#fechasMatricula").val(fechaMatricula);
         $("#id").val(id);
         $(".btnAgregarHorario").removeClass("hidden");
         $(".btnGuardarHorario").addClass("hidden");
@@ -104,6 +121,17 @@
     cargarTablaDicta();
 
     $('#dp').dateRangePicker({
+        separator: ' al ',
+        format: 'DD-MM-YYYY',
+        startOfWeek: 'monday',
+        startDate: new Date(),
+        language: 'es',
+        getValue: function() {
+            return $(this).val();
+        }
+    });
+
+    $('#fechasMatricula').dateRangePicker({
         separator: ' al ',
         format: 'DD-MM-YYYY',
         startOfWeek: 'monday',
@@ -125,27 +153,33 @@
             if($("#dp").val() == ''){
                 bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese las fechas")
             }else{
-                var l = cargarLoader("Grabando...");
-                $.ajax({
-                    type: 'POST',
-                    url: '${createLink(controller: 'dicta', action: 'saveDicta')}',
-                    data:{
-                        curso: '${curso?.id}',
-                        nombre: $("#nombre").val(),
-                        dp: $("#dp").val(),
-                        id: $("#id").val()
-                    },
-                    success: function (msg) {
-                        l.modal("hide");
-                        if(msg == 'ok'){
-                            log("Horario guardado correctamente","success");
-                            cancelarEdicion();
-                            cargarTablaDicta();
-                        }else{
-                            log("Error al guardar el horario","error")
+                if($("#fechasMatricula").val() == ''){
+                    bootbox.alert("<i class='fa fa-exclamation-triangle fa-2x text-warning'></i> Ingrese las fechas de matriculación")
+                }else{
+                    var l = cargarLoader("Grabando...");
+                    $.ajax({
+                        type: 'POST',
+                        url: '${createLink(controller: 'dicta', action: 'saveDicta')}',
+                        data:{
+                            curso: '${curso?.id}',
+                            nombre: $("#nombre").val(),
+                            dp: $("#dp").val(),
+                            matricula: $("#fechasMatricula").val(),
+                            id: $("#id").val()
+                        },
+                        success: function (msg) {
+                            l.modal("hide");
+                            if(msg == 'ok'){
+                                log("Horario guardado correctamente","success");
+                                cancelarEdicion();
+                                cargarTablaDicta();
+                            }else{
+                                log("Error al guardar el horario","error")
+                            }
                         }
-                    }
-                });
+                    });
+                }
+
             }
         }
     }

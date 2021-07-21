@@ -12,11 +12,16 @@
             <g:each in="${dictas}" var="dicta">
                 <tr data-id="${dicta?.id}" style="width: 100%">
                     <td style="width: 50%">${dicta?.nombre}</td>
-                    <td style="width: 20%; font-size: 14px; font-weight: bold; text-align: center; background-color: #eeb51f">${dicta?.fechaInicio?.format("dd-MM-yyyy")}</td>
-                    <td style="width: 20%; font-size: 14px; font-weight: bold; text-align: center; background-color: #afafaf">${dicta?.fechaFin?.format("dd-MM-yyyy")}</td>
+                    <td style="width: 10%; font-size: 14px; font-weight: bold; text-align: center; background-color: #eeb51f">${dicta?.fechaInicio?.format("dd-MM-yyyy")}</td>
+                    <td style="width: 10%; font-size: 14px; font-weight: bold; text-align: center; background-color: #eeb51f">${dicta?.fechaFin?.format("dd-MM-yyyy")}</td>
+                    <td style="width: 10%; font-size: 14px; font-weight: bold; text-align: center; background-color: #afafaf">${dicta?.fechaMatricula?.format("dd-MM-yyyy")}</td>
+                    <td style="width: 10%; font-size: 14px; font-weight: bold; text-align: center; background-color: #afafaf">${dicta?.fechaCierre?.format("dd-MM-yyyy")}</td>
                     <td style="width: 10%; text-align: center">
                         <a href="#" class="btn btn-xs btn-gris btnBorrarFecha" data-id="${dicta?.id}" title="Borrar fecha"><i class="fa fa-trash"></i></a>
-                        <a href="#" class="btn btn-xs btn-rojo btnEditarFecha" data-id="${dicta?.id}" data-nom="${dicta?.nombre}" data-fi="${dicta?.fechaInicio?.format("dd-MM-yyyy")}" data-ff="${dicta?.fechaFin?.format("dd-MM-yyyy")}" title="Editar fecha"><i class="fa fa-edit"></i></a>
+                        <a href="#" class="btn btn-xs btn-rojo btnEditarFecha" data-id="${dicta?.id}"
+                           data-nom="${dicta?.nombre}" data-fi="${dicta?.fechaInicio?.format("dd-MM-yyyy")}"
+                           data-ff="${dicta?.fechaFin?.format("dd-MM-yyyy")}" data-fm="${dicta?.fechaMatricula?.format("dd-MM-yyyy")}" data-fc="${dicta?.fechaCierre?.format("dd-MM-yyyy")}"
+                           title="Editar fecha"><i class="fa fa-edit"></i></a>
                     </td>
                 </tr>
             </g:each>
@@ -36,8 +41,10 @@
         var id = $(this).data("id");
         var nombre = $(this).data("nom");
         var fecha = $(this).data("fi") + " al " + $(this).data("ff");
+        var matricula = $(this).data("fm") + " al " + $(this).data("fc");
         $("#nombre").val(nombre);
         $("#dp").val(fecha);
+        $("#fechasMatricula").val(matricula);
         $("#id").val(id);
         $(".btnAgregarHorario").addClass("hidden");
         $(".btnGuardarHorario").removeClass("hidden");
