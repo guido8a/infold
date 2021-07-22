@@ -86,7 +86,7 @@
         <th style="width: 50%">Descripción</th>
         <th style="width: 10%">Fecha Inicio</th>
         <th style="width: 10%">Fecha Fin</th>
-        <th style="width: 10%">Fecha Matricula</th>
+        <th style="width: 10%">Fecha Matrícula</th>
         <th style="width: 10%">Fecha Cierre</th>
         <th style="width: 10%">Acciones</th>
     </tr>

@@ -488,7 +488,7 @@ class ParticipanteController {
         println("params ge " + params)
         def participante = Participante.get(params.id)
         def desarrolloCapacidades = Areas.get(params.desarrolloCapacidades)
-        def existe = AreasPersona.findByParticipanteAndDesarrolloCapacidades(participante, desarrolloCapacidades)
+        def existe = AreasPersona.findByParticipante(participante)
         def desarrolloPersona
 
         if(existe){
@@ -496,7 +496,6 @@ class ParticipanteController {
         }else{
             desarrolloPersona = new AreasPersona()
             desarrolloPersona.participante = participante
-            desarrolloPersona.desarrolloCapacidades = desarrolloCapacidades
         }
 
         if(!desarrolloPersona.save(flush:true)){
@@ -505,6 +504,64 @@ class ParticipanteController {
         }else{
             render "ok"
         }
+    }
+
+    def disponibles_ajax(){
+        def participante = Participante.get(params.id)
+        return[participante:participante]
+    }
+
+    def tablaDisponibles_ajax(){
+        def participante = Participante.get(params.id)
+        def cursos = Dicta.findAllByFechaCierreGreaterThanEqualsAndFechaMatriculaLessThanEquals(new Date(), new Date()).sort{it.nombre}
+//        println("cursos " + cursos.id)
+        def cursosParticipante = RolCurso.findAllByParticipante(participante)
+//        println("existe " + cursosParticipante.dicta.id)
+        return[participante:participante, cursos: cursos, cursosParticipante: cursosParticipante]
+    }
+
+    def guardarMatricula_ajax(){
+
+//        println("params --->" + params)
+        def participante = Participante.get(params.participante)
+        def curso = Dicta.get(params.id)
+        def funcion
+        if(participante.tipo == 'I'){
+            funcion = Funcion.get(1)
+        }else{
+            funcion = Funcion.get(2)
+        }
+
+        def matricula
+
+        if(params.estado == 'si'){
+            matricula = new RolCurso()
+            matricula.fecha = new Date()
+            matricula.participante = participante
+            matricula.dicta = curso
+            matricula.funcion = funcion
+
+            if(!matricula.save(flush:true)){
+                println("Error al guardar el curso para la persona " + matricula.errors)
+                render "no"
+            }else{
+                render "ok"
+            }
+
+        }else{
+
+            matricula = RolCurso.findByParticipanteAndFuncionAndDicta(participante, funcion, curso)
+
+            try{
+                matricula.delete(flush:true)
+                render "ok"
+            }catch(e){
+                println("error al borrar el curso para la persona " + matricula.errors)
+                render "no"
+            }
+
+        }
+
     }
 
 }

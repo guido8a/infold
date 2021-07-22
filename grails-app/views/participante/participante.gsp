@@ -53,14 +53,15 @@
         <a href="#" id="btnDesarrollo" class="btn btn-sm btn-info" title="Desarrollo de capacidades">
             <i class="fa fa-handshake"></i> Ejes de formación
         </a>
-%{--            <a href="#" id="btnEstado" class="btn btn-sm btn-info" title="Cambiar de estado al proyecto">--}%
-%{--                <i class="fa fa-check"></i> Estado--}%
-%{--            </a>--}%
-        <a href="#" id="btnVerCronograma" class="btn btn-sm btn-info" title="Ver cronograma">
-            <i class="fa fa-calendar-alt"></i> Cursos Asistidos
+        <a href="#" id="btnDisponibles" class="btn btn-sm btn-success" title="Listado de cursos disponibles">
+            <i class="fa fa-check"></i> Cursos disponibles
         </a>
-
-
+        <a href="#" id="btnVigentes" class="btn btn-sm btn-warning" title="Listado de cursos vigentes">
+            <i class="fa fa-calendar-alt"></i> Cursos Vigentes
+        </a>
+        <a href="#" id="btnVerCronograma" class="btn btn-sm btn-info" title="Ver cronograma">
+            <i class="fa fa-user-graduate"></i> Cursos Asistidos
+        </a>
     </div>
 
     <div class="tab-content">
@@ -121,7 +122,7 @@
                         <div class="col-md-2">
                             <span class="grupo">
                                 <g:textField name="genero" class="form-control" readonly=""
-                                    value="${participante?.genero == 'M' ? 'Masculino' : (participante?.genero == 'F' ? 'Femenino' : 'GLBTI+')}"/>
+                                             value="${participante?.genero == 'M' ? 'Masculino' : (participante?.genero == 'F' ? 'Femenino' : 'GLBTI+')}"/>
                             </span>
                         </div>
                     </div>
@@ -273,7 +274,7 @@
                                     <span class="col-md-1 label label-primary text-info mediano">Hoja de vida</span>
                                     <div class="col-md-6">
                                         <span class="grupo col-md-6">
-                                                Documento existente: <strong>${participante?.hojaVida}</strong>
+                                            Documento existente: <strong>${participante?.hojaVida}</strong>
                                         </span>
                                         <span class="grupo">
                                             <a href="${createLink(controller: 'participante', action: 'descargar', params: [id: participante?.id])}" class="btn btn-sm btn-info" title="Descargar archivo">
@@ -377,6 +378,32 @@
                 bootbox.dialog({
                     title   : "Ejes de formación",
                     message : msg,
+                    buttons : {
+                        cancelar : {
+                            label     : "<i class='fa fa-times'></i> Cancelar",
+                            className : "btn-primary",
+                            callback  : function () {
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    $("#btnDisponibles").click(function (){
+        var id = '${participante?.id}';
+        $.ajax({
+            type    : "POST",
+            url     : "${createLink(controller: 'participante', action:'disponibles_ajax')}",
+            data    : {
+                id : id
+            },
+            success : function (msg) {
+                bootbox.dialog({
+                    title   : "Listado de cursos disponibles",
+                    message : msg,
+                    class: "modal-lg",
                     buttons : {
                         cancelar : {
                             label     : "<i class='fa fa-times'></i> Cancelar",

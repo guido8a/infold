@@ -48,6 +48,7 @@
     <asset:stylesheet src="/apli/font-awesome.min.css"/>
     <asset:stylesheet src="/apli/CustomSvt.css"/>
     <asset:stylesheet src="/apli/tulpen/stylesheet.css"/>
+    <asset:stylesheet src="/apli/switcher.css"/>
 
     <asset:stylesheet src="/fonts/fontawesome-webfont.woff"/>
     <asset:stylesheet src="/apli/bootstrap-datetimepicker.min.css"/>
@@ -76,6 +77,7 @@
 
 
     <asset:javascript src="/bootstrap-3.3.2/dist/js/bootstrap.min.js"/>
+    <asset:javascript src="/apli/jquery.switcher.js"/>
 
 %{--    <asset:stylesheet src="/material-date-range-picker/dist/duDatepicker.min.css"/>--}%
 %{--    <asset:javascript src="/material-date-range-picker/dist/duDatepicker.min.js"/>--}%
