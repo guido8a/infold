@@ -16,7 +16,7 @@
     <g:each in="${desarrollos}" var="desarrollo">
         <tr>
             <td style="font-weight: bold; font-size: 12px">
-                ${desarrollo?.desarrolloCapacidades?.descripcion}
+                ${desarrollo?.areas?.descripcion}
             </td>
             <td style="text-align: center">
                 <a href="#" class="btn btn-xs btn-danger btnBorrarDesarrollo" data-id="${desarrollo?.id}" title="Borrar eje">

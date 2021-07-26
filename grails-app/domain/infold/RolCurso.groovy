@@ -6,6 +6,9 @@ class RolCurso {
     Participante participante
     Dicta dicta
     Date fecha
+    String estado
+    Date fechaAprobacion
+    String observaciones
 
     static mapping = {
         table 'rlcr'
@@ -19,6 +22,9 @@ class RolCurso {
             participante column: 'prtc__id'
             dicta column: 'dcta__id'
             fecha column: 'rlcrfcha'
+            estado column: 'rlcretdo'
+            fechaAprobacion column: 'rlcrfcap'
+            observaciones column: 'rlcrobsr'
         }
     }
     static constraints = {
@@ -26,5 +32,8 @@ class RolCurso {
         participante(blank: false, nullable: false, attributes: [title: 'participante'])
         dicta(blank: false, nullable: false, attributes: [title: 'dicta'])
         fecha(blank: true, nullable: true, attributes: [title: 'fecha'])
+        estado(blank: true, nullable: true, attributes: [title: 'estado'])
+        fechaAprobacion(blank: true, nullable: true, attributes: [title: 'fecha aprobacion'])
+        observaciones(blank: true, nullable: true, attributes: [title: 'observaciones'])
     }
 }

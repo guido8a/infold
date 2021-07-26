@@ -39,7 +39,7 @@
             url: '${createLink(controller: 'participante', action: 'guardarDesarrollo_ajax')}',
             data:{
                 id: '${participante?.id}',
-                desarrolloCapacidades: $("#areas option:selected").val()
+                desarrolloCapacidades: $("#desarrolloCapacidades option:selected").val()
             },
             success: function (msg) {
                 l.modal("hide");

@@ -34,7 +34,7 @@
 
 <body>
 
-<h3>${participante?.tipo == '1' ? 'Instructor - '  : 'Participante - '}${participante?.nombre + " " + participante?.apellido}</h3>
+<h3>${participante?.tipo == 'I' ? 'Instructor - '  : 'Participante - '}${participante?.nombre + " " + participante?.apellido}</h3>
 
 <div class="panel panel-primary col-md-12">
 
@@ -53,13 +53,15 @@
         <a href="#" id="btnDesarrollo" class="btn btn-sm btn-info" title="Desarrollo de capacidades">
             <i class="fa fa-handshake"></i> Ejes de formación
         </a>
-        <a href="#" id="btnDisponibles" class="btn btn-sm btn-success" title="Listado de cursos disponibles">
-            <i class="fa fa-check"></i> Cursos disponibles
-        </a>
+        <g:if test="${participante?.tipo != 'I'}">
+            <a href="#" id="btnDisponibles" class="btn btn-sm btn-success" title="Listado de cursos disponibles">
+                <i class="fa fa-check"></i> Cursos disponibles
+            </a>
+        </g:if>
         <a href="#" id="btnVigentes" class="btn btn-sm btn-warning" title="Listado de cursos vigentes">
             <i class="fa fa-calendar-alt"></i> Cursos Vigentes
         </a>
-        <a href="#" id="btnVerCronograma" class="btn btn-sm btn-info" title="Ver cronograma">
+        <a href="#" id="btnAsistidos" class="btn btn-sm btn-info" title="Listado de cursos a los que asistió">
             <i class="fa fa-user-graduate"></i> Cursos Asistidos
         </a>
     </div>
@@ -268,7 +270,7 @@
                     <div class="card card-body">
                         <h3>Trabajo</h3>
 
-                        <g:if test="${participante?.tipo == '1'}">
+                        <g:if test="${participante?.tipo == 'I'}">
                             <div class="row izquierda">
                                 <div class="col-md-12 input-group">
                                     <span class="col-md-1 label label-primary text-info mediano">Hoja de vida</span>
@@ -340,6 +342,58 @@
 
 <script type="text/javascript">
 
+    $("#btnAsistidos").click(function (){
+        var id = '${participante?.id}';
+        $.ajax({
+            type    : "POST",
+            url     : "${createLink(controller: 'participante', action:'asistidos_ajax')}",
+            data    : {
+                id : id
+            },
+            success : function (msg) {
+                bootbox.dialog({
+                    title   : "Cursos asistidos",
+                    // class   : "modal-lg",
+                    message : msg,
+                    buttons : {
+                        cancelar : {
+                            label     : "<i class='fa fa-times'></i> Cancelar",
+                            className : "btn-primary",
+                            callback  : function () {
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    $("#btnVigentes").click(function (){
+        var id = '${participante?.id}';
+        $.ajax({
+            type    : "POST",
+            url     : "${createLink(controller: 'participante', action:'vigentes_ajax')}",
+            data    : {
+                id : id
+            },
+            success : function (msg) {
+                bootbox.dialog({
+                    title   : "Cursos vigentes",
+                    // class   : "modal-lg",
+                    message : msg,
+                    buttons : {
+                        cancelar : {
+                            label     : "<i class='fa fa-times'></i> Cancelar",
+                            className : "btn-primary",
+                            callback  : function () {
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    });
+
     $("#btnEnfoque").click(function (){
         var id = '${participante?.id}';
         $.ajax({
@@ -351,7 +405,7 @@
             success : function (msg) {
                 bootbox.dialog({
                     title   : "Enfoque personal",
-                    // class   : "modal-lg",
+                    class   : "modal-lg",
                     message : msg,
                     buttons : {
                         cancelar : {

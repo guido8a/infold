@@ -153,7 +153,7 @@ class ParticipanteController {
 
         def participante = Participante.get(params.id)
 
-        if(participante.tipo == '1'){
+        if(participante.tipo == 'I'){
             if(participante.hojaVida){
                 participante.fechaModificacion = new Date()
                 participante.estado = 'S'
@@ -427,7 +427,7 @@ class ParticipanteController {
         def existentes = AreasPersona.findAllByParticipante(participante)
         def desarrollos
         if(existentes){
-            desarrollos = Areas.findAllByIdNotInList(existentes?.desarrolloCapacidades?.id)
+            desarrollos = Areas.findAllByIdNotInList(existentes?.areas?.id)
         }else{
             desarrollos = Areas.list().sort{it.descripcion}
         }
@@ -488,7 +488,7 @@ class ParticipanteController {
         println("params ge " + params)
         def participante = Participante.get(params.id)
         def desarrolloCapacidades = Areas.get(params.desarrolloCapacidades)
-        def existe = AreasPersona.findByParticipante(participante)
+        def existe = AreasPersona.findByParticipanteAndAreas(participante, desarrolloCapacidades)
         def desarrolloPersona
 
         if(existe){
@@ -496,6 +496,7 @@ class ParticipanteController {
         }else{
             desarrolloPersona = new AreasPersona()
             desarrolloPersona.participante = participante
+            desarrolloPersona.areas = desarrolloCapacidades
         }
 
         if(!desarrolloPersona.save(flush:true)){
@@ -562,6 +563,24 @@ class ParticipanteController {
 
         }
 
+    }
+
+    def vigentes_ajax(){
+        def participante = Participante.get(params.id)
+        def idFuncion = (participante?.tipo == 'I' ? 1 : 2)
+        def funcion = Funcion.get(idFuncion)
+        def cursosActivos = Dicta.findAllByFechaInicioLessThanEqualsAndFechaFinGreaterThanEquals(new Date(), new Date())
+        def cursosVigentes = (cursosActivos ? RolCurso.findAllByParticipanteAndFuncionAndDictaInListAndEstado(participante,funcion,cursosActivos,'A') : [])
+        return[cursos:cursosVigentes]
+    }
+
+    def asistidos_ajax(){
+        def participante = Participante.get(params.id)
+        def idFuncion = (participante?.tipo == 'I' ? 1 : 2)
+        def funcion = Funcion.get(idFuncion)
+        def cursosActivos = Dicta.findAllByFechaFinLessThan(new Date())
+        def cursosAsistidos = (cursosActivos ? RolCurso.findAllByParticipanteAndFuncionAndEstadoAndDictaInList(participante, funcion, 'A', cursosActivos) : [])
+        return [cursos: cursosAsistidos]
     }
 
 }

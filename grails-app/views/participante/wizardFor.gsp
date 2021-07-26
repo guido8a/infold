@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="layout" content="main">
-    <title>${tipo == '1' ? 'Instructor' : 'Participante'} - Trabajo</title>
+    <title>${tipo == 'I' ? 'Instructor' : 'Participante'} - Trabajo</title>
 
     <asset:stylesheet src="/bar/main.css"/>
     <asset:javascript src="/bar/progress-bar.js"/>
@@ -94,9 +94,9 @@
         <div class="card-body">
             <div style="margin-top: 10px">
                 <p class="numeroPaso" style="margin-left: 10px">5</p>
-                <h1 class="textoPaso">Trabajo - ${participante?.tipo == '1' ? 'Instructor' : 'Participante'}</h1>
+                <h1 class="textoPaso">Trabajo - ${participante?.tipo == 'I' ? 'Instructor' : 'Participante'}</h1>
                 <div class="col-md-12">
-                    <g:if test="${tipo == '1'}">
+                    <g:if test="${tipo == 'I'}">
                         <div class="col-md-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <span class="grupo">
@@ -107,6 +107,9 @@
                                         <a href="#" class="btn btn-rojo" id="btnHojaVida" title="Agregar hoja de vida">
                                             <i class="fa fa-file-archive"></i> Cargar hoja de vida
                                         </a>
+                                        <g:if test="${participante?.hojaVida}">
+                                            Documento existente: <strong>${participante?.hojaVida}</strong>
+                                        </g:if>
                                     </div>
                                 </span>
                             </div>
@@ -136,7 +139,7 @@
                                 </label>
                                 <div class="col-md-8">
                                     <elm:selectMultiple from="${infold.SectorEconomico.list().sort{it.descripcion}}"
-                                        id="sectorEconomico" noSelection="${[0:'Ninguno']}" selected="3"
+                                        id="sectorEconomico" selected="3"
                                         class="form-control input-sm selectpicker" letras="80"
                                         value="${participante?.sectorEconomico?.id}"/>
                                 </div>
@@ -221,9 +224,6 @@
     })
 
 
-
-
-
     $("#btnHojaVida").click(function () {
         cargarHoja($("#id").val())
     });
@@ -246,7 +246,8 @@
                             label     : "<i class='fa fa-times'></i> Cerrar",
                             className : "btn-gris",
                             callback  : function () {
-
+                                var l = cargarLoader("Cargando...");
+                                location.href="${createLink(controller: 'participante', action: 'wizardFor')}?id=" + ${participante?.id};
                             }
                         }
                     } //buttons
