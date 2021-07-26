@@ -6,7 +6,7 @@ import geografia.Provincia
 
 class ParticipanteController {
 
-//    def dbConnectionService
+    def dbConnectionService
 //    def mailService
 //
 
@@ -514,7 +514,15 @@ class ParticipanteController {
 
     def tablaDisponibles_ajax(){
         def participante = Participante.get(params.id)
-        def cursos = Dicta.findAllByFechaCierreGreaterThanEqualsAndFechaMatriculaLessThanEquals(new Date(), new Date()).sort{it.nombre}
+        def cn = dbConnectionService.getConnection()
+        def sql = "select dcta__id from dcta where now()::date between dctafcma and dctafcci and dcta__id not in (" +
+                "select dcta__id from rlcr where rlcretdo = 'A')"
+        def cursos = []
+        cn.eachRow(sql.toString()) { d ->
+            cursos.add(Curso.get(d.dcta__id))
+        }
+        println "cursos: $cursos"
+//        def cursos = Dicta.findAllByFechaCierreGreaterThanEqualsAndFechaMatriculaLessThanEquals(new Date(), new Date()).sort{it.nombre}
 //        println("cursos " + cursos.id)
         def cursosParticipante = RolCurso.findAllByParticipante(participante)
 //        println("existe " + cursosParticipante.dicta.id)
