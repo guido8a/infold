@@ -519,7 +519,7 @@ class ParticipanteController {
                 "select dcta__id from rlcr where rlcretdo = 'A')"
         def cursos = []
         cn.eachRow(sql.toString()) { d ->
-            cursos.add(Curso.get(d.dcta__id))
+            cursos.add(Dicta.get(d.dcta__id))
         }
         println "cursos: $cursos"
 //        def cursos = Dicta.findAllByFechaCierreGreaterThanEqualsAndFechaMatriculaLessThanEquals(new Date(), new Date()).sort{it.nombre}
